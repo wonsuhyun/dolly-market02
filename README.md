@@ -1,22 +1,14 @@
-# dolly-market
+# DollyMarket
 
-> My world-class Nuxt.js project
+> Team Takuk's Toy Project
 
-## Build Setup
+## Built with
 
-``` bash
-# install dependencies
-$ yarn install
+DollyMarket is built with a number of open source projects to work properly:
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+### Web UI
+* [vue.js](https://vuejs.org/) - JavaScript Framework for Web UI
+* [nuxt.js](https://nuxtjs.org/) -  Vue.js Framework with SSR
 
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### API
+* [express.js](https://expressjs.com/) - Node.js web app framework for API
