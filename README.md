@@ -1,6 +1,6 @@
 # DollyMarket
 
-> Team Takuk's Toy Project
+> Team Takuk's Toy Project 🧸
 
 ## Built with
 
