@@ -5,9 +5,11 @@ var connection = mysql.createConnection(connectionInfo)
 
 connection.connect()
 
-connection.query('SELECT * FROM item', (err, res) => {
+const items = connection.query('SELECT * FROM item', (err, res) => {
     if (err) throw err
-    console.log(res[0])
+    return res[0]
 })
 
 connection.end()
+
+export { items }
