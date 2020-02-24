@@ -2,7 +2,7 @@
     <div class="header-wrap">
         <span class="title">{{ headerTitle }}</span>
         <div class="search">
-            <input type="text" id="searchArea" class="search-area"/><button type="button">Search</button>
+            <input type="text" id="searchArea" class="search-area" @keyup="enterKey"/><button type="button" id="serchBtn" @click="btnClickEvent">Search</button>
         </div>
     </div>
 </template>
@@ -10,7 +10,18 @@
 export default {
     data(){
         return {
-            headerTitle:"Dolly-Market"
+            headerTitle:"Dolly Market"
+        }
+    },
+    methods:{
+        enterKey:function(e){
+            if(e.keyCode==13){
+                console.log("keyup")
+                $("#serchBtn").trigger("click")
+            }
+        },
+        btnClickEvent:function(e){
+            console.log("triggered")
         }
     }
 }
@@ -30,11 +41,12 @@ export default {
     float:right
 }
 .header-wrap > .search input, .header-wrap > .search button{
-    height:40px
+    height:40px;
+    padding: 0 20px
 }
 .header-wrap > .search button{
     border:none;
-    background:#ff49d6;
+    background:#5e5e5e;
     color:#fff;
 }
 .header-wrap > .search input{
@@ -44,6 +56,6 @@ export default {
 .header-wrap span.title{
     font-weight:700;
     font-size:20px;
-    font-family:'Titillium';
+    font-family:'Roboto';
 }
 </style>
