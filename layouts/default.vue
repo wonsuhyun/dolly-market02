@@ -1,10 +1,22 @@
 <template>
   <div>
+    <Header />
     <nuxt />
   </div>
 </template>
-
+<script>
+import Header from "@/layouts/comp/header";
+export default {
+  components:{
+    Header
+  }
+}
+</script>
 <style>
+input{
+  padding:3px 5px;
+}
+
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -31,6 +43,7 @@ html {
   color: #3b8070;
   text-decoration: none;
   padding: 10px 30px;
+  width:400px;
 }
 
 .button--green:hover {
