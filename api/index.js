@@ -1,10 +1,8 @@
-  
 import express from 'express'
 const app = express()
+const ROUTES_PATH = './router'
 
-const itemRouter = require('./router/item')
-
-app.use(['/item', '/api/item'], itemRouter)
+app.use('/item', require(`${ROUTES_PATH}/item`))
 
 module.exports = {
   path: '/api',
