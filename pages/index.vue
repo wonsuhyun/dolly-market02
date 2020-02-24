@@ -3,7 +3,7 @@
     <div>
       <logo />
       <h1 class="title">dolly-market</h1>
-      <h2 class="subtitle">My world-class Nuxt.js project</h2>
+      <h2 class="subtitle"></h2>
       <div class="links">
         <a class="button--green" @click="test">Test</a>
         <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
