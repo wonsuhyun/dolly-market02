@@ -18,8 +18,7 @@ input{
 }
 
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Noto Sans KR';
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -28,7 +27,11 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
+body,ul,p,li,div,h1,h2,h3,span,a,ol {
+  margin:0;
+  padding:0;
+  box-sizing:border-box
+}
 *,
 *:before,
 *:after {
