@@ -1,14 +1,14 @@
 import express from 'express'
-import { itemDTO } from '../dto'
+import { itemRepository } from '../repository'
 
 class ItemService {
 
     async get() {
-        return itemDTO.get()
+        return itemRepository.get()
     }
     
     async getById(itemId) {
-        return itemDTO.getById(itemId)
+        return itemRepository.getById(itemId)
     }
 }
 
