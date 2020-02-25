@@ -13,7 +13,6 @@ router.get('/', async (req, res, next) => {
     await connection.commit();
     connection.release();
 
-    console.log(rows)
     res.send(rows)
 })
 
