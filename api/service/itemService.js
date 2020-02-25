@@ -1,5 +1,6 @@
 import express from 'express'
 import { itemRepository, imageRepository, tagRepository } from '../repository'
+import { Image, Item, Tag, User } from '../model'
 
 class ItemService {
 
@@ -14,7 +15,7 @@ class ItemService {
 
             item = this.getUserInfo(item)
         
-            itemList.push(item)
+            itemList.push(new Item(item))
 
         })
 
@@ -26,13 +27,13 @@ class ItemService {
         let item_ = await itemRepository.getById(itemId)
         
         // !! row가 1 이상이면 exception 처리
-        let item = item_[0]
+        let item = new Item(item_[0])
+
+        item = this.getUserInfo(item)
 
         item = await this.getImagesByItemId(item)
 
         item = await this.getTagsByItemId(item)   
-
-        item = this.getUserInfo(item)
 
         return item
     }
@@ -82,12 +83,12 @@ class ItemService {
     
     async getTagsByItemId(item) {
         
-        const tagList_ = await tagRepository.executeQuery(item.pid)
+        const tagList_ = await tagRepository.getTagsByItemId(item)
 
         const tagList = []
 
         tagList_.map( tag => {
-            tagList.push(tag)
+            tagList.push(new Tag(tag))
         })
 
         item['tags'] = tagList
@@ -97,12 +98,12 @@ class ItemService {
     
     async getImagesByItemId(item) {
             
-        const imageList_ = await imageRepository.getImagesByItemId(item.pid)
+        const imageList_ = await imageRepository.getImagesByItemId(item)
 
         const imageList = []
 
         imageList_.map(image => {
-            imageList.push(image)
+            imageList.push(new Image(image))
         })
 
         item['images'] = imageList
