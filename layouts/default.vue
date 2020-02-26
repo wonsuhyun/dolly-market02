@@ -13,6 +13,10 @@ export default {
 }
 </script>
 <style>
+a{
+  text-decoration:none;
+  color:#333
+}
 input{
   padding:3px 5px;
 }
