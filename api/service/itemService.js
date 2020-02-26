@@ -25,9 +25,9 @@ class ItemService {
     async getById(itemId) {
         
         let item_ = await itemRepository.getById(itemId)
-        
+
         // !! row가 1 이상이면 exception 처리
-        let item = new Item(item_[0])
+        let item = item_[0]
 
         item = this.getUserInfo(item)
 
@@ -35,10 +35,13 @@ class ItemService {
 
         item = await this.getTagsByItemId(item)   
 
+        item = new Item(item)
+        
         return item
     }
 
     getUserInfo(item) {
+        
         // 유저 정보 추가
         const profileImage = {
             pid: item.user_file_pid,
@@ -55,8 +58,10 @@ class ItemService {
             nickname: item.user_nickname,
             image: profileImage
         }
-
-        item['user'] = user
+        
+        
+        
+        item['user'] = new User(user)
         
         return item
     }
@@ -74,7 +79,7 @@ class ItemService {
 
         const imageArr = []
 
-        imageArr.push(masterImage)
+        imageArr.push(new Image(masterImage))
 
         item['images'] = imageArr
 
