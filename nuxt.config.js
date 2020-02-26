@@ -59,5 +59,8 @@ module.exports = {
   */
   serverMiddleware: [
     { path: '/api', handler: '~/api/index.js' }
-  ]
+  ],
+  router:{
+    middleware:['items']
+  }
 }
