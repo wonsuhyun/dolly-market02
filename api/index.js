@@ -1,5 +1,5 @@
 import express from 'express'
-import itemRouter from './router/itemRouter'
+import { itemRouter } from './router'
 
 // server settings
 const app = express()
