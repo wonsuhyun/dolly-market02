@@ -13,9 +13,14 @@ router.get('/', async (req, res) => {
 /* 
 Get item detail
 */
-router.get(["/:pid"], async (req, res) => {
+router.get(["/:pid"], wrapAsync(async (req, res) => {
     const pid = req.params.pid.toUpperCase()
-    res.json(await itemService.getById(pid))
-})
+    const item = await itemService.getById(pid)
+    res.json(item)
+}))
+
+function wrapAsync(fn) {
+    return (req, res, next) => fn(req, res, next).catch(next)
+}
 
 export default router
