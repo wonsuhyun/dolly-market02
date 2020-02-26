@@ -1,6 +1,10 @@
 <template>
     <div class="header-wrap">
-        <span class="title">{{ headerTitle }}</span>
+        <span class="title">
+            <nuxt-link to="/" >
+            {{ headerTitle }}
+            </nuxt-link>
+        </span>
         <div class="search">
             <input type="text" id="searchArea" class="search-area" @keyup="enterKey"/><button type="button" id="serchBtn" @click="btnClickEvent">Search</button>
         </div>

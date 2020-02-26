@@ -1,10 +1,11 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">{{title}}</h1>
+      <h1 class="main-title">{{title}}</h1>
       <!-- item List-->
       <ul class="item-list">
         <li v-for="item in itemsComp">
+          <nuxt-link :to="'/item/'+item.pid" >
           <span class="new" v-if="item.isNew">NEW</span>
           <div>
             <h3>{{ item.title}}</h3>
@@ -18,10 +19,11 @@
             </div>
             <div class="create-date">{{ item.create }}</div>
           </div>
+          </nuxt-link>
         </li>
       </ul>
       <div class="links">
-        <a class="button--green" @click="test">MORE</a>
+        <a class="button--green" @click="test" :disabled="isActiveBtn" >MORE</a>
       </div>
     </div>
   </div>
@@ -31,11 +33,11 @@
 import Logo from "~/components/Logo.vue";
 
 export default {
-  async fetch({ app }){
-    let res = await app.$axios.get("/api/item")
-    console.log(res.data[0]);
-    app.store.dispatch("testAction",res.data);
-  },
+  // async fetch({ app }){
+  //   let res = await app.$axios.get("/api/item")
+  //   console.log(res.data[0]);
+  //   app.store.dispatch("testAction",res.data);
+  // },
   components: {
     Logo
   },
@@ -46,17 +48,24 @@ export default {
     return{
       title:"Dolly-Market",
       items:[],
+      isActiveBtn:false
     }
   },
   mounted(){
-
+    if(this.$store.state.items > 3){
+      this.isActiveBtn = true
+    }else{
+      this.isActiveBtn = false
+    }
   },
+
   methods: {
     async test() {
       // Server Test
-      const r = await this.$axios.$get("/api/item");
-      console.log(r);
-      this.$store.commit("setItem",r.data);
+      // const r = await this.$axios.$get("/api/item");
+      // console.log(r);
+      // this.$store.commit("setItem",r.data);
+
     }
   },
   // async asyncData({ app }) {
@@ -70,6 +79,7 @@ export default {
 </script>
 
 <style>
+
 ul{
   list-style:none;
 }
@@ -126,15 +136,14 @@ ul{
  margin-right:0;
 }
 .container {
-  margin: 0 auto 200px auto;
-  min-height: 100vh;
+  margin: 100px auto;
   width:1000px;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.container .title {
+.container .main-title {
   font-family: "Pacifico";
   display: block;
   font-weight: 300;
