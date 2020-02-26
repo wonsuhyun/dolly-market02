@@ -1,9 +1,13 @@
-import express from 'express'
+
+import DollyRouter from './dollyRouter'
 import { itemService } from '../service'
+import express from 'express'
 
 const router = express.Router()
+import { commonUtil } from '../util'
+const errorCaptor = commonUtil.errorCaptor
 
-/* 
+/*
 Get item list
 */
 router.get('/', errorCaptor(async (req, res) => {
@@ -18,9 +22,5 @@ router.get(["/:pid"], errorCaptor(async (req, res) => {
     const item = await itemService.getById(pid)
     res.json(item)
 }))
-
-function errorCaptor(fn) {
-    return (req, res, next) => fn(req, res, next).catch(next)
-}
 
 export default router
