@@ -1,5 +1,6 @@
 import { itemRepository, imageRepository, tagRepository } from '../repository'
 import { Image, Item, Tag, User } from '../model'
+import createError from 'http-errors'
 
 class ItemService {
 
@@ -25,7 +26,9 @@ class ItemService {
 
         let item_ = await itemRepository.getById(pid)
 
-        // !! row가 1 이상이면 exception 처리
+        // if(item_.length < 1) {
+        //     throw new createError(404, `Item not found: ${pid}`)
+        // }
         let item = item_[0]
 
         item = this.getUserInfo(item)
