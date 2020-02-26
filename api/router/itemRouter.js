@@ -16,6 +16,6 @@ Get item detail
 router.get(["/:pid"], async (req, res) => {
     const pid = req.params.pid.toUpperCase()
     res.json(await itemService.getById(pid))
-});
+})
 
 export default router

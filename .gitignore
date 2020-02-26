@@ -91,3 +91,6 @@ sw.*
 
 # Credentials
 credentials/
+
+# VS Code debugger config
+.vscode
