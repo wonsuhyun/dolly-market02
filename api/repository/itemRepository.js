@@ -9,8 +9,8 @@ class ItemRepository {
         return queryResult
     }
 
-    async getById(itemId) {
-        const queryResult = await mysqlUtil.executeQuery(itemQuery.getItemById(itemId))
+    async getById(pid) {
+        const queryResult = await mysqlUtil.executeQuery(itemQuery.getItemById(pid))
 
         return queryResult
     }
