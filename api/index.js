@@ -42,11 +42,9 @@ if (isAPIDev) {
   app.listen(port, () => {
     console.log('Dolly server is up on', port)
   })
-  
-  module.exports = app
-} else {
-  module.exports = {
-    path: '/api',
-    handler: app
-  }
+}
+
+module.exports = {
+  path: '/api',
+  handler: app
 }
