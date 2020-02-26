@@ -1,8 +1,6 @@
 import express from 'express'
 import { itemService } from '../service'
 
-// const itemService = new ItemService()
-
 const router = express.Router()
 
 /* 
@@ -20,4 +18,4 @@ router.get(["/:pid"], async (req, res) => {
     res.json(await itemService.getById(pid))
 });
 
-module.exports = router
+export default router
