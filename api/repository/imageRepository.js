@@ -3,8 +3,8 @@ import { imageQuery } from '../query'
 
 class ImageRepository {
 
-    async getImagesByItemId(item) {
-        const queryResult = await mysqlUtil.executeQuery(imageQuery.getImagesByItemId(item.pid))
+    async getImagesByItemId(pid) {
+        const queryResult = await mysqlUtil.executeQuery(imageQuery.getImagesByItemId(pid))
         return queryResult
     }
 }

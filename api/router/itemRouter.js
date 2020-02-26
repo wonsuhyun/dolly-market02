@@ -15,9 +15,9 @@ router.get('/', async (req, res) => {
 /* 
 Get item detail
 */
-router.get(["/:itemId"], async (req, res) => {
-    const itemId = req.params.itemId.toUpperCase()
-    res.json(await itemService.getById(itemId))
+router.get(["/:pid"], async (req, res) => {
+    const pid = req.params.pid.toUpperCase()
+    res.json(await itemService.getById(pid))
 });
 
 module.exports = router

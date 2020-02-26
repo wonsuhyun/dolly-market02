@@ -1,4 +1,3 @@
-import express from 'express'
 import { itemRepository, imageRepository, tagRepository } from '../repository'
 import { Image, Item, Tag, User } from '../model'
 
@@ -9,12 +8,12 @@ class ItemService {
         const itemList_ = await itemRepository.get()
 
         const itemList = []
-        
-        itemList_.map( item => {
+
+        itemList_.map(item => {
             item = this.getMasterImageInfo(item)
 
             item = this.getUserInfo(item)
-        
+
             itemList.push(new Item(item))
 
         })
@@ -22,9 +21,9 @@ class ItemService {
         return itemList
     }
 
-    async getById(itemId) {
-        
-        let item_ = await itemRepository.getById(itemId)
+    async getById(pid) {
+
+        let item_ = await itemRepository.getById(pid)
 
         // !! row가 1 이상이면 exception 처리
         let item = item_[0]
@@ -33,15 +32,15 @@ class ItemService {
 
         item = await this.getImagesByItemId(item)
 
-        item = await this.getTagsByItemId(item)   
+        item = await this.getTagsByItemId(item)
 
         item = new Item(item)
-        
+
         return item
     }
 
     getUserInfo(item) {
-        
+
         // 유저 정보 추가
         const profileImage = {
             pid: item.user_file_pid,
@@ -58,11 +57,9 @@ class ItemService {
             nickname: item.user_nickname,
             image: profileImage
         }
-        
-        
-        
+
         item['user'] = new User(user)
-        
+
         return item
     }
 
@@ -85,14 +82,14 @@ class ItemService {
 
         return item
     }
-    
+
     async getTagsByItemId(item) {
-        
-        const tagList_ = await tagRepository.getTagsByItemId(item)
+
+        const tagList_ = await tagRepository.getTagsByItemId(item.pid)
 
         const tagList = []
 
-        tagList_.map( tag => {
+        tagList_.map(tag => {
             tagList.push(new Tag(tag))
         })
 
@@ -100,10 +97,10 @@ class ItemService {
 
         return item
     }
-    
+
     async getImagesByItemId(item) {
-            
-        const imageList_ = await imageRepository.getImagesByItemId(item)
+
+        const imageList_ = await imageRepository.getImagesByItemId(item.pid)
 
         const imageList = []
 
