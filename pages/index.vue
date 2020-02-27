@@ -3,8 +3,8 @@
     <div>
       <h1 class="main-title">{{title}}</h1>
       <!-- item List-->
-      <ul class="item-list">
-        <li v-for="item in itemsComp">
+      <ul class="item-list" >
+        <li v-for="item in itemsComp" @mouseover="itemHover" >
           <nuxt-link :to="'/item/'+item.pid" >
           <span class="new" v-if="item.isNew">NEW</span>
           <div>
@@ -20,6 +20,7 @@
             <div class="create-date">{{ item.create }}</div>
           </div>
           </nuxt-link>
+          
         </li>
       </ul>
       <div class="links">
@@ -48,7 +49,8 @@ export default {
     return{
       title:"Dolly-Market",
       items:[],
-      isActiveBtn:false
+      isActiveBtn:false,
+      isHover:false
     }
   },
   mounted(){
@@ -66,6 +68,10 @@ export default {
       // console.log(r);
       // this.$store.commit("setItem",r.data);
 
+    },
+    itemHover(){
+      debugger;
+      this.isHover==true
     }
   },
   // async asyncData({ app }) {
@@ -97,6 +103,9 @@ ul{
   text-align:left;
   padding:20px 0 10px 0;
   position:relative;
+}
+.item-list li.on{
+  border:1px solid red
 }
 .item-list li .create-date{
   font-size:10px;
