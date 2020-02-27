@@ -29,9 +29,9 @@ export const getters ={
 export const actions = {
     async nuxtServerInit({dispatch},app){
         // localforage 에 접근후 item data 없을시에 통신 후 값 셋팅
-        let res = await app.$axios.get("/api/items")
-        console.log(res.data[0]);
-        app.store.dispatch("testAction",res.data);
+        let { data } = await app.$axios.get("/api/items")
+
+        app.store.dispatch("testAction", data);
     },
     testAction({commit},items){
         items.map( item =>{
