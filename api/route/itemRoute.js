@@ -1,23 +1,25 @@
-
 import DollyRouter from './dollyRouter'
 import { itemService } from '../service'
 
-const router = DollyRouter.getRouter()
+const dollyRouter = new DollyRouter()
+
+const router = dollyRouter.getRouter()
 
 /*
 Get item list
 */
-DollyRouter.get('/', async (req, res) => {
-    res.json(await itemService.get());
+dollyRouter.get('/', async (req, res) => {
+    const items = await itemService.get()
+    return items
 })
 
 /* 
 Get item detail
 */
-DollyRouter.get(["/:pid"], async (req, res) => {
+dollyRouter.get(["/:pid"], async (req, res) => {
     const pid = req.params.pid.toUpperCase()
     const item = await itemService.getById(pid)
-    res.json(item)
+    return item
 })
 
 export default router

@@ -21,14 +21,14 @@ if (isAPIDev) {
 }
 
 // Error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 app.use((error, req, res, next) => {
   const { status, message } = error
   res.status(status || 500)
-  res.json({ status, message });
+  res.json({ success: false, status, message });
 })
 
 module.exports = {
