@@ -20,6 +20,7 @@
             <div class="create-date">{{ item.create }}</div>
           </div>
           </nuxt-link>
+          
         </li>
       </ul>
       <div class="links">
