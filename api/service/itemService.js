@@ -4,9 +4,9 @@ import createError from 'http-errors'
 
 class ItemService {
 
-    async get() {
+    async get(pageNum) {
 
-        const itemList_ = await itemRepository.get()
+        const itemList_ = await itemRepository.get(pageNum)
 
         const itemList = []
 

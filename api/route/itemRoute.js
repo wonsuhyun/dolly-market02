@@ -9,7 +9,8 @@ const router = dollyRouter.getRouter()
 Get item list
 */
 dollyRouter.get('/', async (req, res) => {
-    const items = await itemService.get()
+    const pageNum = req.query.pageNum
+    const items = await itemService.get(pageNum)
     res.json(items)
 })
 
