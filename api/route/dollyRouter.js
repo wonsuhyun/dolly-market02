@@ -1,9 +1,8 @@
 import { commonUtil } from '../util'
 import express from 'express'
 
-const router = express.Router()
 const errorCaptor = commonUtil.errorCaptor
-
+const router = express.Router()
 class DollyRouter {
 
     constructor() {
