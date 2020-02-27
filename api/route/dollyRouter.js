@@ -6,8 +6,16 @@ const errorCaptor = commonUtil.errorCaptor
 
 class DollyRouter {
 
+    constructor() {
+        this.router = router
+    }
+
+    getRouter() {
+        return this.router
+    }
+
     get(route, fn) {
-        return router(route, errorCaptor(fn))
+        return this.router.get(route, errorCaptor(fn))
     }
 }
 
