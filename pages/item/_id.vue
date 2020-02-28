@@ -4,9 +4,9 @@
          <div class="imgZone">
             <div class="main-img" :style="{backgroundImage:'url('+itemObj.images[0].file_url+')'}">
             </div>
-            <ul>
-                <li></li>
-            </ul>
+            <div>
+                {{ itemData }}
+            </div>
         </div>
         <div class="info">
             <p class="title">{{itemObj.title}}</p>
@@ -43,7 +43,7 @@
 export default {
     data(){
         return{
-
+            itemData:{}
         }
     },
     methods:{
@@ -51,7 +51,7 @@ export default {
     },
     computed:{
         itemObj(){
-            console.log(this.$store.getters.getItem(this.$route.params.id))
+            //console.log(this.$store.getters.getItem(this.$route.params.id))
             return this.$store.getters.getItem(this.$route.params.id)
         }
     },
@@ -61,6 +61,13 @@ export default {
     },
     created(){
         
+    },
+    async asyncData({app}){
+        const res = await app.$axios.get("/api/items/P00001");
+        console.log(app.$route)
+        return{
+            itemData:res.data
+        }
     }
 }
 </script>

@@ -28,7 +28,7 @@ export const getters ={
 }
 export const actions = {
     async nuxtServerInit({dispatch},app){
-        // localforage 에 접근후 item data 없을시에 통신 후 값 셋팅
+        // localforage 에 접근후 item data 없을시에 통신 후 값 셋팅하는 로직 추가하기
         let res = await app.$axios.get("/api/items")
         console.log(res.data[0]);
         app.store.dispatch("testAction",res.data);
