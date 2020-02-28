@@ -18,7 +18,8 @@ class DollyRouter {
 
     asyncWrapper(fn) {
         return (req, res, next) => fn(req, res, next).catch((error) => {
-            next(error || createError(500))
+            const { status, message } = error
+            next(createError(status, message) || createError(500))
         })
     }
 }
