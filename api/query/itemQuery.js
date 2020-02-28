@@ -37,8 +37,8 @@ const itemQuery = {
                     A.user_rid = C.pid
                 LEFT OUTER JOIN dollymarket.image D ON
                     C.img_rid = D.pid
-                ORDER BY A.create_date
-                LIMIT ${(pageNum - 1) * pageSize}, pageSize`
+                ORDER BY A.create_date DESC
+                LIMIT ${(pageNum - 1) * pageSize}, ${pageSize}`
     },
     getItemById(itemId) {
         return `SELECT
