@@ -70,17 +70,17 @@ export default {
 
     },
     itemHover(){
-      debugger;
+     
       this.isHover==true
     }
   },
-  // async asyncData({ app }) {
-  //   //Server Test
-  //   const res = await app.$axios.get("/api/item")
-  //   return{
-  //     items:res.data
-  //   }
-  // }
+  async asyncData({ app }) {
+    //Server Test
+    const res = await app.$axios.get("/api/items")
+    return{
+      items:res.data
+    }
+  }
 };
 </script>
 
@@ -88,6 +88,7 @@ export default {
 
 ul{
   list-style:none;
+  text-align:center
 }
 .item-list{
   overflow:hidden;
@@ -99,10 +100,12 @@ ul{
 .item-list li {
   float:left;
   width:30%;
-  margin-right:5%;
+  margin-right:3%;
   text-align:left;
   padding:20px 0 10px 0;
   position:relative;
+  height:400px;
+  vertical-align:top
 }
 .item-list li.on{
   border:1px solid red
