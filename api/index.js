@@ -21,7 +21,7 @@ if (isAPIDev) {
 }
 
 // Error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 

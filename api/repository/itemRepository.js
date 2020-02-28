@@ -3,8 +3,8 @@ import { itemQuery } from '../query'
 
 class ItemRepository {
 
-    async get() {
-        const queryResult = await mysqlUtil.executeQuery(itemQuery.getItems())
+    async get(pageNum) {
+        const queryResult = await mysqlUtil.executeQuery(itemQuery.getItems(pageNum))
         return queryResult
     }
 

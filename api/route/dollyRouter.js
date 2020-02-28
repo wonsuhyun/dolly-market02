@@ -1,14 +1,24 @@
-import { commonUtil } from '../util'
 import express from 'express'
+import createError from 'http-errors'
 
-const router = express.Router()
-const errorCaptor = commonUtil.errorCaptor
-
+// Mother Router
 class DollyRouter {
 
+    constructor() {
+        this.router = express.Router()
+    }
+
+    getRouter() {
+        return this.router
+    }
+
     get(route, fn) {
-        return router(route, errorCaptor(fn))
+        return this.router.get(route, this.asyncWrapper(fn))
+    }
+
+    asyncWrapper(fn) {
+        return (req, res, next) => fn(req, res, next).catch((error) => next( error || createError(500)))
     }
 }
 
-export default new DollyRouter()
+export default DollyRouter
