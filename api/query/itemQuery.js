@@ -37,7 +37,7 @@ const itemQuery = {
                     A.user_rid = C.pid
                 LEFT OUTER JOIN dollymarket.image D ON
                     C.img_rid = D.pid
-                LIMIT ${pageNum}, 8`
+                LIMIT ${pageNum * 8}, 8`
     },
     getItemById(itemId) {
         return `SELECT

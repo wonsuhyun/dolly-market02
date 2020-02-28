@@ -1,11 +1,11 @@
 import express from 'express'
 import createError from 'http-errors'
 
+// Mother Router
 class DollyRouter {
 
     constructor() {
         this.router = express.Router()
-        this.returnObj = { sucess: true }
     }
 
     getRouter() {
