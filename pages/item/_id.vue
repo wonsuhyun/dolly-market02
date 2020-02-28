@@ -2,32 +2,30 @@
 <div class="detail-wrap container">
     <div class="detail-table">
          <div class="imgZone">
-            <div class="main-img" :style="{backgroundImage:'url('+itemObj.images[0].file_url+')'}">
+            <div class="main-img" :style="{backgroundImage:'url('+itemData.images[0].file_url+')'}">
             </div>
-            <div>
-                {{ itemData }}
-            </div>
+
         </div>
         <div class="info">
-            <p class="title">{{itemObj.title}}</p>
+            <p class="title">{{itemData.title}}</p>
             <table class="item-table">
                 <tbody >
                     <tr>
                         <th>price : </th>
-                        <td class="price">${{itemObj.price}}</td>
+                        <td class="price">${{itemData.price}}</td>
                     </tr>
                      <tr>
                         <th>status : </th>
-                        <td>{{ itemObj.status }}</td>
+                        <td>{{ itemData.status }}</td>
                     </tr>
                 </tbody>
             </table>
             <div>
                 <div class="user">
-                    <div class="user-pf" :style="{backgroundImage:'url('+itemObj.user.image.file_url+')'}"></div>
+                    <div class="user-pf" :style="{backgroundImage:'url('+itemData.user.image.file_url+')'}"></div>
                     <div class="user-info">
-                        <p class="user-name">{{ itemObj.user.nickname }}</p>
-                        <p>{{ itemObj.user.email }}</p>
+                        <p class="user-name">{{ itemData.user.nickname }}</p>
+                        <p>{{ itemData.user.email }}</p>
                     </div>
                 </div>
             </div>
@@ -49,12 +47,7 @@ export default {
     methods:{
 
     },
-    computed:{
-        itemObj(){
-            //console.log(this.$store.getters.getItem(this.$route.params.id))
-            return this.$store.getters.getItem(this.$route.params.id)
-        }
-    },
+
     mounted(){
         
 
@@ -62,9 +55,9 @@ export default {
     created(){
         
     },
-    async asyncData({app}){
-        const res = await app.$axios.get("/api/items/P00001");
-        console.log(app.$route)
+    async asyncData(ctx){
+        const res = await ctx.$axios.get("/api/items/"+ctx.route.params.id);
+        console.log(ctx.$route)
         return{
             itemData:res.data
         }
