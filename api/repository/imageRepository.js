@@ -1,10 +1,10 @@
-import { mysqlUtil } from '../util'
 import { imageQuery } from '../query'
+import DollyRepository from './dollyRepository'
 
-class ImageRepository {
+class ImageRepository extends DollyRepository {
 
     async getImagesByItemId(pid) {
-        const queryResult = await mysqlUtil.executeQuery(imageQuery.getImagesByItemId(pid))
+        const queryResult = await this.executeQuery(imageQuery.getImagesByItemId(pid))
         return queryResult
     }
 }

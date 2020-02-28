@@ -1,7 +1,7 @@
 import express from 'express'
 import createError from 'http-errors'
 
-// Mother Router
+// Parent Router
 class DollyRouter {
 
     constructor() {
@@ -17,7 +17,9 @@ class DollyRouter {
     }
 
     asyncWrapper(fn) {
-        return (req, res, next) => fn(req, res, next).catch((error) => next( error || createError(500)))
+        return (req, res, next) => fn(req, res, next).catch((error) => {
+            next(error || createError(500))
+        })
     }
 }
 

@@ -1,10 +1,10 @@
-import { mysqlUtil } from '../util'
 import { tagQuery } from '../query'
+import DollyRepository from './dollyRepository'
 
-class TagRepository { 
+class TagRepository extends DollyRepository { 
 
     async getTagsByItemId(pid) {
-        const queryResult = await mysqlUtil.executeQuery(tagQuery.getTagsByItemId(pid))
+        const queryResult = await this.executeQuery(tagQuery.getTagsByItemId(pid))
         return queryResult
     }
 }

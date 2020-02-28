@@ -1,5 +1,5 @@
 const itemQuery = {
-    getItems(pageNum = 0) {
+    getItems(pageNum = 1, pageSize = 8) {
         return `SELECT
                     A.pid,
                     A.create_date,
@@ -37,7 +37,8 @@ const itemQuery = {
                     A.user_rid = C.pid
                 LEFT OUTER JOIN dollymarket.image D ON
                     C.img_rid = D.pid
-                LIMIT ${pageNum * 8}, 8`
+                ORDER BY A.create_date
+                LIMIT ${(pageNum - 1) * pageSize}, pageSize`
     },
     getItemById(itemId) {
         return `SELECT
