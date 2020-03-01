@@ -5,8 +5,17 @@
             {{ headerTitle }}
             </nuxt-link>
         </span>
+        <v-spacer />
         <div class="search">
             <input type="text" id="searchArea" class="search-area" @keyup="enterKey"/><button type="button" id="serchBtn" @click="btnClickEvent">Search</button>
+        </div>
+        <div v-if="$auth.loggedIn">
+            {{$auth.user.email}}
+            <v-btn text>Logout</v-btn>
+        </div>
+        <div v-else>
+            <v-btn text to="/login">Login</v-btn>
+            <v-btn text to="/signup">Signup</v-btn>
         </div>
     </div>
 </template>
@@ -41,9 +50,9 @@ export default {
 .header-wrap > span{
     float:left
 }
-.header-wrap > .search{
+/* .header-wrap > .search{
     float:right
-}
+} */
 .header-wrap > .search input, .header-wrap > .search button{
     height:40px;
     padding: 0 20px

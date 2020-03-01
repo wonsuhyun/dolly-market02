@@ -1,6 +1,6 @@
 import express from 'express'
 import createError from 'http-errors'
-import { itemRoute } from './route'
+import { itemRoute, loginRoute } from './route'
 
 // server settings
 const app = express()
@@ -11,6 +11,7 @@ app.use(express.json())
 
 // routes
 app.use(['/items', '/api/items'], itemRoute)
+app.use(['/login', '/api/login'], loginRoute)
 
 if (isAPIDev) {
   const port = process.env.PORT || 3000
