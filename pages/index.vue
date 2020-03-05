@@ -4,7 +4,7 @@
       <h1 class="main-title">{{title}}</h1>
       <!-- item List-->
       <ul class="item-list" >
-        <li v-for="item in itemsComp" @mouseover="itemHover" >
+        <li v-for="item in items" >
           <nuxt-link :to="'/item/'+item.pid" >
           <span class="new" v-if="item.isNew">NEW</span>
           <div>
@@ -24,7 +24,7 @@
         </li>
       </ul>
       <div class="links">
-        <a class="button--green" @click="test" :disabled="isActiveBtn" >MORE</a>
+        <a href="javascript:void(0)"class="moreBtn" @click="moreConts" v-bind:class="{ 'disabledBtn' : isActiveBtn }">MORE</a>
       </div>
     </div>
   </div>
@@ -42,43 +42,40 @@ export default {
   components: {
     Logo
   },
-  computed:{
-    itemsComp() { return this.$store.state.items }
-  },
   data(){
     return{
       title:"Dolly-Market",
       items:[],
       isActiveBtn:false,
-      isHover:false
+      isHover:false,
+      moreActive:0
     }
   },
-  mounted(){
-    if(this.$store.state.items > 3){
-      this.isActiveBtn = true
-    }else{
-      this.isActiveBtn = false
-    }
-  },
-
   methods: {
-    async test() {
-      // Server Test
-      // const r = await this.$axios.$get("/api/item");
-      // console.log(r);
-      // this.$store.commit("setItem",r.data);
-
+    async moreConts() {
+      if(this.isActiveBtn == false){
+        const res = await this.$axios.$get("/api/items?pageNum="+(this.moreActive+1));
+        console.log(res);
+        if(res.length > 0 ){
+          this.moreActive+=1
+          res.map((item)=>{
+            this.items.push(item)
+          })
+        }else{
+          this.isActiveBtn=true
+        }
+      }
     },
     itemHover(){
-     
       this.isHover==true
     }
   },
   async asyncData({ app }) {
-    //Server Test
-    const res = await app.$axios.get("/api/items")
+    const res = await app.$axios.get("/api/items?pageNum=1")
+    console.log(res.data)
     return{
-      items:res.data
+      items:res.data,
+      moreActive:1
     }
   }
 };
@@ -175,5 +172,27 @@ ul{
 
 .links {
   padding-top: 15px;
+}
+.button--green[disabled]{
+  
+}
+.moreBtn{
+  background-color:#fff ;
+  width:100%;
+  display:inline-block;
+  padding:10px 0;
+  border-radius:10px;
+  border:1px solid #333;
+}
+.moreBtn:hover{
+  background-color:#333;
+  color:#fff;
+}
+.moreBtn.disabledBtn{
+  background-color:#f7f7f7 ;
+}
+.moreBtn.disabledBtn:hover{
+  background-color:#f7f7f7 ;
+  color:#333;
 }
 </style>

@@ -1,10 +1,11 @@
 <template>
 <div class="detail-wrap container">
+  
     <div class="detail-table">
          <div class="imgZone">
-            <div class="main-img" :style="{backgroundImage:'url('+itemData.images[0].file_url+')'}">
-            </div>
-
+             <swiper :options="swiperOption" ref="mySwiper">
+                <swiper-slide v-for="image in itemData.images" :style="{backgroundImage:'url('+image.file_url+')'}"></swiper-slide>
+            </swiper>
         </div>
         <div class="info">
             <p class="title">{{itemData.title}}</p>
@@ -37,27 +38,40 @@
 </div>
 </template>
 <script>
+import 'swiper/dist/css/swiper.css'
+
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
 export default {
     data(){
         return{
-            itemData:{}
+            itemData:{},
+            swiperOption:{
+                loop:true
+            }
         }
     },
     methods:{
 
     },
-
+    components:{
+        swiper,
+        swiperSlide
+    },
     mounted(){
         
-
     },
     created(){
         
     },
+    computed:{
+        // swiper() {
+        //     return this.$refs.mySwiper.swiper
+        // }
+    },
     async asyncData(ctx){
         const res = await ctx.$axios.get("/api/items/"+ctx.route.params.id);
-        console.log(ctx.$route)
+        console.log(res.data)
         return{
             itemData:res.data
         }
@@ -65,17 +79,29 @@ export default {
 }
 </script>
 <style>
+.swiper-slide{
+    width:100%;
+    height:400px;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center 0;
+}
+.detail-wrap .swiper-container {
+    width:100%;
+    height:400px;
+}
 .detail-wrap {
     margin-top:100px
 }
 .detail-wrap .detail-table{
-    display:table;
     width:100%;
+    overflow:hidden
 }
 .detail-wrap .detail-table > div {
-    display:table-cell;
+    display:inline-block;
     width:50%;
     text-align:left;
+    float:left;
     vertical-align:top;
 }
 .detail-wrap .detail-table .info{
