@@ -1,6 +1,8 @@
 import DollyRouter from './dollyRouter'
 import passport from 'passport'
+import consola from 'consola'
 const dollyRouter = new DollyRouter()
+// Todo: sync, async 나눠서 리팩토링 해야함
 const router = dollyRouter.getRouter()
 
 /*
@@ -14,8 +16,9 @@ router.get('/google',
 Google oAuth Callback
 */
 router.get('/google/callback', function (Req, res, next) {
-    passport.authenticate('github', {
-        failureRedirect: '/login',
+    consola.success('Login success')
+    passport.authenticate('google', {
+        failureRedirect: '/',
         successRedirect: '/'
     })
 })
