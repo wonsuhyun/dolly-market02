@@ -55,7 +55,7 @@ export default {
     async moreConts() {
       if(this.isActiveBtn == false){
         const res = await this.$axios.$get("/api/items?pageNum="+(this.moreActive+1));
-        console.log(res);
+        
         if(res.length > 0 ){
           this.moreActive+=1
           res.map((item)=>{

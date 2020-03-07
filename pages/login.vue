@@ -9,7 +9,6 @@
     </div>
 </template>
 <script>
-export 
 </script>
 <style>
 
