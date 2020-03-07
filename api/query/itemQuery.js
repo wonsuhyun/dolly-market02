@@ -1,5 +1,5 @@
 const itemQuery = {
-    getItems(pageNum = 1, pageSize = 8) {
+    getItems(pageNum = 1, pageSize = 9) {
         return `SELECT
                     A.pid,
                     A.create_date,
