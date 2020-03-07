@@ -22,4 +22,13 @@ router.get('/google/callback',
     })
 )
 
+router.get('/test', ensureAuthenticated, async (req, res) => {
+    console.log('OK')
+})
+
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) { return next() }
+    res.redirect('/login')
+}
+
 export default router

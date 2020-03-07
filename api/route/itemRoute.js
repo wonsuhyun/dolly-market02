@@ -16,10 +16,11 @@ dollyRouter.get('/', async (req, res) => {
 /* 
 Get item detail
 */
-dollyRouter.get(["/:pid"], async (req, res) => {
+dollyRouter.get('/:pid', async (req, res) => {
     const pid = req.params.pid.toUpperCase()
     const item = await itemService.getById(pid)
     res.json(item)
 })
+
 
 export default router
