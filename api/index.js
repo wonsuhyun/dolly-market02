@@ -1,10 +1,11 @@
 import express from 'express'
+import consola from 'consola'
 import createError from 'http-errors'
 import { itemRoute, loginRoute } from './route'
 
 // server settings
 const app = express()
-const isAPIDev = (process.argv[1].includes('api-runner.js')) ? true : false
+const isAPIDev = process.env.NODE_ENV == 'api-development'
 
 // middlewares
 app.use(express.json())
@@ -14,10 +15,14 @@ app.use(['/items', '/api/items'], itemRoute)
 app.use(['/login', '/api/login'], loginRoute)
 
 if (isAPIDev) {
+  const host = process.env.HOST || 'localhost'
   const port = process.env.PORT || 3000
   // Server listener
   app.listen(port, () => {
-    console.log('Dolly server is up on', port)
+    consola.ready({
+      message: `Server listening on http://${host}:${port}`,
+      badge: true
+    })
   })
 }
 
