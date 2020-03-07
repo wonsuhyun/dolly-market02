@@ -15,12 +15,11 @@ router.get('/google',
 /*
 Google oAuth Callback
 */
-router.get('/google/callback', function (Req, res, next) {
-    consola.success('Login success')
+router.get('/google/callback', 
     passport.authenticate('google', {
         failureRedirect: '/',
         successRedirect: '/'
     })
-})
+)
 
 export default router

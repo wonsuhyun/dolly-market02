@@ -4,7 +4,7 @@
       <h1 class="main-title">{{title}}</h1>
       <!-- item List-->
       <ul class="item-list" >
-        <li v-for="item in items" >
+        <li :key="item" v-for="item in items" >
           <nuxt-link :to="'/item/'+item.pid" >
           <span class="new" v-if="item.isNew">NEW</span>
           <div>
@@ -24,7 +24,7 @@
         </li>
       </ul>
       <div class="links">
-        <a href="javascript:void(0)"class="moreBtn" @click="moreConts" v-bind:class="{ 'disabledBtn' : isActiveBtn }">MORE</a>
+        <a href="javascript:void(0)" class="moreBtn" @click="moreConts" v-bind:class="{ 'disabledBtn' : isActiveBtn }">MORE</a>
       </div>
     </div>
   </div>
@@ -72,7 +72,7 @@ export default {
   },
   async asyncData({ app }) {
     const res = await app.$axios.get("/api/items?pageNum=1")
-    console.log(res.data)
+    // console.log(res.data)
     return{
       items:res.data,
       moreActive:1

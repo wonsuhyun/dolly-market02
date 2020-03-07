@@ -4,7 +4,7 @@
     <div class="detail-table">
          <div class="imgZone">
              <swiper :options="swiperOption" ref="mySwiper">
-                <swiper-slide v-for="image in itemData.images" :style="{backgroundImage:'url('+image.file_url+')'}"></swiper-slide>
+                <swiper-slide :key="image" v-for="image in itemData.images" :style="{backgroundImage:'url('+image.file_url+')'}"></swiper-slide>
             </swiper>
         </div>
         <div class="info">

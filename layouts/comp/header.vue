@@ -10,11 +10,11 @@
             <input type="text" id="searchArea" class="search-area" @keyup="enterKey"/><button type="button" id="serchBtn" @click="btnClickEvent">Search</button>
             <div class="sign">
                 <span class="sign-in"> 
-                    <nuxt-link to="/login">Sign in</nuxt-link>
+                    <nuxt-link to="/api/auth/google">Sign in</nuxt-link>
                 </span>
-                <span class="sign-up">  
+                <!-- <span class="sign-up">  
                     <nuxt-link to="/">Sign up</nuxt-link>
-                </span>
+                </span> -->
             </div>
 
             
