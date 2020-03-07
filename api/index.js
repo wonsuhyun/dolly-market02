@@ -18,7 +18,7 @@ if (isAPIDev) {
   const host = process.env.HOST || 'localhost'
   const port = process.env.PORT || 3000
   // Server listener
-  app.listen(port, () => {
+  app.listen({ port, host }, () => {
     consola.ready({
       message: `Server listening on http://${host}:${port}`,
       badge: true
