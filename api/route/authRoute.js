@@ -1,34 +1,20 @@
 import DollyRouter from './dollyRouter'
 import passport from 'passport'
 import consola from 'consola'
+import { userService } from '../service'
 const dollyRouter = new DollyRouter()
 // Todo: sync, async 나눠서 리팩토링 해야함
 const router = dollyRouter.getRouter()
 
-/*
-Google oAuth Login
-*/
-router.get('/google',
-    passport.authenticate('google', { scope: ['profile'] })
+router.get('/signin', async (req, res) => {
+    const user = await userService.getAuth('8282@test.com', '1234')
+    res.json(user)
+}
+    // passport.authenticate('google', { scope: ['profile'] })
 )
 
-/*
-Google oAuth Callback
-*/
-router.get('/google/callback', 
-    passport.authenticate('google', {
-        failureRedirect: '/',
-        successRedirect: '/'
-    })
-)
-
-router.get('/test', ensureAuthenticated, async (req, res) => {
+router.get('/test', async (req, res) => {
     console.log('OK')
 })
-
-function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) { return next() }
-    res.redirect('/login')
-}
 
 export default router
