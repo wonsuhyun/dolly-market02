@@ -14,7 +14,6 @@ const passportLib = () => {
         passwordField: 'password'
     },
         function (email, password, done) {
-            // 이 부분에선 저장되어 있는 User를 비교하면 된다. 
             return userRepository.getAuth(email, password)
                 .then(user => {
                     if (!user) {
@@ -32,7 +31,7 @@ const passportLib = () => {
         secretOrKey: process.env.JWT_SECRET
     },
         function (jwtPayload, done) {
-            return userRepository.getUserByEmail(jwtPayload.id)
+            return userRepository.getUserByEmail(jwtPayload.email)
                 .then(user => {
                     return done(null, user)
                 })
