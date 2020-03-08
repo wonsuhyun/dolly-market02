@@ -14,7 +14,7 @@ router.get('/signin', async (req, res) => {
 )
 
 router.get('/test', async (req, res) => {
-    console.log('OK')
+    res.json({"OK": "OK"})
 })
 
 export default router
