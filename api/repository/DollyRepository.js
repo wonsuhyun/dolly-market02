@@ -1,9 +1,14 @@
 import mysql from 'mysql2/promise'
-import connectionInfo from '../../credentials/mysql-config.json'
+require('dotenv').config()
 
-const pool = mysql.createPool(connectionInfo);
-const DEFAULT_PAGE_INDEX = 1;
-const DEFAULT_PAGE_SIZE = 8;
+const pool = mysql.createPool({
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD
+})
+const DEFAULT_PAGE_INDEX = 1
+const DEFAULT_PAGE_SIZE = 8
 
 // Parent Repository
 class DollyRepository {

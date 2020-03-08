@@ -92,5 +92,8 @@ sw.*
 # Credentials
 credentials/
 
+# Environmental Variables
+.env
+
 # VS Code debugger config
 .vscode

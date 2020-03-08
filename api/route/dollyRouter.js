@@ -16,6 +16,10 @@ class DollyRouter {
         return this.router.get(route, this.asyncWrapper(fn))
     }
 
+    post(route, fn) {
+        return this.router.post(route, this.asyncWrapper(fn))
+    }
+
     asyncWrapper(fn) {
         return (req, res, next) => fn(req, res, next).catch((error) => {
             const { status, message } = error

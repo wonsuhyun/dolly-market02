@@ -5,7 +5,7 @@ class UserService {
 
     async getAuth(email, password){
         const user_ = await userRepository.getAuth(email, password)
-        const user = new User(user_[0])
+        const user = new User(user_)
 
         return user
     }
