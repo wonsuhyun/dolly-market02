@@ -7,7 +7,7 @@ const dollyRouter = new DollyRouter()
 // Todo: sync, async 나눠서 리팩토링 해야함
 const router = dollyRouter.getRouter()
 
-dollyRouter.get('/login', async (req, res, next) => {
+dollyRouter.post('/login', async (req, res, next) => {
     passport.authenticate('local', { session: false }, (err, user) => {
 
         if(!user){
@@ -23,7 +23,8 @@ dollyRouter.get('/login', async (req, res, next) => {
     })(req, res)
 })
 
-dollyRouter.get('/test', passport.authenticate('jwt', {session: false}), async (req, res) => {
+// Todo: dollyRouter 쓸 시 Cannot set headers after they are sent to the client 수정
+router.get('/test', passport.authenticate('jwt', {session: false}), async (req, res) => {
     res.json({message: 'success'})
 })
 

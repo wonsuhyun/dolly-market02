@@ -1,5 +1,6 @@
 import express from 'express'
 import createError from 'http-errors'
+import { asyncWrapper } from '../util'
 
 // Parent Router
 class DollyRouter {
@@ -13,19 +14,13 @@ class DollyRouter {
     }
 
     get(route, fn) {
-        return this.router.get(route, this.asyncWrapper(fn))
+        return this.router.get(route, asyncWrapper(fn))
     }
 
     post(route, fn) {
-        return this.router.post(route, this.asyncWrapper(fn))
+        return this.router.post(route, asyncWrapper(fn))
     }
 
-    asyncWrapper(fn) {
-        return (req, res, next) => fn(req, res, next).catch((error) => {
-            const { status, message } = error
-            next(createError(status, message) || createError(500))
-        })
-    }
 }
 
 export default DollyRouter

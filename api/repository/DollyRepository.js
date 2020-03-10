@@ -19,7 +19,7 @@ class DollyRepository {
     static get DEFAULT_PAGE_SIZE() {
         return DEFAULT_PAGE_SIZE;
     }
-
+    // Todo: mysqlLib으로 이사
     async executeQuery(query) {
         const connection = await pool.getConnection(async conn => conn);
         await connection.beginTransaction();

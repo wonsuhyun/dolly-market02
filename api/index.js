@@ -1,7 +1,7 @@
 import express from 'express'
 import consola from 'consola'
 import passport from 'passport'
-import { passportLib } from './lib'
+import { passportStrategy } from './lib'
 import createError from 'http-errors'
 
 import { itemRoute, authRoute } from './route'
@@ -13,7 +13,7 @@ const isAPIDev = process.env.NODE_ENV == 'api-development'
 // middlewares
 app.use(express.json())
 app.use(passport.initialize())
-passportLib()
+passportStrategy()
 
 // routes
 app.use(['/items', '/api/items'], itemRoute)

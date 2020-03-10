@@ -7,7 +7,7 @@ const LocalStrategy = passportLocal.Strategy
 import { userRepository } from '../repository'
 require('dotenv').config()
 
-const passportLib = () => {
+export const passportStrategy = () => {
     // Local Strategy
     passport.use(new LocalStrategy({
         usernameField: 'email',
@@ -41,5 +41,3 @@ const passportLib = () => {
         }
     ))
 }
-
-export default passportLib
