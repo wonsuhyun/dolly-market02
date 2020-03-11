@@ -23,8 +23,7 @@ dollyRouter.post('/login', async (req, res, next) => {
     })(req, res)
 })
 
-// Todo: dollyRouter 쓸 시 Cannot set headers after they are sent to the client 수정
-router.get('/test', passport.authenticate('jwt', {session: false}), async (req, res) => {
+dollyRouter.get('/test', passport.authenticate('jwt', {session: false}), async (req, res) => {
     res.json({message: 'success'})
 })
 
