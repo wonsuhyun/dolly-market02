@@ -23,6 +23,7 @@ dollyRouter.post('/login', async (req, res, next) => {
     })(req, res)
 })
 
+// Todo: 에러 핸들링
 dollyRouter.get('/test', passport.authenticate('jwt', {session: false}), async (req, res) => {
     res.json({message: 'success'})
 })

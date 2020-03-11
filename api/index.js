@@ -3,9 +3,9 @@ import consola from 'consola'
 import passport from 'passport'
 import { passportStrategy } from './lib'
 import createError from 'http-errors'
-
 import { itemRoute, authRoute } from './route'
 
+// Todo: ../server 에 있는 스타터 파일이랑 합치기
 // server settings
 const app = express()
 const isAPIDev = process.env.NODE_ENV == 'api-development'
