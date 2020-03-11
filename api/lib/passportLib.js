@@ -31,6 +31,7 @@ export const passportStrategy = () => {
         secretOrKey: process.env.JWT_SECRET
     },
         function (jwtPayload, done) {
+            // Todo: 에러처리
             return userRepository.getUserByEmail(jwtPayload.email)
                 .then(user => {
                     return done(null, user)
