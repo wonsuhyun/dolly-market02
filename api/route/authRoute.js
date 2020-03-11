@@ -3,11 +3,12 @@ import passport from 'passport'
 import consola from 'consola'
 import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
+import { methods } from '../util'
 const dollyRouter = new DollyRouter()
 // Todo: sync, async 나눠서 리팩토링 해야함
 const router = dollyRouter.getRouter()
 
-dollyRouter.post('/login', async (req, res, next) => {
+dollyRouter.handler(methods.POST, '/login', async (req, res, next) => {
     passport.authenticate('local', { session: false }, (err, user) => {
 
         if(!user){
@@ -24,7 +25,7 @@ dollyRouter.post('/login', async (req, res, next) => {
 })
 
 // Todo: 에러 핸들링
-dollyRouter.get('/test', passport.authenticate('jwt', {session: false}), async (req, res) => {
+dollyRouter.handler(methods.GET, '/test', passport.authenticate('jwt', {session: false}), async (req, res) => {
     res.json({message: 'success'})
 })
 

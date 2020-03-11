@@ -12,17 +12,12 @@ class DollyRouter {
         return this.router
     }
 
-    get(route, ...args) {
-        const { middlewares, fn } = this.filterArguments(args)
-        return this.router.get(route, middlewares, asyncWrapper(fn))
+    handler(method, route, ...args) {
+        const { fn, middlewares } = this.prepareArguments(args)
+        return this.router[method](route, middlewares, asyncWrapper(fn))
     }
 
-    post(route, ...args) {
-        const { middlewares, fn } = this.filterArguments(args)
-        return this.router.post(route, middlewares, asyncWrapper(fn))
-    }
-
-    filterArguments(args) {
+    prepareArguments(args) {
         const size = args.length
         const fn = args[size-1]
         const middlewares = args.slice(0, -1)
