@@ -1,10 +1,10 @@
 import { tagQuery } from '../query'
-import DollyRepository from './dollyRepository'
+import { executeQuery } from '../lib'
 
-class TagRepository extends DollyRepository { 
+class TagRepository { 
 
     async getTagsByItemId(pid) {
-        const queryResult = await this.executeQuery(tagQuery.getTagsByItemId(pid))
+        const queryResult = await executeQuery(tagQuery.getTagsByItemId(pid))
         return queryResult
     }
 }

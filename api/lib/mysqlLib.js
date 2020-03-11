@@ -7,7 +7,7 @@ const pool = mysql.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD
 })
-// Todo: export가 왜 안되는 건지..?
+
 export const executeQuery = async (query) => {
     const connection = await pool.getConnection(async conn => conn);
     await connection.beginTransaction();

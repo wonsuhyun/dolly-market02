@@ -1,10 +1,10 @@
 import { imageQuery } from '../query'
-import DollyRepository from './dollyRepository'
+import { executeQuery } from '../lib'
 
-class ImageRepository extends DollyRepository {
+class ImageRepository {
 
     async getImagesByItemId(pid) {
-        const queryResult = await this.executeQuery(imageQuery.getImagesByItemId(pid))
+        const queryResult = await executeQuery(imageQuery.getImagesByItemId(pid))
         return queryResult
     }
 }

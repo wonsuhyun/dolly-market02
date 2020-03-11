@@ -4,11 +4,3 @@ export const asyncWrapper = (fn) => {
         next(createError(status, message) || createError(500))
     })
 }
-// Todo: CONSTANT 하나 만들어 독립시키기
-export const methods = {
-    GET: 'get',
-    POST: 'post',
-    DELETE: 'delete',
-    PATCH: 'patch',
-    PUT: 'put'
-}

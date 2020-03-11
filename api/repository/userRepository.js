@@ -1,15 +1,15 @@
 import { userQuery } from '../query'
-import DollyRepository from './dollyRepository'
+import { executeQuery } from '../lib'
 
-class UserRepository extends DollyRepository { 
+class UserRepository { 
 
     async getAuth(email, password) {
-        const queryResult = await this.executeQuery(userQuery.getAuth(email, password))
+        const queryResult = await executeQuery(userQuery.getAuth(email, password))
         return queryResult[0]
     }
 
     async getUserByEmail(email) {
-        const queryResult = await this.executeQuery(userQuery.getUserByEmail(email))
+        const queryResult = await executeQuery(userQuery.getUserByEmail(email))
         return queryResult[0]
     }
 }

@@ -2,8 +2,7 @@ import DollyRouter from './dollyRouter'
 import { itemService } from '../service'
 const dollyRouter = new DollyRouter()
 const router = dollyRouter.getRouter()
-import { methods } from '../util'
-
+import { methods } from '../constant'
 /*
 Get item list
 */

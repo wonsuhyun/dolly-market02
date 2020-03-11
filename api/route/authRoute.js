@@ -1,11 +1,9 @@
-import DollyRouter from './dollyRouter'
 import passport from 'passport'
-import consola from 'consola'
 import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
-import { methods } from '../util'
+import { methods } from '../constant'
+import DollyRouter from './dollyRouter'
 const dollyRouter = new DollyRouter()
-// Todo: sync, async 나눠서 리팩토링 해야함
 const router = dollyRouter.getRouter()
 
 dollyRouter.handler(methods.POST, '/login', async (req, res, next) => {
@@ -16,7 +14,6 @@ dollyRouter.handler(methods.POST, '/login', async (req, res, next) => {
         }
         
         req.login(user, { session: false }, () => {
-            // jwt.sign('token내용', 'JWT secretkey')
             const token = jwt.sign(JSON.stringify(user), process.env.JWT_SECRET)
             return res.json({ user, token })
         })

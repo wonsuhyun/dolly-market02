@@ -4,7 +4,7 @@ const JWTStrategy = passportJWT.Strategy
 const ExtractJWT = passportJWT.ExtractJwt
 import passportLocal from 'passport-local'
 const LocalStrategy = passportLocal.Strategy
-import { userRepository } from '../repository'
+import { userService } from '../service'
 require('dotenv').config()
 
 export const passportStrategy = () => {
@@ -14,7 +14,7 @@ export const passportStrategy = () => {
         passwordField: 'password'
     },
         function (email, password, done) {
-            return userRepository.getAuth(email, password)
+            return userService.getAuth(email, password)
                 .then(user => {
                     if (!user) {
                         return done(null, false, { message: 'Incorrect email or password.' })
@@ -32,7 +32,7 @@ export const passportStrategy = () => {
     },
         function (jwtPayload, done) {
             // Todo: 에러처리
-            return userRepository.getUserByEmail(jwtPayload.email)
+            return userService.getUserByEmail(jwtPayload.email)
                 .then(user => {
                     return done(null, user)
                 })
