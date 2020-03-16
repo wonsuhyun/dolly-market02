@@ -1,10 +1,12 @@
 import { userRepository } from '../repository'
 import { User } from '../model'
+import createError from 'http-errors'
 
 class UserService {
 
     async getAuth(email, password){
         const user_ = await userRepository.getAuth(email, password)
+
         const user = new User(user_)
 
         return user

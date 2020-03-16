@@ -10,7 +10,7 @@ dollyRouter.handler(methods.POST, '/login', async (req, res, next) => {
     passport.authenticate('local', { session: false }, (err, user) => {
 
         if(!user){
-            throw new createError(400, 'User not Found')
+            return next(createError(400, 'User not Found'))
         }
         
         req.login(user, { session: false }, () => {
