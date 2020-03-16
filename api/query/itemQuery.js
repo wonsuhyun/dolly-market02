@@ -1,5 +1,7 @@
+import { paging } from '../constant'
+
 const itemQuery = {
-    getItems(pageNum = 1, pageSize = 9) {
+    getItems(pageNum = paging.DEFAULT_PAGE_INDEX, pageSize = paging.DEFAULT_PAGE_SIZE) {
         return `SELECT
                     A.pid,
                     A.create_date,

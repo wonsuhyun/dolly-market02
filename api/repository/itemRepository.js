@@ -5,7 +5,8 @@ import { paging } from '../constant'
 class ItemRepository {
 
     async get(pageNum) {
-        const queryResult = await executeQuery(itemQuery.getItems(pageNum, paging.DEFAULT_PAGE_INDEX, paging.DEFAULT_PAGE_SIZE))
+        const queryResult = await executeQuery(itemQuery.getItems(pageNum, paging.DEFAULT_PAGE_SIZE))
+        // const queryResult = await executeQuery(itemQuery.getItems(9, 1))
         return queryResult
     }
 
