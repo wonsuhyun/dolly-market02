@@ -6,6 +6,7 @@ import DollyRouter from './dollyRouter'
 const dollyRouter = new DollyRouter()
 const router = dollyRouter.getRouter()
 
+// Todo: 부모로 extends 받게 리팩토링
 dollyRouter.handler(methods.POST, '/login', async (req, res, next) => {
     passport.authenticate('local', { session: false }, (err, user) => {
 
