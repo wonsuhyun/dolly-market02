@@ -12,8 +12,8 @@ class DollyRouter {
         return this.router
     }
 
-    handler(method, route, middleware, fn) {
-        return this.router[method](route, middleware, errorWrapper(fn))
+    handler(method, route, fn) {
+        return this.router[method](route, errorWrapper(fn))
     }
 
 }

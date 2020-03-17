@@ -17,9 +17,9 @@ export const passportStrategy = () => {
             return userService.getAuth(email, password)
                 .then(user => {
                     if (!user) {
-                        return done(null, false, { message: 'Incorrect email or password.' })
+                        return done(null, false)
                     }
-                    return done(null, user, { message: 'Signed in successfully' })
+                    return done(null, user)
                 })
                 .catch(err => done(err))
         }
@@ -31,7 +31,7 @@ export const passportStrategy = () => {
         secretOrKey: process.env.JWT_SECRET
     },
         function (jwtPayload, done) {
-            // Todo: 에러처리
+            // Todo: 에러 클라이언트에 리턴
             return userService.getUserByEmail(jwtPayload.email)
                 .then(user => {
                     return done(null, user)
