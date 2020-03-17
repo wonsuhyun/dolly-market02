@@ -12,6 +12,11 @@ class UserRepository {
         const queryResult = await executeQuery(userQuery.getUserByEmail(email))
         return queryResult[0]
     }
+
+    async saveUser(user) {
+        const queryResult = await executeQuery(userQuery.saveUser(user))
+        return queryResult[0]
+    }
 }
 
 export default new UserRepository()
