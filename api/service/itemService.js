@@ -1,5 +1,6 @@
-import { itemRepository, imageRepository, tagRepository } from '../repository'
-import { Image, Item, Tag, User } from '../model'
+import { itemRepository } from '../repository'
+import { tagService, imageService } from '../service'
+import { Image, Item, User } from '../model'
 import createError from 'http-errors'
 
 class ItemService {
@@ -29,13 +30,14 @@ class ItemService {
         if (item_.length < 1) {
             throw new createError(404, `Item not Found: ${pid}`)
         }
+
         let item = item_[0]
 
         item = this.getUserInfo(item)
 
-        item = await this.getImagesByItemId(item)
+        item = await this.getImages(item)
 
-        item = await this.getTagsByItemId(item)
+        item = await this.getTags(item)
 
         item = new Item(item)
 
@@ -86,30 +88,18 @@ class ItemService {
         return item
     }
 
-    async getTagsByItemId(item) {
+    async getTags(item) {
 
-        const tagList_ = await tagRepository.getTagsByItemId(item.pid)
-
-        const tagList = []
-
-        tagList_.map(tag => {
-            tagList.push(new Tag(tag))
-        })
+        const tagList = await tagService.getTagsByItemId(item.pid)
 
         item['tags'] = tagList
 
         return item
     }
 
-    async getImagesByItemId(item) {
+    async getImages(item) {
 
-        const imageList_ = await imageRepository.getImagesByItemId(item.pid)
-
-        const imageList = []
-
-        imageList_.map(image => {
-            imageList.push(new Image(image))
-        })
+        const imageList = await imageService.getImagesByItemId(item.pid)
 
         item['images'] = imageList
 

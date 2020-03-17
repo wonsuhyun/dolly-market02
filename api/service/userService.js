@@ -1,4 +1,5 @@
-import { userRepository, imageRepository } from '../repository'
+import { userRepository } from '../repository'
+import { imageService } from '../service'
 import { User } from '../model'
 import createError from 'http-errors'
 
@@ -27,7 +28,7 @@ class UserService {
 
     async getProfileImage(imgId) {
         // 마스터 이미지 리스트 추가
-        const image = await imageRepository.getImageById(imgId)
+        const image = await imageService.getImageById(imgId)
 
         return image
     }
