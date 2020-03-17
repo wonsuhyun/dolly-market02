@@ -10,6 +10,18 @@ const imageQuery = {
                 FROM
                     image A
                 WHERE A.item_rid = '${itemId}'`
+    },
+    getImageById(imageId) {
+        return `SELECT
+            A.pid,
+            A.create_date,
+            A.file_name,
+            A.file_url,
+            A.size,
+            A.master_flag
+        FROM
+            image A
+        WHERE A.pid = '${imageId}'`
     }
 }
 

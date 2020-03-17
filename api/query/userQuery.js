@@ -5,7 +5,8 @@ const userQuery = {
                     A.create_date,
                     A.modify_date,
                     A.email,
-                    A.nickname
+                    A.nickname,
+                    A.img_rid
                 FROM
                     user A
                 WHERE A.email = '${email}'
@@ -17,7 +18,8 @@ const userQuery = {
                     A.create_date,
                     A.modify_date,
                     A.email,
-                    A.nickname
+                    A.nickname,
+                    A.img_rid
                 FROM
                     user A
                 WHERE A.email = '${email}'`

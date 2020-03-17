@@ -25,6 +25,7 @@ class ItemService {
     async getById(pid) {
 
         let item_ = await itemRepository.getById(pid)
+        
         if (item_.length < 1) {
             throw new createError(404, `Item not Found: ${pid}`)
         }
