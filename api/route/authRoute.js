@@ -3,6 +3,7 @@ import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
 import { methods } from '../constant'
 import DollyRouter from './dollyRouter'
+import { userService } from '../service'
 const dollyRouter = new DollyRouter()
 const router = dollyRouter.getRouter()
 
@@ -43,5 +44,14 @@ dollyRouter.handler(methods.GET, '/test',
 
     })
 
+dollyRouter.handler(methods.GET, '/signup', 
+    async (req, res, next) => {
+        // Todo: 비밀번호 암호화
+        // Todo: 닉네임, 이메일 등 중복검사
+        // Todo: imgId랑 트랜잭선 처리
+        // Todo: 이미지 업로드
+        userService.saveUser({ email: "corona@test.com", nickname: "코로나좀없애주세요", password: "corocoro", imgId: "P00001" })
+    }
+)
 
 export default router

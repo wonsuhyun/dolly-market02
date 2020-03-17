@@ -33,6 +33,10 @@ class UserService {
         return image
     }
 
+    async saveUser(user) {
+        await userRepository.saveUser(user)
+    }
+
 }
 
 export default new UserService()
