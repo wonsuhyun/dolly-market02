@@ -13,11 +13,8 @@ dollyRouter.handler(methods.POST, '/login', async (req, res, next) => {
     passport.authenticate('local', { session: false }, (err, user) => {
 
         if (err) {
-            return next(createError(500, 'Internal Server Error'))
-        }
-
-        if (!user) {
-            return next(createError(404, 'User not Found'))
+            const { status, message } = err
+            return next(createError(status, message))
         }
 
         req.login(user, { session: false }, () => {
@@ -32,12 +29,14 @@ dollyRouter.handler(methods.GET, '/test',
     async (req, res, next) => {
         passport.authenticate('jwt', { session: false }, (err, user, info) => {
 
-            if (err) {
-                return next(createError(500, 'Internal Server Error'))
+            // Todo: Error 리팩토링
+            if (!user) {
+                return next(createError(403, 'Forbidden'))
             }
 
-            if (!user) {
-                return next(createError(401, 'Unauthorized'))
+            if (err) {
+                const { status, message } = err
+                return next(createError(status, message))
             }
 
             return res.json({ message: 'success' })

@@ -12,7 +12,7 @@ class UserService {
         const user_ = await userRepository.getAuth(email, criptedPassword)
 
         if (!user_) {
-            throw new createError(401, `Invalid User: ${email}`)
+            throw new createError(401, `User not Found: ${email}`)
         }
 
         const imgId = user_.img_rid

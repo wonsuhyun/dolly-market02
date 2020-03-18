@@ -13,14 +13,9 @@ export const passportStrategy = () => {
         usernameField: 'email',
         passwordField: 'password'
     },
-        function (email, password, done) {
+        (email, password, done) => {
             return userService.getAuth(email, password)
-                .then(user => {
-                    if (!user) {
-                        return done(null, false)
-                    }
-                    return done(null, user)
-                })
+                .then(user => done(null, user))
                 .catch(err => done(err))
         }
     ))
@@ -30,15 +25,11 @@ export const passportStrategy = () => {
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
         secretOrKey: process.env.JWT_SECRET
     },
-        function (jwtPayload, done) {
+        (jwtPayload, done) => {
             // Todo: 에러 클라이언트에 리턴
             return userService.getUserByEmail(jwtPayload.email)
-                .then(user => {
-                    return done(null, user)
-                })
-                .catch(err => {
-                    return done(err)
-                })
+                .then(user => done(null, user))
+                .catch(err => done(err))
         }
     ))
 }
