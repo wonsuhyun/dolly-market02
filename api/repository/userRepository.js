@@ -5,7 +5,7 @@ class UserRepository {
 
     async getAuth(email, password) {
         const queryResult = await executeQuery(userQuery.getAuth(email, password))
-        return queryResult[0]
+        return queryResult[0] ? queryResult[0] : null
     }
 
     async getUserByEmail(email) {
@@ -14,8 +14,7 @@ class UserRepository {
     }
 
     async saveUser(user) {
-        const queryResult = await executeQuery(userQuery.saveUser(user))
-        return queryResult[0]
+        await executeQuery(userQuery.saveUser(user))
     }
 }
 

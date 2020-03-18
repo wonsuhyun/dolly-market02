@@ -1,19 +1,23 @@
 import { userRepository } from '../repository'
 import { imageService } from '../service'
 import { User } from '../model'
+import { criptPassword } from '../util'
 import createError from 'http-errors'
 
 class UserService {
 
     async getAuth(email, password){
-        const user_ = await userRepository.getAuth(email, password)
+
+        const criptedPassword = criptPassword(password)
+        const user_ = await userRepository.getAuth(email, criptedPassword)
+
+        if (!user_) {
+            throw new createError(401, `Invalid User: ${email}`)
+        }
 
         const imgId = user_.img_rid
-
         const image = await this.getProfileImage(imgId)
-
         const user = new User(user_)
-
         user.image = image
 
         return user
@@ -34,6 +38,13 @@ class UserService {
     }
 
     async saveUser(user) {
+        // 비밀번호 암호화
+        const { password } = user
+        user.password = criptPassword(password)
+
+        // Todo: 닉네임, 이메일 등 중복검사
+        // Todo: imgId랑 트랜잭선 처리
+        // Todo: 이미지 업로드
         await userRepository.saveUser(user)
     }
 
