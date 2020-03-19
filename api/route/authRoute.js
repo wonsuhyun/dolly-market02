@@ -1,16 +1,19 @@
+import express from 'express'
 import passport from 'passport'
 import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
 
-import { methods } from '../constant'
-import DollyRouter from './dollyRouter'
 import { UserService } from '../service'
 import { errorToNext } from '../util'
-const dollyRouter = new DollyRouter()
-const userService = new UserService()
-const router = dollyRouter.getRouter()
+import { errorWrapper } from '../util'
 
-dollyRouter.handler(methods.POST, '/login', async (req, res, next) => {
+const router = express.Router()
+const userService = new UserService()
+
+/*
+Login
+*/
+router.post('/login', errorWrapper(async (req, res, next) => {
     passport.authenticate('local', { session: false }, (err, user) => {
 
         if (err) errorToNext(err, next)
@@ -21,13 +24,15 @@ dollyRouter.handler(methods.POST, '/login', async (req, res, next) => {
         })
 
     })(req, res)
-})
+}))
 
-dollyRouter.handler(methods.GET, '/test',
-    async (req, res, next) => {
+/*
+Auth Test
+*/
+router.get('/test',
+    errorWrapper(async (req, res, next) => {
         passport.authenticate('jwt', { session: false }, (err, user, info) => {
 
-            // Todo: Error 리팩토링
             if (!user) {
                 return next(createError(403, 'Forbidden'))
             }
@@ -37,13 +42,15 @@ dollyRouter.handler(methods.GET, '/test',
             return res.json({ message: 'success' })
         })(req, res)
 
-    })
+    }))
 
-dollyRouter.handler(methods.GET, '/signup', 
-    async (req, res, next) => {
+/*
+Signup
+*/
+router.get('/signup',
+    errorWrapper(async (req, res, next) => {
         userService.saveUser({ email: "pho@test.com", nickname: "오늘점심메뉴쌀국수", password: "pho", imgId: "P00001" })
-        res.json({success: true})
-    }
-)
+        res.json({ success: true })
+    }))
 
 export default router
