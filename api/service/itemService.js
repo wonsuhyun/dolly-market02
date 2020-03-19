@@ -1,4 +1,5 @@
-import { itemRepository } from '../repository'
+import { itemQuery } from '../query'
+import { paging } from '../constant'
 import { tagService, imageService } from '../service'
 import { Image, Item, User } from '../model'
 import createError from 'http-errors'
@@ -7,12 +8,12 @@ import DollyService from './dollyService'
 class ItemService extends DollyService {
     
     constructor() {
-        super(itemRepository)
+        super(itemQuery)
     }
     
-    async get(pageNum) {
+    async getItems(pageNum) {
 
-        const itemList_ = await this.repository.get(pageNum)
+        const itemList_ = await this.executeQuery(this.query.getItems(pageNum || paging.DEFAULT_PAGE_INDEX, paging.DEFAULT_PAGE_SIZE))
 
         const itemList = []
 
@@ -28,9 +29,9 @@ class ItemService extends DollyService {
         return itemList
     }
 
-    async getById(pid) {
+    async getItemById(pid) {
 
-        let item_ = await this.repository.getById(pid)
+        let item_ = await this.executeQuery(this.query.getItemById(pid))
         
         if (item_.length < 1) {
             throw new createError(404, `Item not Found: ${pid}`)

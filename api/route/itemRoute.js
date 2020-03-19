@@ -8,7 +8,7 @@ Get item list
 */
 dollyRouter.handler(methods.GET, '/', async (req, res) => {
     const pageNum = req.query.pageNum
-    const items = await itemService.get(pageNum)
+    const items = await itemService.getItems(pageNum)
     res.json(items)
 })
 
@@ -17,7 +17,7 @@ Get item detail
 */
 dollyRouter.handler(methods.GET, '/:pid', async (req, res) => {
     const pid = req.params.pid.toUpperCase()
-    const item = await itemService.getById(pid)
+    const item = await itemService.getItemById(pid)
     res.json(item)
 })
 

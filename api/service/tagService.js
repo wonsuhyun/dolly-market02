@@ -1,15 +1,15 @@
-import { tagRepository } from '../repository'
+import { tagQuery } from '../query'
 import { Tag } from '../model'
 import DollyService from './dollyService'
 
 class TagService extends DollyService {
     
     constructor() {
-        super(tagRepository)
+        super(tagQuery)
     }
     
     async getTagsByItemId(itemId) {
-        const tagList_ = await this.repository.getTagsByItemId(itemId)
+        const tagList_ = await this.executeQuery(this.query.getTagsByItemId(itemId))
 
         const tagList = []
 

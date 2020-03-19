@@ -1,4 +1,4 @@
-import { userRepository } from '../repository'
+import { userQuery } from '../query'
 import { imageService } from '../service'
 import { User } from '../model'
 import { criptPassword } from '../util'
@@ -9,38 +9,39 @@ import DollyService from './dollyService'
 class UserService extends DollyService {
    
     constructor() {
-        super(userRepository)
+        super(userQuery)
     }
 
     async getAuth(email, password){
 
         const criptedPassword = criptPassword(password)
-        const user_ = await this.repository.getAuth(email, criptedPassword)
+        const user_ = await this.executeQuery(this.query.getAuth(email, criptedPassword))
 
-        if (!user_) {
+        if (user_.length < 1 || !user_) {
             throw new createError(401, `User not Found: ${email}`)
         }
 
-        const imgId = user_.img_rid
-        const image = await this.getProfileImage(imgId)
-        const user = new User(user_)
-        user.image = image
+        let user = await this.getProfileImage(user_[0])
+
+        user = new User(user)
 
         return user
     }
 
     async getUserByEmail(email) {
-        const user_ = await this.repository.getUserByEmail(email, password)
+        const user_ = await this.executeQuery(this.query.getUserByEmail(email))
         const user = new User(user_)
 
         return user
     }
 
-    async getProfileImage(imgId) {
+    async getProfileImage(user) {
         // 마스터 이미지 리스트 추가
+        const imgId = user.img_rid
         const image = await imageService.getImageById(imgId)
+        user.image = image[0]
 
-        return image
+        return user
     }
 
     async saveUser(user) {
@@ -52,7 +53,7 @@ class UserService extends DollyService {
         // Todo: 닉네임, 이메일 등 중복검사
         // Todo: imgId랑 트랜잭선 처리
         // Todo: 이미지 업로드
-        await this.repository.saveUser(user)
+        await this.executeQuery(this.query.saveUser(user))
     }
 
 }

@@ -1,6 +1,13 @@
+import { executeQuery } from '../lib'
+
 class DollyService {
-    constructor(repository) {
-        this.repository = repository
+    constructor(query) {
+        this.query = query
+        // this.executeQuery = executeQuery
+    }
+
+    async executeQuery(...args) {
+        return executeQuery(...args)
     }
 }
 
