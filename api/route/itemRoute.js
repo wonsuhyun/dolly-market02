@@ -1,6 +1,7 @@
 import DollyRouter from './dollyRouter'
-import { itemService } from '../service'
+import { ItemService } from '../service'
 const dollyRouter = new DollyRouter()
+const itemService = new ItemService()
 const router = dollyRouter.getRouter()
 import { methods } from '../constant'
 /*

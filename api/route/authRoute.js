@@ -1,14 +1,14 @@
 import passport from 'passport'
 import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
-import crypto from 'crypto'
+
 import { methods } from '../constant'
 import DollyRouter from './dollyRouter'
-import { userService } from '../service'
+import { UserService } from '../service'
 const dollyRouter = new DollyRouter()
+const userService = new UserService()
 const router = dollyRouter.getRouter()
 
-// Todo: 부모로 extends 받게 리팩토링
 dollyRouter.handler(methods.POST, '/login', async (req, res, next) => {
     passport.authenticate('local', { session: false }, (err, user) => {
 

@@ -4,7 +4,10 @@ const JWTStrategy = passportJWT.Strategy
 const ExtractJWT = passportJWT.ExtractJwt
 import passportLocal from 'passport-local'
 const LocalStrategy = passportLocal.Strategy
-import { userService } from '../service'
+
+import { UserService } from '../service'
+const userService = new UserService()
+
 require('dotenv').config()
 
 export const passportStrategy = () => {

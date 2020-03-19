@@ -1,9 +1,8 @@
-import { executeQuery } from '../lib'
+import { executeQuery } from '../util'
 
 class DollyService {
     constructor(query) {
         this.query = query
-        // this.executeQuery = executeQuery
     }
 
     async executeQuery(...args) {

@@ -1,9 +1,14 @@
+import createError from 'http-errors'
+
 import { itemQuery } from '../query'
 import { paging } from '../constant'
-import { tagService, imageService } from '../service'
+import TagService from './tagService'
+import ImageService from './imageService'
 import { Image, Item, User } from '../model'
-import createError from 'http-errors'
 import DollyService from './dollyService'
+
+const tagService = new TagService()
+const imageService = new ImageService()
 
 class ItemService extends DollyService {
     
@@ -111,4 +116,4 @@ class ItemService extends DollyService {
     }
 }
 
-export default new ItemService()
+export default ItemService

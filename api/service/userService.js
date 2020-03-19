@@ -1,10 +1,13 @@
-import { userQuery } from '../query'
-import { imageService } from '../service'
-import { User } from '../model'
-import { criptPassword } from '../util'
 import createError from 'http-errors'
 import { v4 as uuidv4 } from 'uuid'
+
+import { userQuery } from '../query'
+import { ImageService } from '../service'
+import { User } from '../model'
+import { criptPassword } from '../util'
 import DollyService from './dollyService'
+
+const imageService = new ImageService()
 
 class UserService extends DollyService {
    
@@ -58,4 +61,4 @@ class UserService extends DollyService {
 
 }
 
-export default new UserService()
+export default UserService

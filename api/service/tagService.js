@@ -21,4 +21,4 @@ class TagService extends DollyService {
     }
 }
 
-export default new TagService()
+export default TagService

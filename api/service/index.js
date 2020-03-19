@@ -1,4 +1,4 @@
-export { default as itemService } from './itemService'
-export { default as userService } from './userService'
-export { default as imageService } from './imageService'
-export { default as tagService } from './tagService'
+export { default as ItemService } from './itemService'
+export { default as UserService } from './userService'
+export { default as ImageService } from './imageService'
+export { default as TagService } from './tagService'

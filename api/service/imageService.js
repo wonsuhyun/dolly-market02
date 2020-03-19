@@ -26,4 +26,4 @@ class ImageService extends DollyService {
 
 }
 
-export default new ImageService()
+export default ImageService
