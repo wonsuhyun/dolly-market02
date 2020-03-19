@@ -47,10 +47,13 @@ router.get('/test',
 /*
 Signup
 */
-router.get('/signup',
+router.post('/signup',
     errorWrapper(async (req, res, next) => {
-        userService.saveUser({ email: "pho@test.com", nickname: "오늘점심메뉴쌀국수", password: "pho", imgId: "P00001" })
+        const user = req.body
+
+        await userService.saveUser(user)
         res.json({ success: true })
     }))
 
 export default router
+
