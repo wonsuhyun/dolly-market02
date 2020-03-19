@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 const userQuery = {
     getAuth(email, password) {
         return `SELECT
@@ -26,7 +24,7 @@ const userQuery = {
                     user A
                 WHERE A.email = '${email}'`
     },
-    saveUser({ email, nickname, password, imgId }) {
+    saveUser({ pid, email, nickname, password, imgId }) {
         return `
         INSERT
             INTO
@@ -37,7 +35,7 @@ const userQuery = {
                 nickname,
                 pass_word,
                 img_rid)
-            VALUES('${ uuidv4()}',
+            VALUES('${ pid }',
             NOW(),
             NOW(),
             '${ email }',

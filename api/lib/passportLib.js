@@ -26,7 +26,6 @@ export const passportStrategy = () => {
         secretOrKey: process.env.JWT_SECRET
     },
         (jwtPayload, done) => {
-            // Todo: 에러 클라이언트에 리턴
             return userService.getUserByEmail(jwtPayload.email)
                 .then(user => done(null, user))
                 .catch(err => done(err))

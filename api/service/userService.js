@@ -3,6 +3,7 @@ import { imageService } from '../service'
 import { User } from '../model'
 import { criptPassword } from '../util'
 import createError from 'http-errors'
+import { v4 as uuidv4 } from 'uuid'
 
 class UserService {
 
@@ -41,6 +42,7 @@ class UserService {
         // 비밀번호 암호화
         const { password } = user
         user.password = criptPassword(password)
+        user.pid = uuidv4()
 
         // Todo: 닉네임, 이메일 등 중복검사
         // Todo: imgId랑 트랜잭선 처리
