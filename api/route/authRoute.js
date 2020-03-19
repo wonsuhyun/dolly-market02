@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 import { methods } from '../constant'
 import DollyRouter from './dollyRouter'
 import { UserService } from '../service'
+import { errorToNext } from '../util'
 const dollyRouter = new DollyRouter()
 const userService = new UserService()
 const router = dollyRouter.getRouter()
@@ -12,10 +13,7 @@ const router = dollyRouter.getRouter()
 dollyRouter.handler(methods.POST, '/login', async (req, res, next) => {
     passport.authenticate('local', { session: false }, (err, user) => {
 
-        if (err) {
-            const { status, message } = err
-            return next(createError(status, message))
-        }
+        if (err) errorToNext(err, next)
 
         req.login(user, { session: false }, () => {
             const token = jwt.sign(JSON.stringify(user), process.env.JWT_SECRET)
@@ -34,10 +32,7 @@ dollyRouter.handler(methods.GET, '/test',
                 return next(createError(403, 'Forbidden'))
             }
 
-            if (err) {
-                const { status, message } = err
-                return next(createError(status, message))
-            }
+            if (err) errorToNext(err, next)
 
             return res.json({ message: 'success' })
         })(req, res)
