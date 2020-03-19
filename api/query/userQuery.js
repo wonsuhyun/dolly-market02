@@ -41,7 +41,7 @@ const userQuery = {
             '${ email }',
             '${ nickname }',
             '${ password }',
-            '${ imgId || null }')`
+            ${ imgId ? `'${imgId}'`: null  })`
     }
 }
 
