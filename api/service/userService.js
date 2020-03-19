@@ -4,13 +4,18 @@ import { User } from '../model'
 import { criptPassword } from '../util'
 import createError from 'http-errors'
 import { v4 as uuidv4 } from 'uuid'
+import DollyService from './dollyService'
 
-class UserService {
+class UserService extends DollyService {
+   
+    constructor() {
+        super(userRepository)
+    }
 
     async getAuth(email, password){
 
         const criptedPassword = criptPassword(password)
-        const user_ = await userRepository.getAuth(email, criptedPassword)
+        const user_ = await this.repository.getAuth(email, criptedPassword)
 
         if (!user_) {
             throw new createError(401, `User not Found: ${email}`)
@@ -25,7 +30,7 @@ class UserService {
     }
 
     async getUserByEmail(email) {
-        const user_ = await userRepository.getUserByEmail(email, password)
+        const user_ = await this.repository.getUserByEmail(email, password)
         const user = new User(user_)
 
         return user
@@ -47,7 +52,7 @@ class UserService {
         // Todo: 닉네임, 이메일 등 중복검사
         // Todo: imgId랑 트랜잭선 처리
         // Todo: 이미지 업로드
-        await userRepository.saveUser(user)
+        await this.repository.saveUser(user)
     }
 
 }

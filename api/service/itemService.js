@@ -2,12 +2,17 @@ import { itemRepository } from '../repository'
 import { tagService, imageService } from '../service'
 import { Image, Item, User } from '../model'
 import createError from 'http-errors'
+import DollyService from './dollyService'
 
-class ItemService {
-
+class ItemService extends DollyService {
+    
+    constructor() {
+        super(itemRepository)
+    }
+    
     async get(pageNum) {
 
-        const itemList_ = await itemRepository.get(pageNum)
+        const itemList_ = await this.repository.get(pageNum)
 
         const itemList = []
 
@@ -25,7 +30,7 @@ class ItemService {
 
     async getById(pid) {
 
-        let item_ = await itemRepository.getById(pid)
+        let item_ = await this.repository.getById(pid)
         
         if (item_.length < 1) {
             throw new createError(404, `Item not Found: ${pid}`)
@@ -89,7 +94,6 @@ class ItemService {
     }
 
     async getTags(item) {
-
         const tagList = await tagService.getTagsByItemId(item.pid)
 
         item['tags'] = tagList
@@ -98,7 +102,6 @@ class ItemService {
     }
 
     async getImages(item) {
-
         const imageList = await imageService.getImagesByItemId(item.pid)
 
         item['images'] = imageList
