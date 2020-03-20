@@ -9,5 +9,11 @@ export const errorWrapper = (fn) => {
 
 export const errorToNext = (err, next) => {
     const { status, message } = err
-    return next(createError(status, message) || createError(500, 'Internal Server Error'))
+
+    export const error = {
+        status: status || 500,
+        message: message || 'Internal Server Error'
+    }
+
+    return next(createError({ status, message } = error))
 }

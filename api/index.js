@@ -1,7 +1,7 @@
 import express from 'express'
 import consola from 'consola'
 import passport from 'passport'
-import { passportStrategy } from './util'
+import { passportStrategy } from './middleware'
 import createError from 'http-errors'
 import { itemRoute, authRoute } from './route'
 
