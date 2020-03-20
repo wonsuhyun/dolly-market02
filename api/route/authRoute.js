@@ -4,8 +4,7 @@ import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
 
 import { UserService } from '../service'
-import { errorToNext } from '../util'
-import { errorWrapper } from '../util'
+import { errorToNext, errorWrapper, successObj } from '../util'
 
 const router = express.Router()
 const userService = new UserService()
@@ -39,7 +38,7 @@ router.get('/test',
 
             if (err) errorToNext(err, next)
 
-            return res.json({ message: 'success' })
+            return res.json(successObj)
         })(req, res)
 
     }))
@@ -52,7 +51,8 @@ router.post('/signup',
         const user = req.body
 
         await userService.saveUser(user)
-        res.json({ success: true })
+
+        res.json(successObj)
     }))
 
 export default router
