@@ -7,12 +7,11 @@ import { User } from '../model'
 import { criptPassword } from '../util'
 import DollyService from './dollyService'
 
-const imageService = new ImageService()
-
 class UserService extends DollyService {
    
     constructor() {
         super(userQuery)
+        this.imageService = new ImageService()
     }
 
     async getAuth(email, password){
@@ -41,7 +40,7 @@ class UserService extends DollyService {
     async getProfileImage(user) {
         // 마스터 이미지 리스트 추가
         const imgId = user.img_rid
-        const image = await imageService.getImageById(imgId)
+        const image = await this.imageService.getImageById(imgId)
         user.image = image[0]
 
         return user

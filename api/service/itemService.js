@@ -7,13 +7,12 @@ import ImageService from './imageService'
 import { Image, Item, User } from '../model'
 import DollyService from './dollyService'
 
-const tagService = new TagService()
-const imageService = new ImageService()
-
 class ItemService extends DollyService {
     
     constructor() {
         super(itemQuery)
+        this.tagService = new TagService()
+        this.imageService = new ImageService()
     }
     
     async getItems(pageNum) {
@@ -100,7 +99,7 @@ class ItemService extends DollyService {
     }
 
     async getTags(item) {
-        const tagList = await tagService.getTagsByItemId(item.pid)
+        const tagList = await this.tagService.getTagsByItemId(item.pid)
 
         item['tags'] = tagList
 
@@ -108,7 +107,7 @@ class ItemService extends DollyService {
     }
 
     async getImages(item) {
-        const imageList = await imageService.getImagesByItemId(item.pid)
+        const imageList = await this.imageService.getImagesByItemId(item.pid)
 
         item['images'] = imageList
 
