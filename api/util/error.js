@@ -10,7 +10,7 @@ export const errorWrapper = (fn) => {
 export const errorToNext = (err, next) => {
     const { status, message } = err
 
-    export const error = {
+    const error = {
         status: status || 500,
         message: message || 'Internal Server Error'
     }

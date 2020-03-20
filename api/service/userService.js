@@ -2,7 +2,7 @@ import createError from 'http-errors'
 import { v4 as uuidv4 } from 'uuid'
 
 import { userQuery } from '../query'
-import { ImageService } from '../service'
+import ImageService from './imageService'
 import { User } from '../model'
 import { criptPassword } from '../util'
 import DollyService from './dollyService'
