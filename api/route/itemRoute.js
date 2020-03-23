@@ -18,6 +18,7 @@ router.get('/', errorWrapper(async (req, res) => {
 Get item detail
 */
 router.get('/:pid', errorWrapper(async (req, res) => {
+    const { pid } = req.params
     const item = await itemService.getItemById(pid)
     res.json(item)
 }))

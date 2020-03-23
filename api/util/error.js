@@ -15,5 +15,5 @@ export const errorToNext = (err, next) => {
         message: message || 'Internal Server Error'
     }
 
-    return next(createError({ status, message } = error))
+    return next(createError(error))
 }
