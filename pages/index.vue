@@ -73,7 +73,7 @@ export default {
   async asyncData({ app }) {
     const res = await app.$axios.get("/api/items?pageNum=1")
     // console.log(res.data)
-    return{
+    return {
       items:res.data,
       moreActive:1
     }
