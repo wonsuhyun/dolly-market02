@@ -8,7 +8,7 @@ import { itemRoute, authRoute } from './route'
 // Todo: ../server 에 있는 스타터 파일이랑 합치기
 // server settings
 const app = express()
-const isAPIDev = process.env.NODE_ENV == 'api-development'
+const isAPIDev = process.env.NODE_ENV == 'api'
 
 // middlewares
 app.use(express.json())

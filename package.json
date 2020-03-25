@@ -8,7 +8,7 @@
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
-    "api-dev": "cross-env NODE_ENV=api-development nodemon -r esm ./api/api-runner.js",
+    "api": "cross-env NODE_ENV=api nodemon -r esm server/index.js",
     "generate": "nuxt generate",
     "test": "jest"
   },

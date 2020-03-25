@@ -1,9 +1,13 @@
 const ExpressServer = require('./expressServer')
 
-const isAPI = process.env.NODE_ENV == 'server-dev'
-const expressServer = new ExpressServer()
+const isAPI = process.env.NODE_ENV == 'api'
 
-// Run Nuxt
-if (!isAPI) expressServer.runNuxt()
-
-expressServer.run()
+if (!isAPI) {
+    // Normal start with Nuxt
+    const expressServer = new ExpressServer()
+    expressServer.run()
+} else {
+    // Start only api
+    require = require("esm")(module)
+    module.exports = require("../api/index.js")
+}
