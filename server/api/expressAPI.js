@@ -2,16 +2,11 @@ import passport from 'passport'
 import { passportStrategy } from './util'
 import createError from 'http-errors'
 import { itemRoute, authRoute } from './route'
-import ExpressBase from '../server/expressBase'
+import ExpressBase from '../expressBase'
 
 const isAPI = process.env.NODE_ENV == 'api'
 
 class ExpressAPI extends ExpressBase {
-
-    constructor() {
-        super()
-        this.run()
-    }
 
     run() {
         // middlewares
@@ -41,7 +36,4 @@ class ExpressAPI extends ExpressBase {
     }
 }
 
-module.exports = {
-    path: '/api',
-    handler: new ExpressAPI().express
-}
+module.exports = ExpressAPI
