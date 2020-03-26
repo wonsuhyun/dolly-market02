@@ -1,5 +1,5 @@
 import passport from 'passport'
-import { passportStrategy } from './middleware'
+import { passportStrategy } from './util'
 import createError from 'http-errors'
 import { itemRoute, authRoute } from './route'
 import ExpressBase from '../server/expressBase'
@@ -25,7 +25,10 @@ class ExpressAPI extends ExpressBase {
 
         if (isAPI) super.run()
 
-        // Error handler
+        this.errorHandler()
+    }
+
+    errorHandler() {
         this.express.use((req, res, next) => {
             next(createError(404))
         })
