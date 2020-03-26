@@ -25,11 +25,8 @@ class ExpressServer extends ExpressBase {
     }
 
     async run() {
-
         await this.nuxtRun()
-
         this.express.use(this.nuxt.render)
-
         super.run()
     }
 }
