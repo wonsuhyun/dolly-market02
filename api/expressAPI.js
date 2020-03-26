@@ -2,7 +2,7 @@ import passport from 'passport'
 import { passportStrategy } from './util'
 import createError from 'http-errors'
 import { itemRoute, authRoute } from './route'
-import ExpressBase from '../expressBase'
+import ExpressBase from '../server/expressBase'
 
 const isAPI = process.env.NODE_ENV == 'api'
 
