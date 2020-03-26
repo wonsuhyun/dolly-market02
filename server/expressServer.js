@@ -1,14 +1,12 @@
-
-const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const nuxtConfig = require('../nuxt.config.js')
 
-require('dotenv').config()
+const expressBase = require('./expressBase')
 
-class ExpressServer {
+class ExpressServer extends expressBase {
     constructor() {
-        this.express = express()
+        super()
     }
 
     async nuxtRun() {
@@ -30,20 +28,12 @@ class ExpressServer {
     }
 
     async run() {
-
+        
         await this.nuxtRun()
 
         this.express.use(this.nuxt.render)
 
-        const { host, port } = this
-
-        // Listen the server
-        this.express.listen({ port, host }, () => {
-            consola.ready({
-                message: `Server listening on http://${host}:${port}`,
-                badge: true
-            })
-        })
+        super.run()
     }
 }
 
