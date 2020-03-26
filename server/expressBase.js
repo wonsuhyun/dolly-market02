@@ -9,6 +9,7 @@ class ExpressBase {
         this.host = process.env.HOST
         this.express = express()
         this.router = express.Router()
+        this.json = express.json()
     }
 
     run() {

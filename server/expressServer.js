@@ -2,12 +2,9 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const nuxtConfig = require('../nuxt.config.js')
 
-const expressBase = require('./expressBase')
+const ExpressBase = require('./expressBase')
 
-class ExpressServer extends expressBase {
-    constructor() {
-        super()
-    }
+class ExpressServer extends ExpressBase {
 
     async nuxtRun() {
         nuxtConfig.dev = process.env.NODE_ENV !== 'production'
@@ -28,7 +25,7 @@ class ExpressServer extends expressBase {
     }
 
     async run() {
-        
+
         await this.nuxtRun()
 
         this.express.use(this.nuxt.render)

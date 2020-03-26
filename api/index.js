@@ -1,48 +1,44 @@
-import express from 'express'
-import consola from 'consola'
 import passport from 'passport'
 import { passportStrategy } from './middleware'
 import createError from 'http-errors'
 import { itemRoute, authRoute } from './route'
+import ExpressBase from '../server/expressBase'
 
-// Todo: ../server 에 있는 스타터 파일이랑 합치기
-// server settings
-const app = express()
-const isAPIDev = process.env.NODE_ENV == 'api'
+const isAPI = process.env.NODE_ENV == 'api'
 
-// middlewares
-app.use(express.json())
-app.use(passport.initialize())
-passportStrategy()
+class ExpressAPI extends ExpressBase {
 
-// routes
-app.use(['/items', '/api/items'], itemRoute)
-app.use(['/auth', '/api/auth'], authRoute)
+    constructor() {
+        super()
+        this.run()
+    }
 
-if (isAPIDev) {
-  const host = process.env.HOST || 'localhost'
-  const port = process.env.PORT || 3000
-  // Server listener
-  app.listen({ port, host }, () => {
-    consola.ready({
-      message: `Server listening on http://${host}:${port}`,
-      badge: true
-    })
-  })
+    run() {
+        // middlewares
+        this.express.use(this.json)
+        this.express.use(passport.initialize())
+        passportStrategy()
+
+        // routes
+        this.express.use(['/items', '/api/items'], itemRoute)
+        this.express.use(['/auth', '/api/auth'], authRoute)
+
+        if (isAPI) super.run()
+
+        // Error handler
+        this.express.use((req, res, next) => {
+            next(createError(404))
+        })
+
+        this.express.use((error, req, res, next) => {
+            const { status, message } = error
+            res.status(status || 500)
+            res.json({ status, message })
+        })
+    }
 }
 
-// Error handler
-app.use((req, res, next) => {
-  next(createError(404));
-});
-
-app.use((error, req, res, next) => {
-  const { status, message } = error
-  res.status(status || 500)
-  res.json({ status, message })
-})
-
 module.exports = {
-  path: '/api',
-  handler: app
+    path: '/api',
+    handler: new ExpressAPI().express
 }
