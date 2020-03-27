@@ -15,12 +15,12 @@ class ExpressBase {
         this.registerMiddlewares = this.registerMiddlewares.bind(this)
     }
 
-    run(isExecutable = true) {
+    run(isListenable = true) {
         this.registerMiddlewares()
-        if (isExecutable) this.execute()
+        if (isListenable) this.listen()
     }
 
-    execute() {
+    listen() {
         const { host, port } = this
 
         // Listen the server

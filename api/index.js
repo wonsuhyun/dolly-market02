@@ -1,8 +1,8 @@
 import ExpressAPI from './expressAPI'
-const isExecutable = process.env.NODE_ENV == 'api'
+const onlyAPIListen = process.env.NODE_ENV == 'api'
 
 const expressAPI = new ExpressAPI()
-expressAPI.run(isExecutable)
+expressAPI.run(onlyAPIListen)
 
 const apiModule = {
     path: '/api',
