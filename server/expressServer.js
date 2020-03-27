@@ -23,7 +23,10 @@ class ExpressServer extends ExpressBase {
             await builder.build()
         }
 
-        this.express.use(this.nuxt.render)
+    }
+
+    registerMiddlewares() {
+        this.app.use(this.nuxt.render)
     }
 
     async run() {
