@@ -16,10 +16,10 @@ class ExpressBase {
 
     run(isExecutable = true) {
         this.registerMiddlewares()
-        if (isExecutable) this._execute()
+        if (isExecutable) this.execute()
     }
 
-    _execute() {
+    execute() {
         const { host, port } = this
 
         // Listen the server

@@ -1,6 +1,6 @@
-const operateOnlyAPI = process.env.NODE_ENV == 'api'
+const executeOnlyAPI = process.env.NODE_ENV == 'api'
 
-if (operateOnlyAPI) {
+if (executeOnlyAPI) {
     // Start only api
     require = require("esm")(module)
     module.exports = require("../api")

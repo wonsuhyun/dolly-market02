@@ -21,7 +21,7 @@ class ExpressAPI extends ExpressBase {
 
         this.registerRoutes()
         
-        this._errorHandler()
+        this.errorHandler()
     }
 
     registerRoutes() {
@@ -30,7 +30,7 @@ class ExpressAPI extends ExpressBase {
         this.app.use(['/items', '/api/items'], itemRoute)
     }
 
-    _errorHandler() {
+    errorHandler() {
         this.app.use((req, res, next) => {
             next(createError(404))
         })
