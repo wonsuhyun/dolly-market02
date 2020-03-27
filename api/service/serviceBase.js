@@ -1,6 +1,6 @@
 import { executeQuery } from '../util'
 
-class DollyService {
+class ServiceBase {
     constructor(query) {
         this.query = query
     }
@@ -10,4 +10,4 @@ class DollyService {
     }
 }
 
-export default DollyService
+export default ServiceBase

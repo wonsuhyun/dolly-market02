@@ -5,9 +5,9 @@ import { paging } from '../constant'
 import TagService from './tagService'
 import ImageService from './imageService'
 import { Image, Item, User } from '../model'
-import DollyService from './dollyService'
+import ServiceBase from './serviceBase'
 
-class ItemService extends DollyService {
+class ItemService extends ServiceBase {
     
     constructor() {
         super(itemQuery)

@@ -1,8 +1,8 @@
 import { imageQuery } from '../query'
 import { Image } from '../model'
-import DollyService from './dollyService'
+import ServiceBase from './serviceBase'
 
-class ImageService extends DollyService {
+class ImageService extends ServiceBase {
 
     constructor() {
         super(imageQuery)

@@ -5,9 +5,9 @@ import { userQuery } from '../query'
 import ImageService from './imageService'
 import { User } from '../model'
 import { criptPassword } from '../util'
-import DollyService from './dollyService'
+import ServiceBase from './serviceBase'
 
-class UserService extends DollyService {
+class UserService extends ServiceBase {
    
     constructor() {
         super(userQuery)

@@ -11,6 +11,7 @@ class ExpressBase {
         this.express = express
         this.app = express()
         this.router = express.Router()
+        // 이 함수에서 쓸 this가 자식의 this일 때
         this.registerMiddlewares = this.registerMiddlewares.bind(this)
     }
 

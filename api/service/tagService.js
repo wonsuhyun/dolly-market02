@@ -1,8 +1,8 @@
 import { tagQuery } from '../query'
 import { Tag } from '../model'
-import DollyService from './dollyService'
+import ServiceBase from './serviceBase'
 
-class TagService extends DollyService {
+class TagService extends ServiceBase {
     
     constructor() {
         super(tagQuery)

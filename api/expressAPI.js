@@ -26,7 +26,8 @@ class ExpressAPI extends ExpressBase {
 
     registerRoutes() {
         // this.router = itemRoute
-        this.app.use(['/auth', '/api/auth'], authRoute)
+        // this.app.use(['/auth', '/api/auth'], authRoute)
+        // this.express.use('/api/v1', this.expressRouter)
         this.app.use(['/items', '/api/items'], itemRoute)
     }
 
