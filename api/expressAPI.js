@@ -22,8 +22,8 @@ class ExpressAPI extends ExpressBase {
 
     registerRoutes() {
         // routes
-        this.express.use('/api/items', itemRoute)
-        this.express.use('/auth', '/api/auth', authRoute)
+        this.express.use(['/items', '/api/items'], itemRoute)
+        this.express.use(['/auth', '/api/auth'], authRoute)
     }
 
     errorHandler() {
