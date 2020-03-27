@@ -1,4 +1,5 @@
 const express = require('express')
+const consola = require('consola')
 
 require('dotenv').config()
 
@@ -6,9 +7,8 @@ class ExpressBase {
     constructor() {
         this.port = process.env.PORT
         this.host = process.env.HOST
+        this._express = express
         this.express = express()
-        this.router = express.Router()
-        this.json = express.json()
     }
 
     run() {

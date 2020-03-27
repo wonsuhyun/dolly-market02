@@ -1,6 +1,7 @@
 import passport from 'passport'
 import { passportStrategy } from './util'
 import createError from 'http-errors'
+
 import { itemRoute, authRoute } from './route'
 import ExpressBase from '../server/expressBase'
 
@@ -8,22 +9,26 @@ class ExpressAPI extends ExpressBase {
 
     constructor() {
         super()
-        this.registerMiddlewares()
+        this.router = this._express.Router()
+        this.json = this._express.json()
     }
 
     registerMiddlewares() {
-        // middlewares
         this.express.use(this.json)
+        
         this.express.use(passport.initialize())
+        
         passportStrategy()
+
         this.registerRoutes()
+        
         this.errorHandler()
     }
 
     registerRoutes() {
-        // routes
-        this.express.use(['/items', '/api/items'], itemRoute)
+        // this.router = itemRoute
         this.express.use(['/auth', '/api/auth'], authRoute)
+        this.express.use(['/items', '/api/items'], itemRoute)
     }
 
     errorHandler() {
@@ -36,6 +41,11 @@ class ExpressAPI extends ExpressBase {
             res.status(status || 500)
             res.json({ status, message })
         })
+    }
+
+    run(isAPI = false) {
+        this.registerMiddlewares()
+        if (isAPI) super.run()
     }
 }
 

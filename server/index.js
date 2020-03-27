@@ -1,5 +1,3 @@
-const ExpressServer = require('./expressServer')
-
 const isAPI = process.env.NODE_ENV == 'api'
 
 if (isAPI) {
@@ -8,6 +6,7 @@ if (isAPI) {
     module.exports = require("../api")
 } else {
     // Normal start with Nuxt
+    const ExpressServer = require('./expressServer')
     const expressServer = new ExpressServer()
     expressServer.run()
 }
