@@ -22,7 +22,6 @@ class ExpressServer extends ExpressBase {
             const builder = new Builder(nuxt)
             await builder.build()
         }
-
     }
 
     registerMiddlewares() {
