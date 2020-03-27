@@ -22,11 +22,12 @@ class ExpressServer extends ExpressBase {
             const builder = new Builder(nuxt)
             await builder.build()
         }
+
+        this.express.use(this.nuxt.render)
     }
 
     async run() {
         await this.nuxtRun()
-        this.express.use(this.nuxt.render)
         super.run()
     }
 }
