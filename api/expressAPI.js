@@ -8,6 +8,7 @@ import ExpressBase from '../server/expressBase'
 class ExpressAPI extends ExpressBase {
 
     constructor() {
+        // 얘가 라우트 리스트를 받음
         super()
         this.json = this.express.json()
     }
