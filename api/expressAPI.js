@@ -9,8 +9,6 @@ class ExpressAPI extends ExpressBase {
     constructor() {
         super()
         this.registerMiddlewares()
-        this.registerRoutes()
-        this.errorHandler()
     }
 
     registerMiddlewares() {
@@ -18,12 +16,14 @@ class ExpressAPI extends ExpressBase {
         this.express.use(this.json)
         this.express.use(passport.initialize())
         passportStrategy()
+        this.registerRoutes()
+        this.errorHandler()
     }
 
     registerRoutes() {
         // routes
-        this.express.use(['/items', '/api/items'], itemRoute)
-        this.express.use(['/auth', '/api/auth'], authRoute)
+        this.express.use('/api/items', itemRoute)
+        this.express.use('/auth', '/api/auth', authRoute)
     }
 
     errorHandler() {
