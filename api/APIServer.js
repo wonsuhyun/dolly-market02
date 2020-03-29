@@ -9,7 +9,6 @@ class APIServer extends ExpressBase {
     constructor(routes) {
         super()
         this.routes = routes
-        this.json = this.express.json()
     }
 
     registerMiddlewares() {

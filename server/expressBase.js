@@ -9,9 +9,9 @@ class ExpressBase {
     constructor() {
         this.port = process.env.PORT
         this.host = process.env.HOST
-        this.express = express
         this.app = express()
         this.router = express.Router()
+        this.json = express.json()
         this.registerMiddlewares = this.registerMiddlewares.bind(this)
         this.registerRoutes = this.registerRoutes.bind(this)
     }
