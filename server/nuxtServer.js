@@ -4,9 +4,9 @@ const nuxtConfig = require('../nuxt.config.js')
 
 const ExpressBase = require('./expressBase')
 
-class ExpressServer extends ExpressBase {
+class NuxtServer extends ExpressBase {
 
-    async nuxtRun() {
+    async runNuxt() {
         nuxtConfig.dev = process.env.NODE_ENV !== 'production'
 
         this.nuxt = new Nuxt(nuxtConfig)
@@ -29,9 +29,9 @@ class ExpressServer extends ExpressBase {
     }
 
     async run() {
-        await this.nuxtRun()
+        await this.runNuxt()
         super.run()
     }
 }
 
-module.exports = ExpressServer
+module.exports = NuxtServer

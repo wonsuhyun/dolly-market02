@@ -4,7 +4,7 @@ import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
 
 import { UserService } from '../service'
-import { errorToNext, errorWrapper } from '../util'
+import { errorToNext } from '../util'
 
 const router = express.Router()
 const userService = new UserService()
@@ -12,7 +12,7 @@ const userService = new UserService()
 /*
 Login
 */
-router.post('/login', errorWrapper(async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
     passport.authenticate('local', { session: false }, (err, user) => {
 
         if (err) errorToNext(err, next)
@@ -23,13 +23,13 @@ router.post('/login', errorWrapper(async (req, res, next) => {
         })
 
     })(req, res)
-}))
+})
 
 /*
 Auth Test
 */
 router.get('/test',
-    errorWrapper(async (req, res, next) => {
+    async (req, res, next) => {
         passport.authenticate('jwt', { session: false }, (err, user, info) => {
 
             if (!user) {
@@ -41,19 +41,19 @@ router.get('/test',
             return res.json({success: true})
         })(req, res)
 
-    }))
+    })
 
 /*
 Signup
 */
 router.post('/signup',
-    errorWrapper(async (req, res, next) => {
+    async (req, res, next) => {
         const user = req.body
 
         await userService.saveUser(user)
 
         res.json({success: true})
-    }))
+    })
 
 export default router
 

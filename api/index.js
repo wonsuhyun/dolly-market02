@@ -1,17 +1,17 @@
-import ExpressAPI from './expressAPI'
+import APIServer from './apiServer'
 import { ItemRoute } from './route'
 
 const onlyAPIListen = process.env.NODE_ENV == 'api'
 
-const expressAPI = new ExpressAPI([
+const apiServer = new APIServer([
     new ItemRoute()
 ])
 
-expressAPI.run(onlyAPIListen)
+apiServer.run(onlyAPIListen)
 
-const apiModule = {
+const apiServerModule = {
     path: '/api',
-    handler: expressAPI.app
+    handler: apiServer.app
 }
 
-export default apiModule 
+export default apiServerModule 

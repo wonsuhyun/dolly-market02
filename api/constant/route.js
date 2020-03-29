@@ -6,6 +6,5 @@ export const methods ={
 }
 
 export const paths = {
-    API: '/api',
     ITEMS: '/items'
 }

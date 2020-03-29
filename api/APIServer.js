@@ -1,12 +1,10 @@
 import passport from 'passport'
 import { passportStrategy } from './util'
-import { paths } from './constant'
 import createError from 'http-errors'
 
-import { authRoute, itemRouteTemp } from './route'
 import ExpressBase from '../server/expressBase'
 
-class ExpressAPI extends ExpressBase {
+class APIServer extends ExpressBase {
 
     constructor(routes) {
         super()
@@ -16,25 +14,11 @@ class ExpressAPI extends ExpressBase {
 
     registerMiddlewares() {
         this.app.use(this.json)
-        
         this.app.use(passport.initialize())
         
         passportStrategy()
-
-        this.registerRoutes()
         
         this.errorHandler()
-    }
-
-    registerRoutes() {
-        // this.routes.forEach( route => {
-        //     route.setRouter(this.router)
-        //     this.app.use(paths.API, route.getRouter())
-        //     // this.app.use('/api', route.getRouter())
-        // })
-        this.app.use(['/items', '/api/items'], itemRouteTemp)
-        this.app.use(['/auth', '/api/auth'], authRoute)
-        debugger
     }
 
     errorHandler() {
@@ -50,4 +34,4 @@ class ExpressAPI extends ExpressBase {
     }
 }
 
-export default ExpressAPI
+export default APIServer
