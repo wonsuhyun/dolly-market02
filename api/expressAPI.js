@@ -1,15 +1,16 @@
 import passport from 'passport'
 import { passportStrategy } from './util'
+import { paths } from './constant'
 import createError from 'http-errors'
 
-import { itemRoute, authRoute } from './route'
+import { authRoute, itemRouteTemp } from './route'
 import ExpressBase from '../server/expressBase'
 
 class ExpressAPI extends ExpressBase {
 
-    constructor() {
-        // 얘가 라우트 리스트를 받음
+    constructor(routes) {
         super()
+        this.routes = routes
         this.json = this.express.json()
     }
 
@@ -26,11 +27,14 @@ class ExpressAPI extends ExpressBase {
     }
 
     registerRoutes() {
-        // this.router = itemRoute
-        // this.express.use('/api/v1', this.expressRouter)
-        // this.router.route(uri)[httpMethod](boundAction)
-        this.app.use(['/items', '/api/items'], itemRoute)
+        // this.routes.forEach( route => {
+        //     route.setRouter(this.router)
+        //     this.app.use(paths.API, route.getRouter())
+        //     // this.app.use('/api', route.getRouter())
+        // })
+        this.app.use(['/items', '/api/items'], itemRouteTemp)
         this.app.use(['/auth', '/api/auth'], authRoute)
+        debugger
     }
 
     errorHandler() {

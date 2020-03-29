@@ -1,7 +1,12 @@
 import ExpressAPI from './expressAPI'
+import { ItemRoute } from './route'
+
 const onlyAPIListen = process.env.NODE_ENV == 'api'
 
-const expressAPI = new ExpressAPI()
+const expressAPI = new ExpressAPI([
+    new ItemRoute()
+])
+
 expressAPI.run(onlyAPIListen)
 
 const apiModule = {
