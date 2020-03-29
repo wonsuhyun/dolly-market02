@@ -15,6 +15,7 @@ class ItemRoute extends RouteBase {
     this.addRoute('/:pid', methods.GET, this.getItemById)
   }
 
+  // Todo: 컨트롤러로 빼기
   async getItems(req, res) {
     const pageNum = req.query.pageNum
     const items = await itemService.getItems(pageNum)
