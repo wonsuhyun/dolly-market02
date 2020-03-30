@@ -1,5 +1,5 @@
-import express from 'express'
-import consola from 'consola'
+const express = require('express')
+const consola = require('consola')
 
 require('dotenv').config()
 
@@ -47,4 +47,4 @@ class ExpressServerBase {
     }
 }
 
-export default ExpressServerBase
+module.exports = ExpressServerBase
