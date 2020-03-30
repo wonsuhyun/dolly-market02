@@ -2,17 +2,17 @@ import createError from 'http-errors'
 
 import { itemQuery } from '../query'
 import { paging } from '../constant'
-import TagService from './tagService'
-import ImageService from './imageService'
+import TagRepository from './tagRepository'
+import ImageRepository from './imageRepository'
 import { Image, Item, User } from '../model'
-import { MySqlServiceBase } from '../../server/base/'
+import { MySQLRepositoryBase } from '../../server/base/'
 
-class ItemService extends MySqlServiceBase {
+class ItemRepository extends MySQLRepositoryBase {
     
     constructor() {
         super(itemQuery)
-        this.tagService = new TagService()
-        this.imageService = new ImageService()
+        this.tagRepository = new TagRepository()
+        this.imageRepository = new ImageRepository()
     }
     
     async getItems(pageNum) {
@@ -99,7 +99,7 @@ class ItemService extends MySqlServiceBase {
     }
 
     async getTags(item) {
-        const tagList = await this.tagService.getTagsByItemId(item.pid)
+        const tagList = await this.tagRepository.getTagsByItemId(item.pid)
 
         item['tags'] = tagList
 
@@ -107,7 +107,7 @@ class ItemService extends MySqlServiceBase {
     }
 
     async getImages(item) {
-        const imageList = await this.imageService.getImagesByItemId(item.pid)
+        const imageList = await this.imageRepository.getImagesByItemId(item.pid)
 
         item['images'] = imageList
 
@@ -115,4 +115,4 @@ class ItemService extends MySqlServiceBase {
     }
 }
 
-export default ItemService
+export default ItemRepository

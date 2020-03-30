@@ -1,8 +1,8 @@
 import { imageQuery } from '../query'
 import { Image } from '../model'
-import { MySqlServiceBase } from '../../server/base'
+import { MySQLRepositoryBase } from '../../server/base'
 
-class ImageService extends MySqlServiceBase {
+class ImageRepository extends MySQLRepositoryBase {
 
     constructor() {
         super(imageQuery)
@@ -26,4 +26,4 @@ class ImageService extends MySqlServiceBase {
 
 }
 
-export default ImageService
+export default ImageRepository

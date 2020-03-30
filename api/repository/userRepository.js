@@ -2,16 +2,16 @@ import createError from 'http-errors'
 import { v4 as uuidv4 } from 'uuid'
 
 import { userQuery } from '../query'
-import ImageService from './imageService'
+import ImageRepository from './imageRepository'
 import { User } from '../model'
 import { criptPassword } from '../util'
-import { MySqlServiceBase } from '../../server/base/'
+import { MySQLRepositoryBase } from '../../server/base/'
 
-class UserService extends MySqlServiceBase {
+class UserRepository extends MySQLRepositoryBase {
    
     constructor() {
         super(userQuery)
-        this.imageService = new ImageService()
+        this.imageRepository = new ImageRepository()
     }
 
     async getAuth(email, password){
@@ -40,7 +40,7 @@ class UserService extends MySqlServiceBase {
     async getProfileImage(user) {
         // 마스터 이미지 리스트 추가
         const imgId = user.img_rid
-        const image = await this.imageService.getImageById(imgId)
+        const image = await this.imageRepository.getImageById(imgId)
         user.image = image[0]
 
         return user
@@ -60,4 +60,4 @@ class UserService extends MySqlServiceBase {
 
 }
 
-export default UserService
+export default UserRepository

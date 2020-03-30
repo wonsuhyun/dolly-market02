@@ -2,14 +2,14 @@ import passport from 'passport'
 import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
 
-import { UserService } from '../service'
+import { UserRepository } from '../repository'
 import { errorToNext } from '../../server/util'
 import { ControllerBase } from '../../server/base'
 
 class AuthController extends ControllerBase {
 
     constructor() {
-        super(UserService)
+        super(UserRepository)
     }
 
     async login(req, res, next) {
@@ -41,7 +41,7 @@ class AuthController extends ControllerBase {
 
     async signup(req, res, next) {
         const user = req.body
-        await this.service.saveUser(user)
+        await this.repository.saveUser(user)
         res.json({ success: true })
     }
 

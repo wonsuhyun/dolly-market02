@@ -17,10 +17,6 @@ class RouteBase {
         this.addRoutes()
     }
 
-    addRoutes() {
-        createError(500, 'Not Implemented')
-    }
-
     addRoute(uri, httpMethod, boundAction) {
         this.router.route(this.path + uri)[httpMethod](this.errorWrapper(boundAction))
     }

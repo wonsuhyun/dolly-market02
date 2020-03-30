@@ -1,8 +1,8 @@
 import { tagQuery } from '../query'
 import { Tag } from '../model'
-import { MySqlServiceBase } from '../../server/base'
+import { MySQLRepositoryBase } from '../../server/base'
 
-class TagService extends MySqlServiceBase {
+class TagRepository extends MySQLRepositoryBase {
     
     constructor() {
         super(tagQuery)
@@ -21,4 +21,4 @@ class TagService extends MySqlServiceBase {
     }
 }
 
-export default TagService
+export default TagRepository

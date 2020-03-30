@@ -6,8 +6,8 @@ const ExtractJWT = passportJWT.ExtractJwt
 import passportLocal from 'passport-local'
 const LocalStrategy = passportLocal.Strategy
 
-import { UserService } from '../service'
-const userService = new UserService()
+import { UserRepository } from '../repository'
+const userRepository = new UserRepository()
 
 require('dotenv').config()
 
@@ -20,7 +20,7 @@ export const passportStrategy = () => {
         passwordField: 'password'
     },
         (email, password, done) => {
-            return userService.getAuth(email, password)
+            return userRepository.getAuth(email, password)
                 .then(user => done(null, user))
                 .catch(err => done(err))
         }
@@ -32,7 +32,7 @@ export const passportStrategy = () => {
         secretOrKey: process.env.JWT_SECRET
     },
         (jwtPayload, done) => {
-            return userService.getUserByEmail(jwtPayload.email)
+            return userRepository.getUserByEmail(jwtPayload.email)
                 .then(user => done(null, user))
                 .catch(err => done(err))
         }

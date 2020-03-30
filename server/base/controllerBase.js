@@ -1,6 +1,6 @@
 class ControllerBase {
-    constructor(ServiceClass) {
-        this.service = new ServiceClass()
+    constructor(RepositoryClass) {
+        this.service = new RepositoryClass()
     }
 }
 
