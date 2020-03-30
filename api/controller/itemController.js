@@ -1,5 +1,5 @@
 import { ItemService } from '../service'
-import ControllerBase from '../../server/base'
+import { ControllerBase } from '../../server/base'
 
 class ItemController extends ControllerBase {
 

@@ -4,5 +4,6 @@ export const paging = {
 }
 
 export const paths = {
-    ITEMS: '/items'
+    ITEMS: '/items',
+    AUTH: '/auth'
 }

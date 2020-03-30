@@ -1,10 +1,11 @@
 import APIServer from './apiServer'
-import { ItemRoute } from './route'
+import { ItemRoute, AuthRoute } from './route'
 
 const onlyAPIListen = process.env.NODE_ENV == 'api'
 
 const apiServer = new APIServer([
-    new ItemRoute()
+    new ItemRoute(),
+    new AuthRoute()
 ])
 
 apiServer.run(onlyAPIListen)
