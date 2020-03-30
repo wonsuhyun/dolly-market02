@@ -1,7 +1,7 @@
 import passport from 'passport'
-import { passportStrategy } from './util'
 import createError from 'http-errors'
 
+import { passportStrategy } from './util'
 import { ExpressServerBase } from '../server/base'
 
 class APIServer extends ExpressServerBase {

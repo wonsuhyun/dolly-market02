@@ -2,9 +2,9 @@ import { errorToNext } from '../util'
 import createError from 'http-errors'
 
 class RouteBase {
-    constructor(path, service) {
+    constructor(path, ControllerClass) {
         this.path = path
-        this.service = service
+        this.controller = new ControllerClass()
         this.addRoutes = this.addRoutes.bind(this)
     }
 
