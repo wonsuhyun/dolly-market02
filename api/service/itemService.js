@@ -5,9 +5,9 @@ import { paging } from '../constant'
 import TagService from './tagService'
 import ImageService from './imageService'
 import { Image, Item, User } from '../model'
-import ServiceBase from './serviceBase'
+import { MySqlServiceBase } from '../../server/base/'
 
-class ItemService extends ServiceBase {
+class ItemService extends MySqlServiceBase {
     
     constructor() {
         super(itemQuery)

@@ -2,9 +2,9 @@ import passport from 'passport'
 import { passportStrategy } from './util'
 import createError from 'http-errors'
 
-import ExpressBase from '../server/expressBase'
+import { ExpressServerBase } from '../server/base'
 
-class APIServer extends ExpressBase {
+class APIServer extends ExpressServerBase {
 
     constructor(routes) {
         super()

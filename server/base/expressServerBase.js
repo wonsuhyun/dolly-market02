@@ -1,10 +1,9 @@
-const express = require('express')
-const consola = require('consola')
+import express from 'express'
+import consola from 'consola'
 
 require('dotenv').config()
 
-// Todo: Base 파일들 하나로 합치기
-class ExpressBase {
+class ExpressServerBase {
 
     constructor() {
         this.port = process.env.PORT
@@ -48,4 +47,4 @@ class ExpressBase {
     }
 }
 
-module.exports = ExpressBase
+export default ExpressServerBase

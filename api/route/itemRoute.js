@@ -1,6 +1,7 @@
 import { ItemService } from '../service'
-import RouteBase from './routeBase'
-import { methods, paths } from '../constant'
+import { RouteBase } from '../../server/base'
+import { paths } from '../constant'
+import { methods } from '../../server/constant'
 
 const itemService = new ItemService()
 

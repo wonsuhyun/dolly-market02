@@ -4,7 +4,7 @@ import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
 
 import { UserService } from '../service'
-import { errorToNext } from '../util'
+import { errorToNext } from '../../server/util'
 
 const router = express.Router()
 const userService = new UserService()

@@ -5,9 +5,9 @@ import { userQuery } from '../query'
 import ImageService from './imageService'
 import { User } from '../model'
 import { criptPassword } from '../util'
-import ServiceBase from './serviceBase'
+import { MySqlServiceBase } from '../../server/base/'
 
-class UserService extends ServiceBase {
+class UserService extends MySqlServiceBase {
    
     constructor() {
         super(userQuery)
