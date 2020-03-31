@@ -33,13 +33,14 @@ class AuthController extends ControllerBase {
 
     async save(req, res, next) {
         const user = req.body
+        
         const { email } = user
         const _user = this.repository.getByEmail(email)
-        if (_user) {
-            throw new createError(409, `User Already Exists: ${email}`)
-        }
+        if (_user[0]) throw new createError(409, `User Already Exists: ${email}`)
+
         await this.repository.save(user)
-        const data = {email : user.email}
+        
+        const data = { email }
         this.created(res, data)
     }
 

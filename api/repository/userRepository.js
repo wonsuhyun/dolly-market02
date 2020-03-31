@@ -50,8 +50,6 @@ class UserRepository extends MySQLRepositoryBase {
         const { password } = user
         user.password = criptPassword(password)
         user.pid = uuidv4()
-
-        // Todo: 닉네임, 이메일 등 중복검사
         await this.executeQuery(this.query.save(user))
     }
 
