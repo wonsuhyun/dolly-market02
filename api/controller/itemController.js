@@ -1,5 +1,5 @@
 import { ItemRepository } from '../repository'
-import { ControllerBase } from '../../server/base'
+import ControllerBase from './controllerBase'
 
 class ItemController extends ControllerBase {
 

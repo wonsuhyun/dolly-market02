@@ -7,3 +7,10 @@ export const paths = {
     ITEMS: '/items',
     AUTH: '/auth'
 }
+
+export const methods = {
+    GET: 'get',
+    POST: 'post',
+    PUT: 'put',
+    PATCH: 'patch'
+}

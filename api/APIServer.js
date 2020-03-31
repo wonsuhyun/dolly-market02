@@ -1,9 +1,8 @@
 import passport from 'passport'
 import createError from 'http-errors'
-import bodyParser from 'body-parser'
 
 import { passportStrategy } from './util'
-import { ServerBase } from '../server/base'
+import ServerBase from '../server/serverBase'
 
 class APIServer extends ServerBase {
 

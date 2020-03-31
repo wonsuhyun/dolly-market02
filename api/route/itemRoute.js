@@ -1,6 +1,5 @@
-import { RouteBase } from '../../server/base'
-import { paths } from '../constant'
-import { methods } from '../../server/constant'
+import RouteBase from './routeBase'
+import { paths, methods } from '../constant'
 import { ItemController } from '../controller'
 
 class ItemRoute extends RouteBase {

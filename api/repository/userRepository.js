@@ -5,7 +5,7 @@ import { userQuery } from '../query'
 import ImageRepository from './imageRepository'
 import { User, Image } from '../model'
 import { criptPassword } from '../util'
-import { MySQLRepositoryBase } from '../../server/base/'
+import MySQLRepositoryBase from './mySQLRepositoryBase'
 
 class UserRepository extends MySQLRepositoryBase {
    

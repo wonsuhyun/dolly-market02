@@ -1,6 +1,6 @@
 import { imageQuery } from '../query'
 import { Image } from '../model'
-import { MySQLRepositoryBase } from '../../server/base'
+import MySQLRepositoryBase from './mySQLRepositoryBase'
 
 class ImageRepository extends MySQLRepositoryBase {
 

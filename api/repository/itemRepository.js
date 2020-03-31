@@ -1,11 +1,10 @@
 import createError from 'http-errors'
-
+import MySQLRepositoryBase from './mySQLRepositoryBase'
 import { itemQuery } from '../query'
 import { paging } from '../constant'
 import TagRepository from './tagRepository'
 import ImageRepository from './imageRepository'
 import { Image, Item, User } from '../model'
-import { MySQLRepositoryBase } from '../../server/base/'
 
 class ItemRepository extends MySQLRepositoryBase {
     

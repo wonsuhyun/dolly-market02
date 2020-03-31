@@ -2,9 +2,8 @@ import passport from 'passport'
 import createError from 'http-errors'
 
 import { UserRepository } from '../repository'
-import { errorToNext } from '../../server/util'
-import { issueToken } from '../util'
-import { ControllerBase } from '../../server/base'
+import { issueToken, errorToNext } from '../util'
+import ControllerBase from './controllerBase'
 
 class AuthController extends ControllerBase {
 
