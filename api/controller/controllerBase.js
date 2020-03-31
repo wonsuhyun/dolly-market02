@@ -7,7 +7,9 @@ class ControllerBase {
         res.json(data)
     }
 
-    created(res, data) {
+    created(res, createdData) {
+        const data = {}
+        data.created = null || createdData
         res.status(201).json(data)
     }
 

@@ -5,7 +5,8 @@ require('dotenv').config()
 
 class ServerBase {
 
-    constructor() {
+    constructor(isListenable = true) {
+        this.isListenable = isListenable
         this.port = process.env.PORT
         this.host = process.env.HOST
         this.app = express()
@@ -19,10 +20,10 @@ class ServerBase {
         createError(500, 'Not Implemented')
     }
 
-    run(isListenable = true) {
+    run() {
         this.registerMiddlewares()
         this.registerRoutes()
-        if (isListenable) this.listen()
+        if (this.isListenable) this.listen()
     }
 
     registerRoutes() {

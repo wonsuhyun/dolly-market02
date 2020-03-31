@@ -3,11 +3,12 @@ import createError from 'http-errors'
 
 import { passportStrategy } from './util'
 import ServerBase from '../server/serverBase'
+const isListenable = process.env.NODE_ENV == 'api'
 
 class APIServer extends ServerBase {
 
     constructor(routes) {
-        super()
+        super(isListenable)
         this.routes = routes
     }
 
@@ -17,8 +18,8 @@ class APIServer extends ServerBase {
         passportStrategy()
     }
 
-    run(isListenable) {
-        super.run(isListenable)
+    run() {
+        super.run()
         this.errorHandler()
     }
 
