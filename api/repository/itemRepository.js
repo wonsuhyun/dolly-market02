@@ -11,6 +11,7 @@ class ItemRepository extends MySQLRepositoryBase {
     
     constructor() {
         super(itemQuery)
+        // Todo: 이 부분 부모로 올리기
         this.tagRepository = new TagRepository()
         this.imageRepository = new ImageRepository()
     }

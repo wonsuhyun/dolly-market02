@@ -53,8 +53,6 @@ class UserRepository extends MySQLRepositoryBase {
         user.pid = uuidv4()
 
         // Todo: 닉네임, 이메일 등 중복검사
-        // Todo: imgId랑 트랜잭선 처리
-        // Todo: 이미지 업로드
         await this.executeQuery(this.query.saveUser(user))
     }
 

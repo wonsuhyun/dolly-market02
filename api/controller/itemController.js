@@ -8,7 +8,7 @@ class ItemController extends ControllerBase {
     }
 
     async getItems(req, res) {
-        const pageNum = req.query.pageNum
+        const { pageNum } = req.query
         const items = await this.repository.getItems(pageNum)
         res.json(items)
     }

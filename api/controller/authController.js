@@ -25,6 +25,7 @@ class AuthController extends ControllerBase {
         })(req, res)
     }
 
+    // Todo: 공통 함수로 빼기
     async test(req, res, next) {
         passport.authenticate('jwt', { session: false }, (err, user, info) => {
 
