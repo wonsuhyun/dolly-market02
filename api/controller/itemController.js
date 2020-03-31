@@ -10,13 +10,13 @@ class ItemController extends ControllerBase {
     async get(req, res) {
         const { pageNum } = req.query
         const items = await this.repository.get(pageNum)
-        res.json(items)
+        this.ok(res, items)
     }
 
     async getById(req, res) {
         const { pid } = req.params
         const item = await this.repository.getById(pid)
-        res.json(item)
+        this.ok(res, item)
     }
 }
 

@@ -1,9 +1,9 @@
 import passport from 'passport'
 import createError from 'http-errors'
-import jwt from 'jsonwebtoken'
 
 import { UserRepository } from '../repository'
 import { errorToNext } from '../../server/util'
+import { issueToken } from '../util'
 import { ControllerBase } from '../../server/base'
 
 class AuthController extends ControllerBase {
@@ -14,14 +14,8 @@ class AuthController extends ControllerBase {
 
     async login(req, res, next) {
         passport.authenticate('local', { session: false }, (err, user) => {
-
             if (err) return errorToNext(err, next)
-
-            req.login(user, { session: false }, () => {
-                const token = jwt.sign(JSON.stringify(user), process.env.JWT_SECRET)
-                return res.json({ user, token })
-            })
-
+            return req.login(user, { session: false }, this.ok(res, issueToken(user)))
         })(req, res)
     }
 
@@ -29,9 +23,7 @@ class AuthController extends ControllerBase {
     async test(req, res, next) {
         passport.authenticate('jwt', { session: false }, (err, user, info) => {
 
-            if (!user) {
-                return next(createError(403, 'Forbidden'))
-            }
+            if (!user) return next(createError(403, 'Forbidden'))
 
             if (err) errorToNext(err, next)
 
@@ -43,7 +35,8 @@ class AuthController extends ControllerBase {
     async save(req, res, next) {
         const user = req.body
         await this.repository.save(user)
-        res.json({ success: true })
+        const data = {email : user.email}
+        this.created(res, data)
     }
 
 }
