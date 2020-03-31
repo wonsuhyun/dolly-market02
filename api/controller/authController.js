@@ -15,7 +15,7 @@ class AuthController extends ControllerBase {
     async login(req, res, next) {
         passport.authenticate('local', { session: false }, (err, user) => {
 
-            if (err) errorToNext(err, next)
+            if (err) return errorToNext(err, next)
 
             req.login(user, { session: false }, () => {
                 const token = jwt.sign(JSON.stringify(user), process.env.JWT_SECRET)
@@ -40,9 +40,9 @@ class AuthController extends ControllerBase {
 
     }
 
-    async signup(req, res, next) {
+    async save(req, res, next) {
         const user = req.body
-        await this.repository.saveUser(user)
+        await this.repository.save(user)
         res.json({ success: true })
     }
 

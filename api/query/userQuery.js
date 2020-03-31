@@ -12,7 +12,7 @@ const userQuery = {
                 WHERE A.email = '${email}'
                 AND A.pass_word='${password}'`
     },
-    getUserByEmail(email) {
+    getByEmail(email) {
         return `SELECT
                     A.pid,
                     A.create_date,
@@ -24,7 +24,7 @@ const userQuery = {
                     user A
                 WHERE A.email = '${email}'`
     },
-    saveUser({ pid, email, nickname, password, imgId }) {
+    save({ pid, email, nickname, password, imgId }) {
         return `
         INSERT
             INTO

@@ -1,5 +1,5 @@
 const tagQuery = {
-    getTagsByItemId(itemId) {
+    getByItemId(itemId) {
         return `SELECT
                     A.pid,
                     A.create_date,

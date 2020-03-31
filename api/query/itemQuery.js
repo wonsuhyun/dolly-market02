@@ -1,7 +1,7 @@
 import { paging } from '../constant'
 
 const itemQuery = {
-    getItems(pageNum = paging.DEFAULT_PAGE_INDEX, pageSize = paging.DEFAULT_PAGE_SIZE) {
+    get(pageNum = paging.DEFAULT_PAGE_INDEX, pageSize = paging.DEFAULT_PAGE_SIZE) {
         return `SELECT
                     A.pid,
                     A.create_date,
@@ -10,7 +10,7 @@ const itemQuery = {
                     A.product_condition,
                     A.quantity,
                     A.price,
-                    A.paymenth_method,
+                    A.payment_method,
                     A.delivery_method,
                     A.delivery_charge,
                     A.title,
@@ -42,7 +42,7 @@ const itemQuery = {
                 ORDER BY A.create_date DESC
                 LIMIT ${(pageNum - 1) * pageSize}, ${pageSize}`
     },
-    getItemById(itemId) {
+    getById(itemId) {
         return `SELECT
                     A.pid,
                     A.create_date,
@@ -51,7 +51,7 @@ const itemQuery = {
                     A.product_condition,
                     A.quantity,
                     A.price,
-                    A.paymenth_method,
+                    A.payment_method,
                     A.delivery_method,
                     A.delivery_charge,
                     A.title,

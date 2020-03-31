@@ -9,8 +9,8 @@ class ItemRoute extends RouteBase {
   }
 
   addRoutes() {
-    this.addRoute('/', methods.GET, this.controller.getItems)
-    this.addRoute('/:pid', methods.GET, this.controller.getItemById)
+    this.addRoute('/', methods.GET, this.controller.get)
+    this.addRoute('/:pid', methods.GET, this.controller.getById)
   }
 
 }

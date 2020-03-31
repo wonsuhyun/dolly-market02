@@ -1,5 +1,5 @@
 const imageQuery = {
-    getImagesByItemId(itemId) {
+    getByItemId(itemId) {
         return `SELECT
                     A.pid,
                     A.create_date,
@@ -11,7 +11,7 @@ const imageQuery = {
                     image A
                 WHERE A.item_rid = '${itemId}'`
     },
-    getImageById(imageId) {
+    getById(imageId) {
         return `SELECT
             A.pid,
             A.create_date,

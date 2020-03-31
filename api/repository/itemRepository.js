@@ -16,16 +16,16 @@ class ItemRepository extends MySQLRepositoryBase {
         this.imageRepository = new ImageRepository()
     }
     
-    async getItems(pageNum) {
+    async get(pageNum) {
 
-        const itemList_ = await this.executeQuery(this.query.getItems(pageNum || paging.DEFAULT_PAGE_INDEX, paging.DEFAULT_PAGE_SIZE))
+        const itemList_ = await this.executeQuery(this.query.get(pageNum || paging.DEFAULT_PAGE_INDEX, paging.DEFAULT_PAGE_SIZE))
 
         const itemList = []
 
         itemList_.map(item => {
-            item = this.getMasterImageInfo(item)
+            item = this.getMasterImage(item)
 
-            item = this.getUserInfo(item)
+            item = this.getUser(item)
 
             itemList.push(new Item(item))
         })
@@ -33,9 +33,9 @@ class ItemRepository extends MySQLRepositoryBase {
         return itemList
     }
 
-    async getItemById(pid) {
+    async getById(pid) {
 
-        let item_ = await this.executeQuery(this.query.getItemById(pid))
+        let item_ = await this.executeQuery(this.query.getById(pid))
         
         if (item_.length < 1) {
             throw new createError(404, `Item not Found: ${pid}`)
@@ -43,7 +43,7 @@ class ItemRepository extends MySQLRepositoryBase {
 
         let item = item_[0]
 
-        item = this.getUserInfo(item)
+        item = this.getUser(item)
 
         item = await this.getImages(item)
 
@@ -54,7 +54,7 @@ class ItemRepository extends MySQLRepositoryBase {
         return item
     }
 
-    getUserInfo(item) {
+    getUser(item) {
 
         // 유저 정보 추가
         const _profileImage = {
@@ -80,7 +80,7 @@ class ItemRepository extends MySQLRepositoryBase {
         return item
     }
 
-    getMasterImageInfo(item) {
+    getMasterImage(item) {
         // 마스터 이미지 리스트 추가
         const masterImage = {
             pid: item.master_file_pid,
@@ -101,7 +101,7 @@ class ItemRepository extends MySQLRepositoryBase {
     }
 
     async getTags(item) {
-        const tagList = await this.tagRepository.getTagsByItemId(item.pid)
+        const tagList = await this.tagRepository.getByItemId(item.pid)
 
         item['tags'] = tagList
 
@@ -109,7 +109,7 @@ class ItemRepository extends MySQLRepositoryBase {
     }
 
     async getImages(item) {
-        const imageList = await this.imageRepository.getImagesByItemId(item.pid)
+        const imageList = await this.imageRepository.getByItemId(item.pid)
 
         item['images'] = imageList
 

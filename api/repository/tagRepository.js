@@ -8,8 +8,8 @@ class TagRepository extends MySQLRepositoryBase {
         super(tagQuery)
     }
     
-    async getTagsByItemId(itemId) {
-        const tagList_ = await this.executeQuery(this.query.getTagsByItemId(itemId))
+    async getByItemId(itemId) {
+        const tagList_ = await this.executeQuery(this.query.getByItemId(itemId))
 
         let tagList = []
         tagList_.map(tag => tagList.push(new Tag(tag)))

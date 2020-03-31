@@ -7,15 +7,15 @@ class ItemController extends ControllerBase {
         super(ItemRepository)
     }
 
-    async getItems(req, res) {
+    async get(req, res) {
         const { pageNum } = req.query
-        const items = await this.repository.getItems(pageNum)
+        const items = await this.repository.get(pageNum)
         res.json(items)
     }
 
-    async getItemById(req, res) {
+    async getById(req, res) {
         const { pid } = req.params
-        const item = await this.repository.getItemById(pid)
+        const item = await this.repository.getById(pid)
         res.json(item)
     }
 }
