@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { userQuery } from '../query'
 import ImageRepository from './imageRepository'
-import { User } from '../model'
+import { User, Image } from '../model'
 import { criptPassword } from '../util'
 import { MySQLRepositoryBase } from '../../server/base/'
 
@@ -41,7 +41,7 @@ class UserRepository extends MySQLRepositoryBase {
         // 마스터 이미지 리스트 추가
         const imgId = user.img_rid
         const image = await this.imageRepository.getImageById(imgId)
-        user.image = image[0]
+        user.image = new Image(image[0])
 
         return user
     }

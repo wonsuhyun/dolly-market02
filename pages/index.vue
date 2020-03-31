@@ -9,10 +9,10 @@
           <span class="new" v-if="item.isNew">NEW</span>
           <div>
             <h3>{{ item.title}}</h3>
-            <div class="imgDiv" :style="{backgroundImage:'url('+item.images[0].file_url+')'}"></div>
+            <div class="imgDiv" :style="{backgroundImage:'url('+item.images[0].fileUrl+')'}"></div>
             <p class="cash">
               <span>$ {{item.price}} </span>
-              <span class="type">{{item.paymenth_method}}</span>
+              <span class="type">{{item.paymentMethod}}</span>
             </p>
             <div>
               {{item.description}}

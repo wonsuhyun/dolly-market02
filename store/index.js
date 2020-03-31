@@ -38,7 +38,7 @@ export const actions = {
             //1주일 단위로 new Data 생성
             var today = new Date;
             var week = new Date(today.getFullYear(),today.getMonth(),today.getDate()-7);
-            var itemArr = item.create_date.split('-');
+            var itemArr = item.createDate.split('-');
             var createDate = new Date(itemArr[0],itemArr[1]-1, Number(itemArr[2].slice(0,2)))
             var dateSet;
             

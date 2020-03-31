@@ -4,7 +4,7 @@
     <div class="detail-table">
          <div class="imgZone">
              <swiper :options="swiperOption" ref="mySwiper">
-                <swiper-slide :key="image" v-for="image in itemData.images" :style="{backgroundImage:'url('+image.file_url+')'}"></swiper-slide>
+                <swiper-slide :key="image" v-for="image in itemData.images" :style="{backgroundImage:'url('+image.fileUrl+')'}"></swiper-slide>
             </swiper>
         </div>
         <div class="info">
@@ -23,7 +23,7 @@
             </table>
             <div>
                 <div class="user">
-                    <div class="user-pf" :style="{backgroundImage:'url('+itemData.user.image.file_url+')'}"></div>
+                    <div class="user-pf" :style="{backgroundImage:'url('+itemData.user.image.fileUrl+')'}"></div>
                     <div class="user-info">
                         <p class="user-name">{{ itemData.user.nickname }}</p>
                         <p>{{ itemData.user.email }}</p>

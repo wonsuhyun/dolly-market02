@@ -56,12 +56,14 @@ class ItemRepository extends MySQLRepositoryBase {
     getUserInfo(item) {
 
         // 유저 정보 추가
-        const profileImage = {
+        const _profileImage = {
             pid: item.user_file_pid,
             create_date: item.user_file_create_date,
             file_name: item.user_file_name,
             file_url: item.user_file_url
         }
+
+        const profileImage = new Image(_profileImage)
 
         const user = {
             pid: item.user_pid,
