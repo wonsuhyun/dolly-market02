@@ -31,8 +31,7 @@ class ExpressServerBase {
             this.routes.forEach(route => {
                 route.setRouter(this.router)
                 route.addRoutes()
-                const { path, router } = route
-                this.app.use(path, router)
+                this.app.use(route.router)
             })
     }
 

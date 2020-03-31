@@ -13,7 +13,7 @@ class RouteBase {
     }
 
     addRoute(uri, httpMethod, boundAction) {
-        this.router[httpMethod](uri, this.asyncWrapper(boundAction))
+        this.router[httpMethod](`${this.path + uri}`, this.asyncWrapper(boundAction))
     }
 
     asyncWrapper = (boundAction) => {    

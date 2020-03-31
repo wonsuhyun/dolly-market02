@@ -11,14 +11,9 @@ class AuthRoute extends RouteBase {
     addRoutes() {
         this.addRoute('/login', methods.POST, this.controller.login)
         this.addRoute('/test', methods.GET, this.controller.test)
-        this.addRoute('/signup', methods.POST, this.signup)
+        this.addRoute('/signup', methods.POST, this.controller.signup)
     }
 
-    async signup(req, res, next) {
-        const user = req.body
-        await this.repository.saveUser(user)
-        res.json({ success: true })
-    }
 }
 
 export default AuthRoute
