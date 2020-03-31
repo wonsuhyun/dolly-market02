@@ -3,9 +3,9 @@ import createError from 'http-errors'
 import bodyParser from 'body-parser'
 
 import { passportStrategy } from './util'
-import { ExpressServerBase } from '../server/base'
+import { ServerBase } from '../server/base'
 
-class APIServer extends ExpressServerBase {
+class APIServer extends ServerBase {
 
     constructor(routes) {
         super()

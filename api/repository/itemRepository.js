@@ -27,7 +27,6 @@ class ItemRepository extends MySQLRepositoryBase {
             item = this.getUserInfo(item)
 
             itemList.push(new Item(item))
-
         })
 
         return itemList

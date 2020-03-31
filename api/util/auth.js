@@ -1,4 +1,5 @@
 
+import crypto from 'crypto'
 import passport from 'passport'
 import passportJWT from 'passport-jwt'
 const JWTStrategy = passportJWT.Strategy
@@ -7,11 +8,8 @@ import passportLocal from 'passport-local'
 const LocalStrategy = passportLocal.Strategy
 
 import { UserRepository } from '../repository'
-const userRepository = new UserRepository()
 
 require('dotenv').config()
-
-import crypto from 'crypto'
 
 export const passportStrategy = () => {
     // Local Strategy
@@ -20,7 +18,7 @@ export const passportStrategy = () => {
         passwordField: 'password'
     },
         (email, password, done) => {
-            return userRepository.getAuth(email, password)
+            return new UserRepository().getAuth(email, password)
                 .then(user => done(null, user))
                 .catch(err => done(err))
         }
@@ -32,7 +30,7 @@ export const passportStrategy = () => {
         secretOrKey: process.env.JWT_SECRET
     },
         (jwtPayload, done) => {
-            return userRepository.getUserByEmail(jwtPayload.email)
+            return new UserRepository().getUserByEmail(jwtPayload.email)
                 .then(user => done(null, user))
                 .catch(err => done(err))
         }

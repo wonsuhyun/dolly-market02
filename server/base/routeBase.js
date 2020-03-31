@@ -1,5 +1,4 @@
 import { errorToNext } from '../util'
-import createError from 'http-errors'
 
 class RouteBase {
     constructor(path, ControllerClass) {

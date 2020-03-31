@@ -13,9 +13,7 @@ class TagRepository extends MySQLRepositoryBase {
 
         const tagList = []
 
-        tagList_.map(tag => {
-            tagList.push(new Tag(tag))
-        })
+        tagList_.map(tag => tagList.push(new Tag(tag)))
 
         return tagList
     }

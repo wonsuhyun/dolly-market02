@@ -3,7 +3,7 @@ const consola = require('consola')
 
 require('dotenv').config()
 
-class ExpressServerBase {
+class ServerBase {
 
     constructor() {
         this.port = process.env.PORT
@@ -28,10 +28,10 @@ class ExpressServerBase {
     registerRoutes() {
         // Todo: 더 나은 방법이 없을까
         if (this.routes)
-            this.routes.forEach(route => {
-                route.setRouter(this.router)
-                route.addRoutes()
-                this.app.use(route.router)
+            this.routes.forEach(routeBuilder => {
+                routeBuilder.setRouter(this.router)
+                routeBuilder.addRoutes()
+                this.app.use(routeBuilder.router)
             })
     }
 
@@ -48,4 +48,4 @@ class ExpressServerBase {
     }
 }
 
-module.exports = ExpressServerBase
+module.exports = ServerBase
