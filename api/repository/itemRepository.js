@@ -17,11 +17,11 @@ class ItemRepository extends MySQLRepositoryBase {
     
     async get(pageNum) {
 
-        const itemList_ = await this.executeQuery(this.query.get(pageNum || paging.DEFAULT_PAGE_INDEX, paging.DEFAULT_PAGE_SIZE))
+        const _itemList = await this.executeQuery(this.query.get(pageNum || paging.DEFAULT_PAGE_INDEX, paging.DEFAULT_PAGE_SIZE))
 
         const itemList = []
 
-        itemList_.map(item => {
+        _itemList.map(item => {
             item = this.getMasterImage(item)
 
             item = this.getUser(item)
@@ -34,13 +34,13 @@ class ItemRepository extends MySQLRepositoryBase {
 
     async getById(pid) {
 
-        let item_ = await this.executeQuery(this.query.getById(pid))
+        let _item = await this.executeQuery(this.query.getById(pid))
         
-        if (item_.length < 1) {
+        if (_item.length < 1) {
             throw new createError(404, `Item not Found: ${pid}`)
         }
 
-        let item = item_[0]
+        let item = _item[0]
 
         item = this.getUser(item)
 
