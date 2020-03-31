@@ -19,7 +19,7 @@ class UserRepository extends MySQLRepositoryBase {
         const criptedPassword = criptPassword(password)
         let user = await this.executeQuery(this.query.getAuth(email, criptedPassword))
 
-        if (user.length < 1 || !user) {
+        if (user.length == 1 || !user) {
             throw new createError(401, `User not Found: ${email}`)
         }
 

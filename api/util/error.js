@@ -1,12 +1,6 @@
 import createError from 'http-errors'
 
-export const errorToNext = (err, next) => {
-    const { status, message } = err
-
-    const error = {
-        status: status || 500,
-        message: message || 'Internal Server Error'
-    }
-
-    return next(createError(error))
+export const errorToNext = (error, next) => {
+    const { status = 500, message = 'Internal Server Error' } = error
+    return next(createError(status, message))
 }
