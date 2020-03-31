@@ -10,7 +10,7 @@ class ExpressServerBase {
         this.host = process.env.HOST
         this.app = express()
         this.router = express.Router()
-        this.json = express.json()
+        this.express = express
         this.registerMiddlewares = this.registerMiddlewares.bind(this)
         this.registerRoutes = this.registerRoutes.bind(this)
     }
@@ -20,8 +20,8 @@ class ExpressServerBase {
     }
 
     run(isListenable = true) {
-        this.registerRoutes()
         this.registerMiddlewares()
+        this.registerRoutes()
         if (isListenable) this.listen()
     }
 
@@ -30,7 +30,9 @@ class ExpressServerBase {
         if (this.routes)
             this.routes.forEach(route => {
                 route.setRouter(this.router)
-                this.app.use(route.getRouter())
+                route.addRoutes()
+                const { path, router } = route
+                this.app.use(path, router)
             })
     }
 

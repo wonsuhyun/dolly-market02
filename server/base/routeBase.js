@@ -8,21 +8,16 @@ class RouteBase {
         this.addRoutes = this.addRoutes.bind(this)
     }
 
-    getRouter() {
-        return this.router
-    }
-
     setRouter(router) {
         this.router = router
-        this.addRoutes()
     }
 
     addRoute(uri, httpMethod, boundAction) {
-        this.router.route(this.path + uri)[httpMethod](this.errorWrapper(boundAction))
+        this.router[httpMethod](uri, this.asyncWrapper(boundAction))
     }
 
-    errorWrapper = (fn) => {
-        return (req, res, next) => fn(req, res, next).catch((err) => {
+    asyncWrapper = (boundAction) => {    
+        return (req, res, next) => boundAction.bind(this.controller)(req, res, next).catch((err) => {
             errorToNext(err, next)
         })
     }

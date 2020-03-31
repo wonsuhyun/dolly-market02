@@ -1,5 +1,6 @@
 import passport from 'passport'
 import createError from 'http-errors'
+import bodyParser from 'body-parser'
 
 import { passportStrategy } from './util'
 import { ExpressServerBase } from '../server/base'
@@ -12,11 +13,13 @@ class APIServer extends ExpressServerBase {
     }
 
     registerMiddlewares() {
-        this.app.use(this.json)
-        this.app.use(passport.initialize())
-        
+        this.app.use(this.express.json())
+        this.app.use(passport.initialize())        
         passportStrategy()
-        
+    }
+
+    run(isListenable) {
+        super.run(isListenable)
         this.errorHandler()
     }
 

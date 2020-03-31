@@ -39,12 +39,6 @@ class AuthController extends ControllerBase {
 
     }
 
-    async signup(req, res, next) {
-        const user = req.body
-        await this.repository.saveUser(user)
-        res.json({ success: true })
-    }
-
 }
 
 export default AuthController
