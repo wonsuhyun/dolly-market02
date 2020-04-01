@@ -7,7 +7,7 @@ export const mutations = {
     testmutation (item) {
         state.test = item
     },
-    setItem(state,items){
+    setItems(state,items){
         // items.map((item)=>{
         //     state.items.push(item)
         // })
@@ -31,9 +31,9 @@ export const actions = {
         // localforage 에 접근후 item data 없을시에 통신 후 값 셋팅하는 로직 추가하기
         let res = await app.$axios.get("/api/items")
         // console.log(res.data[0]);
-        app.store.dispatch("testAction",res.data);
+        app.store.dispatch("setItems", res.data);
     },
-    testAction({commit},items){
+    setItems({commit},items){
         items.map( item =>{
             //1주일 단위로 new Data 생성
             var today = new Date;
@@ -53,6 +53,6 @@ export const actions = {
             }    
         })
 
-        commit("setItem",items)
+        commit("setItems",items)
     }
 }
