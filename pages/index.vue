@@ -4,12 +4,12 @@
       <h1 class="main-title">{{title}}</h1>
       <!-- item List-->
       <ul class="item-list" >
-        <li :key="item" v-for="item in items" >
-          <nuxt-link :to="'/item/'+item.pid" >
+        <li :key="item.pid" v-for="item in items" >
+          <nuxt-link :to="`/items/${item.pid}`" >
           <span class="new" v-if="item.isNew">NEW</span>
           <div>
             <h3>{{ item.title}}</h3>
-            <div class="imgDiv" :style="{backgroundImage:'url('+item.images[0].fileUrl+')'}"></div>
+            <div class="imgDiv" :style="{backgroundImage: `url(${item.images[0].fileUrl})`}"></div>
             <p class="cash">
               <span>$ {{item.price}} </span>
               <span class="type">{{item.paymentMethod}}</span>

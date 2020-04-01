@@ -4,7 +4,7 @@
     <div class="detail-table">
          <div class="imgZone">
              <swiper :options="swiperOption" ref="mySwiper">
-                <swiper-slide :key="image" v-for="image in itemData.images" :style="{backgroundImage:'url('+image.fileUrl+')'}"></swiper-slide>
+                <swiper-slide :key="image.pid" v-for="image in itemData.images" :style="{backgroundImage: `url(${ image.fileUrl })`}"></swiper-slide>
             </swiper>
         </div>
         <div class="info">
@@ -23,7 +23,7 @@
             </table>
             <div>
                 <div class="user">
-                    <div class="user-pf" :style="{backgroundImage:'url('+itemData.user.image.fileUrl+')'}"></div>
+                    <div class="user-pf" :style="{backgroundImage: `url(${itemData.user.image.fileUrl})`}"></div>
                     <div class="user-info">
                         <p class="user-name">{{ itemData.user.nickname }}</p>
                         <p>{{ itemData.user.email }}</p>
@@ -38,9 +38,8 @@
 </div>
 </template>
 <script>
-import 'swiper/dist/css/swiper.css'
-
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
 
 export default {
     data(){
@@ -51,28 +50,16 @@ export default {
             }
         }
     },
-    methods:{
-
+    components: {
+        Swiper,
+        SwiperSlide
     },
-    components:{
-        swiper,
-        swiperSlide
-    },
-    mounted(){
-        
-    },
-    created(){
-        
-    },
-    computed:{
-        // swiper() {
-        //     return this.$refs.mySwiper.swiper
-        // }
+      directives: {
+        swiper: directive
     },
     async asyncData(ctx){
-        const res = await ctx.$axios.get("/api/items/"+ctx.route.params.id);
-        console.log(res.data)
-        return{
+        const res = await ctx.$axios.get(`/api/items/${ctx.route.params.id}`)
+        return {
             itemData:res.data
         }
     }
