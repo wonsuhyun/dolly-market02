@@ -14,7 +14,8 @@ class AuthController extends ControllerBase {
     async login(req, res, next) {
         passport.authenticate('local', { session: false }, (err, user) => {
             if (err) return errorToNext(err, next)
-            return req.login(user, { session: false }, this.ok(res, issueToken(user)))
+            const token = issueToken(user)
+            return req.login(user, { session: false }, this.ok(res, { user, token }))
         })(req, res)
     }
 
@@ -34,14 +35,11 @@ class AuthController extends ControllerBase {
     async save(req, res, next) {
         const user = req.body
         
-        const { email } = user
-        const _user = this.repository.getByEmail(email)
-        if (_user[0]) throw new createError(409, `User Already Exists: ${email}`)
-
         await this.repository.save(user)
         
-        const data = { email }
-        this.created(res, data)
+        const { email } = user
+        
+        this.created(res, { email })
     }
 
 }

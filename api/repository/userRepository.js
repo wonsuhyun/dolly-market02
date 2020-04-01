@@ -19,7 +19,7 @@ class UserRepository extends MySQLRepositoryBase {
         const criptedPassword = criptPassword(password)
         let user = await this.executeQuery(this.query.getAuth(email, criptedPassword))
 
-        if (user.length == 1 || !user) {
+        if (user.length == 0 || !user) {
             throw new createError(401, `User not Found: ${email}`)
         }
 
@@ -33,7 +33,7 @@ class UserRepository extends MySQLRepositoryBase {
 
     async getByEmail(email) {
         let user = await this.executeQuery(this.query.getByEmail(email))
-        user = new User(user)
+        user = user[0] ? new User(user[0]) : user
 
         return user
     }
@@ -46,8 +46,12 @@ class UserRepository extends MySQLRepositoryBase {
     }
 
     async save(user) {
+        // 이메일 중복 검사
+        const { email, password } = user
+        const _user = await this.getByEmail(email)
+        if (_user.length > 0) throw new createError(409, `User Already Exists: ${ email }`)
+
         // 비밀번호 암호화
-        const { password } = user
         user.password = criptPassword(password)
         user.pid = uuidv4()
         await this.executeQuery(this.query.save(user))

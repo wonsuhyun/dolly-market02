@@ -49,5 +49,5 @@ export const criptPassword = (password) => {
 
 export const issueToken = (user) => {
     const token = jwt.sign(JSON.stringify(user), process.env.JWT_SECRET)
-    return { user, token }
+    return token
 }
