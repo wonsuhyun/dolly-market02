@@ -1,5 +1,6 @@
 const express = require('express')
 const consola = require('consola')
+const createError = require('http-errors')
 
 require('dotenv').config()
 
@@ -17,23 +18,17 @@ class ServerBase {
     }
 
     registerMiddlewares() {
-        createError(500, 'Not Implemented')
+        throw new createError(500, 'Not Implemented')
+    }
+
+    registerRoutes() {
+        if (this.routes) throw new createError(500, 'Not Implemented')
     }
 
     run() {
         this.registerMiddlewares()
         this.registerRoutes()
         if (this.isListenable) this.listen()
-    }
-
-    registerRoutes() {
-        // Todo: 더 나은 방법이 없을까
-        if (this.routes)
-            this.routes.forEach(routeBuilder => {
-                routeBuilder.setRouter(this.router)
-                routeBuilder.addRoutes()
-                this.app.use(routeBuilder.router)
-            })
     }
 
     listen() {

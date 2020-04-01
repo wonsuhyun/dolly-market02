@@ -14,8 +14,18 @@ class APIServer extends ServerBase {
 
     registerMiddlewares() {
         this.app.use(this.express.json())
-        this.app.use(passport.initialize())        
+        this.app.use(passport.initialize())
         passportStrategy()
+    }
+
+    registerRoutes() {
+        // Todo: 더 나은 방법이 없을까
+        if (this.routes)
+            this.routes.forEach(routeBuilder => {
+                routeBuilder.setRouter(this.router)
+                routeBuilder.addRoutes()
+                this.app.use(routeBuilder.router)
+            })
     }
 
     run() {
