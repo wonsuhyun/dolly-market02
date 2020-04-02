@@ -1,6 +1,5 @@
 export const state = () => ({
-    items: [],
-    pageNum: 1
+    items: []
 })
 
 export const mutations = {
@@ -20,19 +19,7 @@ export const getters = {
     //     return obj
     // }
     getItems(state) {
-        return state.items
-    },
-    getPageNum(state) {
-        return state.items
-    }
-}
-export const actions = {
-    async nuxtServerInit({ dispatch, getters }, { app }) {
-        const { data } = await app.$axios.get(`/api/items?pageNum=${getters.getPageNum}`)
-        dispatch("setItems", data)
-    },
-    setItems({ commit }, items) {
-        // Todo: getter에다 옮기기
+        const { items } = state
         items.map(item => {
             // 1주일 단위로 new Data 생성
             var today = new Date
@@ -51,7 +38,15 @@ export const actions = {
                 item.isNew = false
             }
         })
-
+        return items
+    }
+}
+export const actions = {
+    async nuxtServerInit({ dispatch, getters }, { app }) {
+        const { data } = await app.$axios.get(`/api/items`)
+        dispatch("setItems", data)
+    },
+    setItems({ commit }, items) {
         commit("setItems", items)
     }
 }

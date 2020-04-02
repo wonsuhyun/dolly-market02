@@ -17,16 +17,12 @@ class ItemRepository extends MySQLRepositoryBase {
     
     async get(pageNum) {
 
-        const _itemList = await this.executeQuery(this.query.get(pageNum || paging.DEFAULT_PAGE_INDEX, paging.DEFAULT_PAGE_SIZE))
+        const itemList = await this.executeQuery(this.query.get(pageNum || paging.DEFAULT_PAGE_INDEX, paging.DEFAULT_PAGE_SIZE))
 
-        const itemList = []
-
-        _itemList.map(item => {
+        itemList.map(item => {
             item = this.getMasterImage(item)
-
             item = this.getUser(item)
-
-            itemList.push(new Item(item))
+            item = new Item(item)
         })
 
         return itemList
@@ -43,11 +39,8 @@ class ItemRepository extends MySQLRepositoryBase {
         let item = _item[0]
 
         item = this.getUser(item)
-
         item = await this.getImages(item)
-
         item = await this.getTags(item)
-
         item = new Item(item)
 
         return item
