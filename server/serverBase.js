@@ -27,7 +27,7 @@ class ServerBase {
 
     run() {
         this.registerMiddlewares()
-        this.registerRoutes()
+        if (this.routes) this.registerRoutes()
         if (this.isListenable) this.listen()
     }
 
