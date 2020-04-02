@@ -60,7 +60,7 @@ export default {
 .item-card {
   float: left;
   width: 30%;
-  margin-right: 3%;
+  margin: 0 1% 0 1%;
   text-align: left;
   padding: 20px 0 10px 0;
   position: relative;
@@ -103,8 +103,5 @@ export default {
   border: 1px solid #333;
   padding: 0 10px;
   margin-left: 15px;
-}
-.item-card:last-child {
-  margin-right: 0;
 }
 </style>

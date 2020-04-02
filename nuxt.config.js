@@ -62,6 +62,5 @@ module.exports = {
     { path: '/api', handler: '~/api/index.js' }
   ],
   router:{
-    middleware:['items']
   }
 }
