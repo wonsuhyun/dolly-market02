@@ -1,7 +1,7 @@
 const { Nuxt, Builder } = require('nuxt')
 const nuxtConfig = require('../nuxt.config.js')
 
-const ServerBase = require('./serverBase')
+const ServerBase = require('./base/serverBase')
 
 class NuxtServer extends ServerBase {
 

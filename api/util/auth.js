@@ -1,6 +1,5 @@
 
 import crypto from 'crypto'
-import jwt from 'jsonwebtoken'
 
 import passport from 'passport'
 import passportJWT from 'passport-jwt'
@@ -45,9 +44,4 @@ export const criptPassword = (password) => {
     const hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex")
 
     return hashPassword
-}
-
-export const issueToken = (user) => {
-    const token = jwt.sign(JSON.stringify(user), process.env.JWT_SECRET)
-    return token
 }

@@ -2,7 +2,7 @@ import passport from 'passport'
 import createError from 'http-errors'
 
 import { UserRepository } from '../repository'
-import { issueToken, errorToNext } from '../util'
+import { issueToken, errorToNext } from '../../server/util'
 import ControllerBase from './controllerBase'
 
 class AuthController extends ControllerBase {

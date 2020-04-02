@@ -1,4 +1,4 @@
-import { errorToNext } from '../util'
+import { errorToNext } from '../../server/util'
 
 class RouteBase {
     constructor(path, ControllerClass) {

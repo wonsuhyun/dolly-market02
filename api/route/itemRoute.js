@@ -1,4 +1,4 @@
-import RouteBase from './routeBase'
+import { RouteBase } from '../../server/base'
 import { paths, methods } from '../constant'
 import { ItemController } from '../controller'
 

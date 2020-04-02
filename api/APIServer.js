@@ -2,7 +2,7 @@ import passport from 'passport'
 import createError from 'http-errors'
 
 import { passportStrategy } from './util'
-import ServerBase from '../server/serverBase'
+import ServerBase from '../server/base/serverBase'
 const isListenable = process.env.NODE_ENV == 'api'
 
 class APIServer extends ServerBase {
