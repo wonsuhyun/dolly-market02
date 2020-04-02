@@ -3,7 +3,7 @@
     <section class="main-title">
       <h1>{{title}}</h1>
     </section>
-    <ItemList :items="items" />
+    <ItemList :items="getItems" />
     <div class="links">
       <a
         href="javascript:void(0)"
@@ -25,7 +25,6 @@ export default {
   data() {
     return {
       title: "Dolly-Market",
-      items: [],
       isActiveBtn: false,
       isHover: false,
       moreActive: 0
@@ -52,13 +51,10 @@ export default {
       this.isHover == true;
     }
   },
-  async asyncData({ app }) {
-    const res = await app.$axios.get("/api/items?pageNum=1");
-    // console.log(res.data)
-    return {
-      items: res.data,
-      moreActive: 1
-    };
+  computed: {
+    getItems() {
+      return this.$store.getters.getItems
+    }
   }
 };
 </script>
