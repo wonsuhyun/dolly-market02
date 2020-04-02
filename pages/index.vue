@@ -1,11 +1,20 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="main-title">{{title}}</h1>
+      <h1 class="main-title">{{ title }}</h1>
       <!-- item List-->
       <ul class="item-list" >
-        <li :key="item.pid" v-for="item in items" >
-          <nuxt-link :to="`/items/${item.pid}`" >
+        <ItemCard v-for="item in items"
+                  :key="item.pid" 
+                  :pid="item.pid"
+                  :isNew="item.isNew"
+                  :title="item.title"
+                  :description="item.description"
+                  :images="item.images"
+                  :price="item.price"
+                  :paymentMethod="item.paymentMethod"
+                  :createDate="item.createDate" />
+          <!-- <nuxt-link :to="`/items/${item.pid}`" >
           <span class="new" v-if="item.isNew">NEW</span>
           <div>
             <h3>{{ item.title}}</h3>
@@ -19,9 +28,8 @@
             </div>
             <div class="create-date">{{ item.create }}</div>
           </div>
-          </nuxt-link>
-          
-        </li>
+          </nuxt-link> -->
+
       </ul>
       <div class="links">
         <a href="javascript:void(0)" class="moreBtn" @click="moreConts" v-bind:class="{ 'disabledBtn' : isActiveBtn }">MORE</a>
@@ -31,7 +39,8 @@
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue";
+import Logo from "~/components/Logo.vue"
+import ItemCard from '@/components/Items/ItemCard'
 
 export default {
   // async fetch({ app }){
@@ -40,7 +49,8 @@ export default {
   //   app.store.dispatch("testAction",res.data);
   // },
   components: {
-    Logo
+    Logo,
+    ItemCard
   },
   data(){
     return{
@@ -94,56 +104,6 @@ ul{
 
 }
 
-.item-list li {
-  float:left;
-  width:30%;
-  margin-right:3%;
-  text-align:left;
-  padding:20px 0 10px 0;
-  position:relative;
-  height:400px;
-  vertical-align:top
-}
-.item-list li.on{
-  border:1px solid red
-}
-.item-list li .create-date{
-  font-size:10px;
-  color:#d9d9d9;
-  text-align:center;
-  margin-top:5px;
-}
-.item-list li span.new{
-  position:absolute;
-  top:22px;
-  right:0;
-  background:linear-gradient(#e66465, #9198e5);;
-  color:#fff;
-  padding:5px 10px;
-  font-size:12px;
-}
-.item-list li .imgDiv{
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:0 0;
-  display:inline-block;
-  width:100%;
-  height:200px;
-  margin:10px 0
-}
-.item-list li .cash{
-  text-align:center;
-  margin-bottom:10px
-}
-.item-list li .cash .type{
-  font-size:12px;
-  border:1px solid #333;
-  padding:0 10px;
-  margin-left:15px;
-}
-.item-list li:last-child{
- margin-right:0;
-}
 .container {
   margin: 100px auto;
   width:1000px;
