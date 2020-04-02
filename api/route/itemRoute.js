@@ -1,5 +1,5 @@
 import { RouteBase } from '../../server/base'
-import { paths, methods } from '../constant'
+import { paths } from '../constant'
 import { ItemController } from '../controller'
 
 class ItemRoute extends RouteBase {
@@ -8,8 +8,8 @@ class ItemRoute extends RouteBase {
   }
 
   addRoutes() {
-    this.addRoute('/', methods.GET, this.controller.get)
-    this.addRoute('/:pid', methods.GET, this.controller.getById)
+    this.addRoute('/', this.methods.GET, this.controller.get)
+    this.addRoute('/:pid', this.methods.GET, this.controller.getById)
   }
 
 }

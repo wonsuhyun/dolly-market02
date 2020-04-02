@@ -1,5 +1,5 @@
 import { RouteBase } from '../../server/base'
-import { paths, methods } from '../constant'
+import { paths } from '../constant'
 import { AuthController } from '../controller'
 
 class AuthRoute extends RouteBase {
@@ -8,9 +8,9 @@ class AuthRoute extends RouteBase {
     }
 
     addRoutes() {
-        this.addRoute('/login', methods.POST, this.controller.login)
-        this.addRoute('/test', methods.GET, this.controller.test)
-        this.addRoute('/signup', methods.POST, this.controller.save)
+        this.addRoute('/login', this.methods.POST, this.controller.login)
+        this.addRoute('/test', this.methods.GET, this.controller.test)
+        this.addRoute('/signup', this.methods.POST, this.controller.save)
     }
 
 }

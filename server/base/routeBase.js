@@ -1,7 +1,9 @@
 import { errorToNext } from '../../server/util'
+import { methods } from '../const'
 
 class RouteBase {
     constructor(path, ControllerClass) {
+        this.methods = methods
         this.path = path
         this.controller = new ControllerClass()
         this.addRoutes = this.addRoutes.bind(this)

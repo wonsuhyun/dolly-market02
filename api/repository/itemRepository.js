@@ -1,5 +1,5 @@
 import createError from 'http-errors'
-import MySQLRepositoryBase from './mySQLRepositoryBase'
+import { MySQLRepositoryBase } from '../../server/base/'
 import { itemQuery } from '../query'
 import { paging } from '../constant'
 import TagRepository from './tagRepository'

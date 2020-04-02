@@ -1,6 +1,4 @@
 
-import crypto from 'crypto'
-
 import passport from 'passport'
 import passportJWT from 'passport-jwt'
 const JWTStrategy = passportJWT.Strategy
@@ -36,12 +34,4 @@ export const passportStrategy = () => {
                 .catch(err => done(err))
         }
     ))
-}
-
-export const criptPassword = (password) => {
-    const inputPassword = password
-    const salt = process.env.PASSWORD_SECRET
-    const hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex")
-
-    return hashPassword
 }

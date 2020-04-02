@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { userQuery } from '../query'
 import ImageRepository from './imageRepository'
 import { User, Image } from '../model'
-import { criptPassword } from '../util'
-import MySQLRepositoryBase from './mySQLRepositoryBase'
+import { criptPassword } from '../../server/util'
+import { MySQLRepositoryBase } from '../../server/base/'
 
 class UserRepository extends MySQLRepositoryBase {
    

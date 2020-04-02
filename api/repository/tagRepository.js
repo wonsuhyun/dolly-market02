@@ -1,6 +1,6 @@
 import { tagQuery } from '../query'
 import { Tag } from '../model'
-import MySQLRepositoryBase from './mySQLRepositoryBase'
+import { MySQLRepositoryBase } from '../../server/base/'
 
 class TagRepository extends MySQLRepositoryBase {
     
