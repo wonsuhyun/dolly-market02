@@ -17,12 +17,14 @@ class ItemRepository extends MySQLRepositoryBase {
     
     async get(pageNum) {
 
-        const itemList = await this.executeQuery(this.query.get(pageNum || paging.DEFAULT_PAGE_INDEX, paging.DEFAULT_PAGE_SIZE))
+        const _itemList = await this.executeQuery(this.query.get(pageNum || paging.DEFAULT_PAGE_INDEX, paging.DEFAULT_PAGE_SIZE))
 
-        itemList.map(item => {
+        // Todo: 리팩토링
+        let itemList = []
+        _itemList.map(item => {
             item = this.getMasterImage(item)
             item = this.getUser(item)
-            item = new Item(item)
+            item = itemList.push(new Item(item))
         })
 
         return itemList

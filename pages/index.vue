@@ -8,7 +8,7 @@
       <a
         href="javascript:void(0)"
         class="moreBtn"
-        @click="moreConts"
+        @click="moreItems"
         v-bind:class="{ 'disabledBtn' : isActiveBtn }"
       >MORE</a>
     </div>
@@ -31,21 +31,20 @@ export default {
     };
   },
   methods: {
-    async moreConts() {
-      if (this.isActiveBtn == false) {
-        const res = await this.$axios.$get(
-          "/api/items?pageNum=" + (this.moreActive + 1)
-        );
+    async moreItems() {
+      this.$store.dispatch('setItems', 2)
+      // if (this.isActiveBtn == false) {
+        
 
-        if (res.length > 0) {
-          this.moreActive += 1;
-          res.map(item => {
-            this.items.push(item);
-          });
-        } else {
-          this.isActiveBtn = true;
-        }
-      }
+      //   // if (res.length > 0) {
+      //   //   this.moreActive += 1;
+      //   //   res.map(item => {
+      //   //     this.items.push(item);
+      //   //   });
+      //   // } else {
+      //   //   this.isActiveBtn = true;
+      //   // }
+      // }
     },
     itemHover() {
       this.isHover == true;

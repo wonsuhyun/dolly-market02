@@ -3,21 +3,11 @@ export const state = () => ({
 })
 
 export const mutations = {
-    setItems(state, items) {
-        state.items = items
+    addItems({ items }, newItems) {
+        items.push(...newItems)
     }
 }
 export const getters = {
-    // getItem: (state) => (id) => {
-    //     var obj
-    //     state.items.some((item) => {
-    //         if (item.pid == id) {
-    //             obj = item
-    //             return false
-    //         }
-    //     })
-    //     return obj
-    // }
     getItems(state) {
         const { items } = state
         items.map(item => {
@@ -42,11 +32,12 @@ export const getters = {
     }
 }
 export const actions = {
-    async nuxtServerInit({ dispatch, getters }, { app }) {
+    async nuxtServerInit({ commit }, { app }) {
         const { data } = await app.$axios.get(`/api/items`)
-        dispatch("setItems", data)
+        commit("addItems", data)
     },
-    setItems({ commit }, items) {
-        commit("setItems", items)
+    async addItems({ commit }, pageNum) {
+        const { data } = await this.$axios.get(`/api/items?pageNum=${ pageNum }`)
+        commit("addItems", data)
     }
 }
