@@ -1,6 +1,6 @@
 <template>
-  <li>
-    <nuxt-link :to="`/items/${pid}`">
+  <nuxt-link :to="`/items/${pid}`">
+    <article class="item-card">
       <span class="new" v-if="isNew">NEW</span>
       <div>
         <h3>{{ title }}</h3>
@@ -12,8 +12,8 @@
         <div>{{ description}}</div>
         <!-- <div class="create-date">{{ createDate }}</div> -->
       </div>
-    </nuxt-link>
-  </li>
+    </article>
+  </nuxt-link>
 </template>
 
 <script>
@@ -53,11 +53,11 @@ export default {
       required: true
     }
   }
-};
+}
 </script>
 
 <style scoped>
-li {
+.item-card {
   float: left;
   width: 30%;
   margin-right: 3%;
@@ -67,16 +67,16 @@ li {
   height: 400px;
   vertical-align: top;
 }
-li.on {
+.item-card.on {
   border: 1px solid red;
 }
-li .create-date {
+.item-card .create-date {
   font-size: 10px;
   color: #d9d9d9;
   text-align: center;
   margin-top: 5px;
 }
-li span.new {
+.item-card span.new {
   position: absolute;
   top: 22px;
   right: 0;
@@ -85,7 +85,7 @@ li span.new {
   padding: 5px 10px;
   font-size: 12px;
 }
-li .imgDiv {
+.item-card .imgDiv {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -94,17 +94,17 @@ li .imgDiv {
   height: 200px;
   margin: 10px 0;
 }
-li .cash {
+.item-card .cash {
   text-align: center;
   margin-bottom: 10px;
 }
-li .cash .type {
+.item-card .cash .type {
   font-size: 12px;
   border: 1px solid #333;
   padding: 0 10px;
   margin-left: 15px;
 }
-li:last-child {
+.item-card:last-child {
   margin-right: 0;
 }
 </style>

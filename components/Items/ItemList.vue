@@ -1,6 +1,42 @@
 <template>
-   <div>
-   
-   </div>
-
+  <section class="item-list">
+    <ItemCard
+      v-for="item in items"
+      :key="item.pid"
+      :pid="item.pid"
+      :isNew="item.isNew"
+      :title="item.title"
+      :description="item.description"
+      :images="item.images"
+      :price="item.price"
+      :paymentMethod="item.paymentMethod"
+      :createDate="item.createDate"
+    />
+  </section>
 </template>
+
+<script>
+import ItemCard from "@/components/Items/ItemCard"
+
+export default {
+  components: {
+    ItemCard
+  },
+  props: {
+    items: {
+      type: Array,
+      required: true
+    }
+  }
+};
+</script>
+
+<style scoped>
+.item-list {
+  list-style: none;
+  text-align: center;
+  overflow: hidden;
+  width: 1000px;
+  margin: 30px auto 50px auto;
+}
+</style>

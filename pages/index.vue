@@ -1,36 +1,9 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="main-title">{{ title }}</h1>
+      <h1 class="main-title">{{title}}</h1>
       <!-- item List-->
-      <ul class="item-list" >
-        <ItemCard v-for="item in items"
-                  :key="item.pid" 
-                  :pid="item.pid"
-                  :isNew="item.isNew"
-                  :title="item.title"
-                  :description="item.description"
-                  :images="item.images"
-                  :price="item.price"
-                  :paymentMethod="item.paymentMethod"
-                  :createDate="item.createDate" />
-          <!-- <nuxt-link :to="`/items/${item.pid}`" >
-          <span class="new" v-if="item.isNew">NEW</span>
-          <div>
-            <h3>{{ item.title}}</h3>
-            <div class="imgDiv" :style="{backgroundImage: `url(${item.images[0].fileUrl})`}"></div>
-            <p class="cash">
-              <span>$ {{item.price}} </span>
-              <span class="type">{{item.paymentMethod}}</span>
-            </p>
-            <div>
-              {{item.description}}
-            </div>
-            <div class="create-date">{{ item.create }}</div>
-          </div>
-          </nuxt-link> -->
-
-      </ul>
+      <ItemList :items="items" />
       <div class="links">
         <a href="javascript:void(0)" class="moreBtn" @click="moreConts" v-bind:class="{ 'disabledBtn' : isActiveBtn }">MORE</a>
       </div>
@@ -39,18 +12,11 @@
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue"
-import ItemCard from '@/components/Items/ItemCard'
+import ItemList from "@/components/Items/ItemList"
 
 export default {
-  // async fetch({ app }){
-  //   let res = await app.$axios.get("/api/item")
-  //   console.log(res.data[0]);
-  //   app.store.dispatch("testAction",res.data);
-  // },
   components: {
-    Logo,
-    ItemCard
+    ItemList
   },
   data(){
     return{
@@ -93,17 +59,67 @@ export default {
 
 <style>
 
-ul{
+/* ul{
   list-style:none;
   text-align:center
-}
-.item-list{
+} */
+/* .item-list{
   overflow:hidden;
   width:1000px;
   margin:30px auto 50px auto;
 
+} */
+/* 
+.item-list li {
+  float:left;
+  width:30%;
+  margin-right:3%;
+  text-align:left;
+  padding:20px 0 10px 0;
+  position:relative;
+  height:400px;
+  vertical-align:top
 }
-
+.item-list li.on{
+  border:1px solid red
+}
+.item-list li .create-date{
+  font-size:10px;
+  color:#d9d9d9;
+  text-align:center;
+  margin-top:5px;
+}
+.item-list li span.new{
+  position:absolute;
+  top:22px;
+  right:0;
+  background:linear-gradient(#e66465, #9198e5);;
+  color:#fff;
+  padding:5px 10px;
+  font-size:12px;
+}
+.item-list li .imgDiv{
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:0 0;
+  display:inline-block;
+  width:100%;
+  height:200px;
+  margin:10px 0
+}
+.item-list li .cash{
+  text-align:center;
+  margin-bottom:10px
+}
+.item-list li .cash .type{
+  font-size:12px;
+  border:1px solid #333;
+  padding:0 10px;
+  margin-left:15px;
+}
+.item-list li:last-child{
+ margin-right:0;
+} */
 .container {
   margin: 100px auto;
   width:1000px;
