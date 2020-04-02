@@ -8,8 +8,7 @@ export const mutations = {
     }
 }
 export const getters = {
-    getItems(state) {
-        const { items } = state
+    getItems({ items }) {
         items.map(item => {
             // 1주일 단위로 new Data 생성
             var today = new Date
