@@ -10,6 +10,7 @@ export const mutations = {
 export const getters = {
     getItems({ items }) {
         items.map(item => {
+            // Todo: Momento 같은 라이브러리 사용해 코드 줄이기
             // 1주일 단위로 new Data 생성
             var today = new Date
             var week = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7)
