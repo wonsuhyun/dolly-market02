@@ -3,7 +3,7 @@ import createError from 'http-errors'
 
 import { UserRepository } from '../repository'
 import { issueToken, errorToNext } from '../../server/util'
-import ControllerBase from './controllerBase'
+import { ControllerBase } from '../../server/base'
 
 class AuthController extends ControllerBase {
 
