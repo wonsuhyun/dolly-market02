@@ -2,7 +2,7 @@
   <div class="detail-wrap">
     <section class="detail">
       <div class="detail-img">
-        <!-- swiper -->
+        <Swiper :images="itemData.images" />
       </div>
       <div class="detail-desc">
         <ItemDetail
@@ -20,10 +20,12 @@
 </template>
 <script>
 import ItemDetail from "@/components/Item/ItemDetail";
+import Swiper from "@/components/UI/Swiper";
 
 export default {
   components: {
-    ItemDetail
+    ItemDetail,
+    Swiper
   },
   async asyncData(ctx) {
     const res = await ctx.$axios.get(`/api/items/${ctx.route.params.id}`);
@@ -43,7 +45,7 @@ export default {
 }
 .detail > div {
   display: inline-block;
-  width: 50%;
+  width: 49%;
   text-align: left;
   vertical-align: top;
 }

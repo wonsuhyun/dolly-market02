@@ -24,6 +24,12 @@ export default {
     Swiper,
     SwiperSlide
   },
+  props: {
+    images: {
+      type: Array,
+      required: true
+    }
+  },
   directives: {
     swiper: directive
   }

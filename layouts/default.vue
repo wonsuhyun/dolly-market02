@@ -7,24 +7,24 @@
   </div>
 </template>
 <script>
-import Header from "@/layouts/comp/header";
+import Header from "@/layouts/components/header";
 export default {
-  components:{
+  components: {
     Header
   }
-}
+};
 </script>
 <style>
-a{
-  text-decoration:none;
-  color:#333
+a {
+  text-decoration: none;
+  color: #333;
 }
-input{
-  padding:3px 5px;
+input {
+  padding: 3px 5px;
 }
 
 html {
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -33,10 +33,20 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-body,ul,p,li,div,h1,h2,h3,span,a,ol {
-  margin:0;
-  padding:0;
-  box-sizing:border-box
+body,
+ul,
+p,
+li,
+div,
+h1,
+h2,
+h3,
+span,
+a,
+ol {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 *,
 *:before,
@@ -52,7 +62,7 @@ body,ul,p,li,div,h1,h2,h3,span,a,ol {
   color: #3b8070;
   text-decoration: none;
   padding: 10px 30px;
-  width:400px;
+  width: 400px;
 }
 
 .button--green:hover {
