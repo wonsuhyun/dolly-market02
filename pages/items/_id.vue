@@ -23,16 +23,12 @@ import ItemDetail from "@/components/Item/ItemDetail";
 import Swiper from "@/components/UI/Swiper";
 
 export default {
-  data() {
-    return {
-      itemData: {}
-    };
-  },
   components: {
     ItemDetail,
     Swiper
   },
   async asyncData(ctx) {
+    // Todo: 스토어 뒤져서 있으면 그거 뿌리고 없으면 axios 호출해서 스토어에 추가해야 함
     const res = await ctx.$axios.get(`/api/items/${ctx.route.params.id}`);
     return {
       itemData: res.data
@@ -54,25 +50,6 @@ export default {
   text-align: left;
   vertical-align: top;
 }
-.swiper-slide {
-  width: 100%;
-  height: 400px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 0;
-}
-.swiper-container {
-  width: 100%;
-  height: 400px;
-}
-.main-img {
-  display: inline-block;
-  width: 100%;
-  height: 400px;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .detail-desc {
   padding-left: 40px;
   vertical-align: top;

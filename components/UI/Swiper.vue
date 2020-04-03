@@ -43,5 +43,11 @@ export default {
 </script>
 
 <style scoped>
-
+/* Todo: 나중에 컴포넌트 재활용 대비해서 아래 부분 동적 CSS로 만들어야 함 */
+.swiper-slide {
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 0;
+}
 </style>
