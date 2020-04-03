@@ -2,6 +2,7 @@
     // Use IntelliSense to learn about possible attributes.
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // Reference: https://medium.com/js-dojo/debugging-nuxt-js-with-vs-code-60a1a9e75cf6
     "version": "0.2.0",
     "configurations": [
         {

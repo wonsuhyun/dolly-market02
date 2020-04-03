@@ -3,9 +3,9 @@
   
     <div class="detail-table">
          <div class="imgZone">
-             <swiper :options="swiperOption" ref="mySwiper">
+             <!-- <swiper :options="swiperOption" ref="mySwiper">
                 <swiper-slide :key="image.pid" v-for="image in itemData.images" :style="{backgroundImage: `url(${ image.fileUrl })`}"></swiper-slide>
-            </swiper>
+            </swiper> -->
         </div>
         <div class="info">
             <p class="title">{{itemData.title}}</p>
@@ -21,7 +21,8 @@
                     </tr>
                 </tbody>
             </table>
-            <div>
+            <UserBadge :user="itemData.user" />
+            <!-- <div>
                 <div class="user">
                     <div class="user-pf" :style="{backgroundImage: `url(${itemData.user.image.fileUrl})`}"></div>
                     <div class="user-info">
@@ -29,7 +30,7 @@
                         <p>{{ itemData.user.email }}</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="btn-buy">
                 <button type="button">BUY NOW</button>
             </div>
@@ -38,27 +39,29 @@
 </div>
 </template>
 <script>
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
-import 'swiper/css/swiper.css'
+// import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+// import 'swiper/css/swiper.css'
+import UserBadge from "@/components/User/UserBadge";
 
 export default {
-    data(){
-        return{
-            itemData:{},
-            swiperOption:{
-                loop:true
-            }
-        }
-    },
+    // data(){
+    //     return {
+    //         swiperOption:{
+    //             loop:true
+    //         }
+    //     }
+    // },
     components: {
-        Swiper,
-        SwiperSlide
+        // Swiper,
+        // SwiperSlide
+        UserBadge
     },
-      directives: {
-        swiper: directive
-    },
+    //   directives: {
+    //     swiper: directive
+    // },
     async asyncData(ctx){
         const res = await ctx.$axios.get(`/api/items/${ctx.route.params.id}`)
+        debugger
         return {
             itemData:res.data
         }
@@ -118,7 +121,7 @@ export default {
 .detail-wrap .detail-table .info .btn-buy{
     width:100%;
 }
-.detail-wrap .detail-table .info .user{
+/* .detail-wrap .detail-table .info .user{
     position:relative;
 }
 .detail-wrap .detail-table .info .user .user-pf{
@@ -138,7 +141,7 @@ export default {
 .detail-wrap .detail-table .info .user .user-info{
     padding-left:80px;
     margin:50px 0 
-}
+} */
 .detail-wrap .detail-table .info .btn-buy button{
     width:100%;
     border:none;
