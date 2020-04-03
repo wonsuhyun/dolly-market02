@@ -1,18 +1,26 @@
 <template>
-  <div class="user-badge">
-    <div class="user-pf" :style="{backgroundImage: `url(${user.image.fileUrl})`}"></div>
-    <div class="user-info">
-      <p class="user-name">{{ user.nickname }}</p>
-      <p>{{ user.email }}</p>
+  <section class="user-badge">
+    <div class="img" :style="{backgroundImage: `url(${image.fileUrl})`}"></div>
+    <div class="detail">
+      <p class="name">{{ nickname }}</p>
+      <p>{{ email }}</p>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
   props: {
-    user: {
+    image: {
       type: Object,
+      required: false
+    },
+    nickname: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
       required: true
     }
   }
@@ -23,7 +31,7 @@ export default {
 .user-badge {
   position: relative;
 }
-.user-badge .user-pf {
+.user-badge .img {
   position: absolute;
   width: 60px;
   height: 60px;
@@ -32,11 +40,11 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.user-badge .user-name {
+.user-badge .name {
   margin-bottom: 8px;
   font-size: 18px;
 }
-.user-badge .user-info {
+.user-badge .detail {
   padding-left: 80px;
   margin: 50px 0;
 }

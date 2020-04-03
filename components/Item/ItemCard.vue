@@ -4,13 +4,12 @@
       <span class="new" v-if="isNew">NEW</span>
       <div>
         <h3>{{ title }}</h3>
-        <div class="imgDiv" :style="{ backgroundImage: `url(${images[0].fileUrl})` }"></div>
+        <div class="img" :style="{ backgroundImage: `url(${images[0].fileUrl})` }"></div>
         <p class="cash">
           <span>$ {{ price }}</span>
           <span class="type">{{ paymentMethod }}</span>
         </p>
         <div>{{ description}}</div>
-        <!-- <div class="create-date">{{ createDate }}</div> -->
       </div>
     </article>
   </nuxt-link>
@@ -67,15 +66,6 @@ export default {
   height: 400px;
   vertical-align: top;
 }
-.item-card.on {
-  border: 1px solid red;
-}
-.item-card .create-date {
-  font-size: 10px;
-  color: #d9d9d9;
-  text-align: center;
-  margin-top: 5px;
-}
 .item-card span.new {
   position: absolute;
   top: 22px;
@@ -85,7 +75,7 @@ export default {
   padding: 5px 10px;
   font-size: 12px;
 }
-.item-card .imgDiv {
+.item-card .img {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;

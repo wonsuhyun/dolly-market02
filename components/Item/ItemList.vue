@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import ItemCard from "@/components/Items/ItemCard"
+import ItemCard from "@/components/Item/ItemCard"
 
 export default {
   components: {

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import ItemList from "@/components/Items/ItemList";
+import ItemList from "@/components/Item/ItemList";
 
 export default {
   components: {
@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   margin: 100px auto;
   width: 1000px;
