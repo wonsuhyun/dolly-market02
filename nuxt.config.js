@@ -53,6 +53,9 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      }
     }
   },
   /*
@@ -61,6 +64,6 @@ module.exports = {
   serverMiddleware: [
     { path: '/api', handler: '~/api/index.js' }
   ],
-  router:{
+  router: {
   }
 }
