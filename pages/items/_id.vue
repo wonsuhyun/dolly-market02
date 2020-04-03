@@ -1,12 +1,10 @@
 <template>
-  <div class="detail-wrap container">
-    <div class="details">
-      <div class="item-img">
-        <!-- <swiper :options="swiperOption" ref="mySwiper">
-                <swiper-slide :key="image.pid" v-for="image in itemData.images" :style="{backgroundImage: `url(${ image.fileUrl })`}"></swiper-slide>
-        </swiper>-->
+  <div class="detail-wrap">
+    <section class="detail">
+      <div class="detail-img">
+        <!-- swiper -->
       </div>
-      <div class="item-detail">
+      <div class="detail-desc">
         <ItemDetail
           :title="itemData.title"
           :price="itemData.price"
@@ -17,31 +15,16 @@
           <button type="button">BUY NOW</button>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 <script>
-// import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
-// import 'swiper/css/swiper.css'
-
 import ItemDetail from "@/components/Item/ItemDetail";
 
 export default {
-  // data(){
-  //     return {
-  //         swiperOption:{
-  //             loop:true
-  //         }
-  //     }
-  // },
   components: {
-    // Swiper,
-    // SwiperSlide
     ItemDetail
   },
-  //   directives: {
-  //     swiper: directive
-  // },
   async asyncData(ctx) {
     const res = await ctx.$axios.get(`/api/items/${ctx.route.params.id}`);
     return {
@@ -51,31 +34,20 @@ export default {
 };
 </script>
 <style scoped>
-/* .swiper-slide {
-  width: 100%;
-  height: 400px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 0;
-}
-.detail-wrap .swiper-container {
-  width: 100%;
-  height: 400px;
-} */
 .detail-wrap {
   margin-top: 100px;
 }
-.detail-wrap .details {
+.detail {
   width: 100%;
   overflow: hidden;
 }
-.detail-wrap .details > div {
+.detail > div {
   display: inline-block;
   width: 50%;
   text-align: left;
   vertical-align: top;
 }
-.detail-wrap .details .item-detail {
+.detail-desc {
   padding-left: 40px;
   vertical-align: top;
 }
@@ -94,12 +66,5 @@ export default {
 }
 .btn-buy button:hover {
   background: #777;
-}
-.detail-wrap .detail-table .item-img .main-img {
-  display: inline-block;
-  width: 100%;
-  height: 400px;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 </style>

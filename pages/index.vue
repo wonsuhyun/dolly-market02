@@ -33,9 +33,8 @@ export default {
   methods: {
     // Todo: pageNum, disabled 처리와 같은 거 해야 함
     async moreItems() {
-      this.$store.dispatch('setItems', 2)
+      this.$store.dispatch("setItems", 2);
       // if (this.isActiveBtn == false) {
-        
 
       //   // if (res.length > 0) {
       //   //   this.moreActive += 1;
@@ -53,22 +52,14 @@ export default {
   },
   computed: {
     getItems() {
-      return this.$store.getters.getItems
+      return this.$store.getters.getItems;
     }
   }
 };
 </script>
 
-<style scoped>
-.container {
-  margin: 100px auto;
-  width: 1000px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.container .main-title h1 {
+<style>
+.main-title h1 {
   font-family: "Pacifico";
   display: block;
   font-weight: 300;
