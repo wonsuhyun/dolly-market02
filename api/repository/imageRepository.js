@@ -14,9 +14,10 @@ class ImageRepository extends MySQLRepositoryBase {
     }
 
     async getByItemId(itemId) {
-        const imageList = await this.executeQuery(this.query.getByItemId(itemId))
+        const _imageList = await this.executeQuery(this.query.getByItemId(itemId))
 
-        imageList.map(image => image = new Image(image))
+        let imageList = []
+        _imageList.map(image => imageList.push(new Image(image)))
         
         return imageList
     }

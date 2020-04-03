@@ -23,6 +23,11 @@ import ItemDetail from "@/components/Item/ItemDetail";
 import Swiper from "@/components/UI/Swiper";
 
 export default {
+  data() {
+    return {
+      itemData: {}
+    };
+  },
   components: {
     ItemDetail,
     Swiper
@@ -49,6 +54,25 @@ export default {
   text-align: left;
   vertical-align: top;
 }
+.swiper-slide {
+  width: 100%;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 0;
+}
+.swiper-container {
+  width: 100%;
+  height: 400px;
+}
+.main-img {
+  display: inline-block;
+  width: 100%;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .detail-desc {
   padding-left: 40px;
   vertical-align: top;

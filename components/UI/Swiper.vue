@@ -1,25 +1,19 @@
 <template>
-  <swiper :options="swiperOption" ref="mySwiper">
+  <swiper ref="mySwiper" :options="swiperOptions">
     <swiper-slide
       :key="image.pid"
       v-for="image in images"
       :style="{backgroundImage: `url(${ image.fileUrl })`}"
     ></swiper-slide>
+    <div class="swiper-pagination" slot="pagination"></div>
   </swiper>
 </template>
 
 <script>
-import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import "swiper/css/swiper.css";
 
 export default {
-  data() {
-    return {
-      swiperOption: {
-        loop: true
-      }
-    };
-  },
   components: {
     Swiper,
     SwiperSlide
@@ -30,29 +24,24 @@ export default {
       required: true
     }
   },
-  directives: {
-    swiper: directive
+  name: "carrousel",
+  data() {
+    return {
+      swiperOptions: {
+        pagination: {
+          el: ".swiper-pagination"
+        }
+      }
+    };
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.$swiper;
+    }
   }
 };
 </script>
 
 <style scoped>
-.swiper-slide {
-  width: 100%;
-  height: 400px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 0;
-}
-.swiper-container {
-  width: 100%;
-  height: 400px;
-}
-.main-img {
-  display: inline-block;
-  width: 100%;
-  height: 400px;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 </style>

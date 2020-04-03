@@ -9,9 +9,9 @@ class TagRepository extends MySQLRepositoryBase {
     }
     
     async getByItemId(itemId) {
-        const tagList = await this.executeQuery(this.query.getByItemId(itemId))
-
-        tagList.map(tag => tag = new Tag(tag))
+        const _tagList = await this.executeQuery(this.query.getByItemId(itemId))
+        let tagList = []
+        _tagList.map(tag => tagList.push(new Tag(tag)))
 
         return tagList
     }
