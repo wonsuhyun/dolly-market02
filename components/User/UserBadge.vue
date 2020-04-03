@@ -1,11 +1,11 @@
 <template>
-  <section class="user-badge">
+  <div class="user-badge">
     <div class="user-pf" :style="{backgroundImage: `url(${user.image.fileUrl})`}"></div>
     <div class="user-info">
       <p class="user-name">{{ user.nickname }}</p>
       <p>{{ user.email }}</p>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
