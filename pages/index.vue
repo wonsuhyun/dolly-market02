@@ -8,7 +8,7 @@
       <a
         href="javascript:void(0)"
         class="moreBtn"
-        :class="{ disabledBtn: isActiveBtn }"
+        :class="{ disabledBtn: !isActiveBtn }"
         @click="moreItems"
       >MORE</a>
     </div>
@@ -25,9 +25,10 @@ export default {
   data() {
     return {
       title: "Dolly-Market",
-      isActiveBtn: false,
+      isActiveBtn: true,
       isHover: false,
       moreActive: 0,
+      pageNum: 1
     }
   },
   computed: {
@@ -36,20 +37,9 @@ export default {
     },
   },
   methods: {
-    // Todo: pageNum, disabled 처리와 같은 거 해야 함
+    // Todo: disabled 처리 해야 함
     async moreItems() {
-      this.$store.dispatch("addItems", 2)
-      // if (this.isActiveBtn == false) {
-
-      //   // if (res.length > 0) {
-      //   //   this.moreActive += 1;
-      //   //   res.map(item => {
-      //   //     this.items.push(item);
-      //   //   });
-      //   // } else {
-      //   //   this.isActiveBtn = true;
-      //   // }
-      // }
+      this.$store.dispatch("addItems", ++this.pageNum)
     },
     itemHover() {
       this.isHover === true
