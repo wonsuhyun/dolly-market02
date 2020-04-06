@@ -69,9 +69,10 @@ class ItemRepository extends MySQLRepositoryBase {
             image: profileImage
         }
 
-        item['user'] = new User(user)
+        const _item = item
+        _item['user'] = new User(user)
 
-        return item
+        return _item
     }
 
     getMasterImage(item) {
@@ -86,28 +87,30 @@ class ItemRepository extends MySQLRepositoryBase {
         }
 
         const imageArr = []
-
         imageArr.push(new Image(masterImage))
+        const _item = item
 
-        item['images'] = imageArr
+        _item['images'] = imageArr
 
-        return item
+        return _item
     }
 
     async getTags(item) {
         const tagList = await this.tagRepository.getByItemId(item.pid)
+        const _item = item
 
-        item['tags'] = tagList
+        _item['tags'] = tagList
 
-        return item
+        return _item
     }
 
     async getImages(item) {
         const imageList = await this.imageRepository.getByItemId(item.pid)
+        const _item = item
 
-        item['images'] = imageList
+        _item['images'] = imageList
 
-        return item
+        return _item
     }
 }
 

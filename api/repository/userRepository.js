@@ -40,21 +40,23 @@ class UserRepository extends MySQLRepositoryBase {
 
     async getProfileImage(user) {
         const image = await this.imageRepository.getById(imgId)
-        user.image = new Image(image[0])
+        const _user = user
+        _user.image = new Image(image[0])
 
-        return user
+        return _user
     }
 
     async save(user) {
         // 이메일 중복 검사
         const { email, password } = user
-        const _user = await this.getByEmail(email)
-        if (_user.length > 0) throw new createError(409, `User Already Exists: ${ email }`)
+        const duplicatedUser = await this.getByEmail(email)
+        if (duplicatedUser.length > 0) throw new createError(409, `User Already Exists: ${ email }`)
 
         // 비밀번호 암호화
-        user.password = criptPassword(password)
-        user.pid = uuidv4()
-        await this.executeQuery(this.query.save(user))
+        const _user = user
+        _user.password = criptPassword(password)
+        _user.pid = uuidv4()
+        await this.executeQuery(this.query.save(_user))
     }
 
 }

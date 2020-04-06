@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     enterKey: function(e) {
-      if (e.keyCode == 13) {
+      if (e.keyCode === 13) {
         console.log("keyup");
         $("#serchBtn").trigger("click");
       }

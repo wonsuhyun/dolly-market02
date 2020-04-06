@@ -1,9 +1,10 @@
 import passport from 'passport'
 import createError from 'http-errors'
+import morgan from 'morgan'
 
 import { passportStrategy } from './util'
 import { ServerBase } from '../server/base'
-const isListenable = process.env.NODE_ENV == 'api'
+const isListenable = process.env.NODE_ENV === 'api'
 
 class APIServer extends ServerBase {
 
@@ -16,6 +17,7 @@ class APIServer extends ServerBase {
         this.app.use(this.express.json())
         this.app.use(passport.initialize())
         passportStrategy()
+        this.app.use(morgan('tiny'))
     }
 
     registerRoutes() {

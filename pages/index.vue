@@ -47,7 +47,7 @@ export default {
       // }
     },
     itemHover() {
-      this.isHover == true;
+      this.isHover === true;
     }
   },
   computed: {
