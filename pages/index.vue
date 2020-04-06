@@ -38,7 +38,7 @@ export default {
   methods: {
     // Todo: pageNum, disabled 처리와 같은 거 해야 함
     async moreItems() {
-      this.$store.dispatch("setItems", 2)
+      this.$store.dispatch("addItems", 2)
       // if (this.isActiveBtn == false) {
 
       //   // if (res.length > 0) {
