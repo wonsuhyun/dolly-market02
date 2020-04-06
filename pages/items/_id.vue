@@ -33,8 +33,8 @@ export default {
     const itemId = params.id
 
     await store.dispatch("item/setItem", itemId)
-    const item = store.getters["item/getItem"]  
-  
+    const item = store.getters["item/getItem"]
+
     return { item }
   },
 }

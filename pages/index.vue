@@ -22,17 +22,17 @@ export default {
   components: {
     ItemList,
   },
+  async fetch({ app }) {
+    await app.store.dispatch("item/setItems")
+  },
   data() {
     return {
       title: "Dolly-Market",
       isActiveBtn: true,
       isHover: false,
       moreActive: 0,
-      pageNum: 1
+      pageNum: 1,
     }
-  },
-  async fetch({ app }) {
-    await app.store.dispatch("item/setItems")
   },
   computed: {
     getItems() {
