@@ -7,7 +7,6 @@ class ItemController extends ControllerBase {
   }
 
   async get(req, res) {
-    // Todo: getById와 같은 포맷으로 데이터 넘겨야함
     const { pageNum } = req.query
     const items = await this.repository.get(pageNum)
     this.ok(res, items)
