@@ -32,17 +32,17 @@ export default {
     }
   },
   async fetch({ app }) {
-    await app.store.dispatch("setItems")
+    await app.store.dispatch("item/setItems")
   },
   computed: {
     getItems() {
-      return this.$store.getters.getItems
+      return this.$store.getters["item/getItems"]
     },
   },
   methods: {
     // Todo: disabled 처리 해야 함
     async moreItems() {
-      await this.$store.dispatch("setItems", ++this.pageNum)
+      await this.$store.dispatch("item/setItems", ++this.pageNum)
     },
     itemHover() {
       this.isHover === true

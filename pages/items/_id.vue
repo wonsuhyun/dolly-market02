@@ -32,8 +32,8 @@ export default {
   async asyncData({ params, store }) {
     const itemId = params.id
 
-    await store.dispatch("setItem", itemId)
-    const item = store.getters.getItem  
+    await store.dispatch("item/setItem", itemId)
+    const item = store.getters["item/getItem"]  
   
     return { item }
   },

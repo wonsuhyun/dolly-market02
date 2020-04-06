@@ -11,6 +11,7 @@ export const mutations = {
     state.item = item
   },
 }
+
 export const getters = {
   getItems({ items }) {
     items.map((item) => {
@@ -46,11 +47,8 @@ export const getters = {
     return item
   },
 }
+
 export const actions = {
-  // async nuxtServerInit({ commit }, { app }) {
-  //   const { data } = await app.$axios.get(`/api/items`)
-  //   commit("setItems", data)
-  // },
   async setItems({ commit }, pageNum = 1) {
     const { data } = await this.$axios.get(`/api/items?pageNum=${pageNum}`)
     commit("setItems", data)
