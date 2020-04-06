@@ -39,7 +39,7 @@ export default {
   methods: {
     // Todo: disabled 처리 해야 함
     async moreItems() {
-      this.$store.dispatch("addItems", ++this.pageNum)
+      this.$store.dispatch("setItems", ++this.pageNum)
     },
     itemHover() {
       this.isHover === true

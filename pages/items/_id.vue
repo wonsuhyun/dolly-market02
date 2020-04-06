@@ -37,7 +37,7 @@ export default {
     const isItemExisting = item && item.pid === itemId
 
     if (!isItemExisting) {
-      await store.dispatch("addItem", itemId)
+      await store.dispatch("setItem", itemId)
       item = getters.getItem  
     }
     
