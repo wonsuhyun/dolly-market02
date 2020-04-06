@@ -32,6 +32,7 @@
     "vue-awesome-swiper": "^4.1.0"
   },
   "devDependencies": {
+    "@nuxtjs/vuetify": "^1.11.0",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^24.1.0",
