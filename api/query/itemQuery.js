@@ -1,8 +1,11 @@
-import { paging } from '../constant'
+import { paging } from "../constant"
 
 const itemQuery = {
-    get(pageNum = paging.DEFAULT_PAGE_INDEX, pageSize = paging.DEFAULT_PAGE_SIZE) {
-        return `SELECT
+  get(
+    pageNum = paging.DEFAULT_PAGE_INDEX,
+    pageSize = paging.DEFAULT_PAGE_SIZE
+  ) {
+    return `SELECT
                     A.pid,
                     A.create_date,
                     A.modify_date,
@@ -41,9 +44,9 @@ const itemQuery = {
                     C.img_rid = D.pid
                 ORDER BY A.create_date DESC
                 LIMIT ${(pageNum - 1) * pageSize}, ${pageSize}`
-    },
-    getById(itemId) {
-        return `SELECT
+  },
+  getById(itemId) {
+    return `SELECT
                     A.pid,
                     A.create_date,
                     A.modify_date,
@@ -72,7 +75,7 @@ const itemQuery = {
                 LEFT OUTER JOIN dollymarket.image D ON
                     C.img_rid = D.pid
                 WHERE A.pid = '${itemId}'`
-    }
+  },
 }
 
-export default itemQuery 
+export default itemQuery

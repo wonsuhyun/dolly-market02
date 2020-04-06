@@ -1,6 +1,6 @@
 const imageQuery = {
-    getByItemId(itemId) {
-        return `SELECT
+  getByItemId(itemId) {
+    return `SELECT
                     A.pid,
                     A.create_date,
                     A.file_name,
@@ -10,9 +10,9 @@ const imageQuery = {
                 FROM
                     image A
                 WHERE A.item_rid = '${itemId}'`
-    },
-    getById(imageId) {
-        return `SELECT
+  },
+  getById(imageId) {
+    return `SELECT
             A.pid,
             A.create_date,
             A.file_name,
@@ -22,7 +22,7 @@ const imageQuery = {
         FROM
             image A
         WHERE A.pid = '${imageId}'`
-    }
+  },
 }
 
-export default imageQuery 
+export default imageQuery

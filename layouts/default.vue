@@ -7,12 +7,12 @@
   </div>
 </template>
 <script>
-import Header from "@/layouts/components/header";
+import Header from "@/layouts/components/header"
 export default {
   components: {
-    Header
-  }
-};
+    Header,
+  },
+}
 </script>
 <style>
 a {

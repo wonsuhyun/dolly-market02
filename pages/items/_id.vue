@@ -12,29 +12,31 @@
           :user="itemData.user"
         />
         <div class="btn-buy">
-          <button type="button">BUY NOW</button>
+          <button type="button">
+            BUY NOW
+          </button>
         </div>
       </div>
     </section>
   </div>
 </template>
 <script>
-import ItemDetail from "@/components/Item/ItemDetail";
-import Swiper from "@/components/UI/Swiper";
+import ItemDetail from "@/components/Item/ItemDetail"
+import Swiper from "@/components/UI/Swiper"
 
 export default {
   components: {
     ItemDetail,
-    Swiper
+    Swiper,
   },
   async asyncData(ctx) {
     // Todo: 스토어 뒤져서 있으면 그거 뿌리고 없으면 axios 호출해서 스토어에 추가해야 함
-    const res = await ctx.$axios.get(`/api/items/${ctx.route.params.id}`);
+    const res = await ctx.$axios.get(`/api/items/${ctx.route.params.id}`)
     return {
-      itemData: res.data
-    };
-  }
-};
+      itemData: res.data,
+    }
+  },
+}
 </script>
 <style scoped>
 .detail-wrap {

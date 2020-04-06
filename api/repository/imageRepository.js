@@ -1,27 +1,25 @@
-import { imageQuery } from '../query'
-import { Image } from '../model'
-import { MySQLRepositoryBase } from '../../server/base/'
+import { imageQuery } from "../query"
+import { Image } from "../model"
+import { MySQLRepositoryBase } from "../../server/base/"
 
 class ImageRepository extends MySQLRepositoryBase {
+  constructor() {
+    super(imageQuery)
+  }
 
-    constructor() {
-        super(imageQuery)
-    }
-    
-    async getById(imgId) {
-        const image = await this.executeQuery(this.query.getById(imgId))
-        return image
-    }
+  async getById(imgId) {
+    const image = await this.executeQuery(this.query.getById(imgId))
+    return image
+  }
 
-    async getByItemId(itemId) {
-        const _imageList = await this.executeQuery(this.query.getByItemId(itemId))
+  async getByItemId(itemId) {
+    const _imageList = await this.executeQuery(this.query.getByItemId(itemId))
 
-        let imageList = []
-        _imageList.map(image => imageList.push(new Image(image)))
-        
-        return imageList
-    }
+    let imageList = []
+    _imageList.map((image) => imageList.push(new Image(image)))
 
+    return imageList
+  }
 }
 
 export default ImageRepository

@@ -1,15 +1,18 @@
 <template>
   <nuxt-link :to="`/items/${pid}`">
     <article class="item-card">
-      <span class="new" v-if="isNew">NEW</span>
+      <span v-if="isNew" class="new">NEW</span>
       <div>
         <h3>{{ title }}</h3>
-        <div class="img" :style="{ backgroundImage: `url(${images[0].fileUrl})` }"></div>
+        <div
+          class="img"
+          :style="{ backgroundImage: `url(${images[0].fileUrl})` }"
+        />
         <p class="cash">
           <span>$ {{ price }}</span>
           <span class="type">{{ paymentMethod }}</span>
         </p>
-        <div>{{ description}}</div>
+        <div>{{ description }}</div>
       </div>
     </article>
   </nuxt-link>
@@ -21,37 +24,37 @@ export default {
   props: {
     pid: {
       type: String,
-      required: true
+      required: true,
     },
     isNew: {
       type: Boolean,
-      required: false
+      required: false,
     },
     title: {
       type: String,
-      required: true
+      required: true,
     },
     description: {
       type: String,
-      required: true
+      required: true,
     },
     images: {
       type: Array,
-      required: false
+      required: false,
     },
     price: {
       type: Number,
-      required: true
+      required: true,
     },
     paymentMethod: {
       type: String,
-      required: true
+      required: true,
     },
     createDate: {
       type: String,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 

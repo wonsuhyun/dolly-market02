@@ -1,6 +1,6 @@
 const userQuery = {
-    getAuth(email, password) {
-        return `SELECT
+  getAuth(email, password) {
+    return `SELECT
                     A.pid,
                     A.create_date,
                     A.modify_date,
@@ -11,9 +11,9 @@ const userQuery = {
                     user A
                 WHERE A.email = '${email}'
                 AND A.pass_word='${password}'`
-    },
-    getByEmail(email) {
-        return `SELECT
+  },
+  getByEmail(email) {
+    return `SELECT
                     A.pid,
                     A.create_date,
                     A.modify_date,
@@ -23,9 +23,9 @@ const userQuery = {
                 FROM
                     user A
                 WHERE A.email = '${email}'`
-    },
-    save({ pid, email, nickname, password, imgId }) {
-        return `
+  },
+  save({ pid, email, nickname, password, imgId }) {
+    return `
         INSERT
             INTO
                 user (pid,
@@ -35,14 +35,14 @@ const userQuery = {
                 nickname,
                 pass_word,
                 img_rid)
-            VALUES('${ pid }',
+            VALUES('${pid}',
             NOW(),
             NOW(),
-            '${ email }',
-            '${ nickname }',
-            '${ password }',
-            ${ imgId ? `'${imgId}'`: null  })`
-    }
+            '${email}',
+            '${nickname}',
+            '${password}',
+            ${imgId ? `'${imgId}'` : null})`
+  },
 }
 
-export default userQuery 
+export default userQuery

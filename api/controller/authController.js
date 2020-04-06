@@ -1,47 +1,43 @@
-import passport from 'passport'
-import createError from 'http-errors'
+import passport from "passport"
+import createError from "http-errors"
 
-import { UserRepository } from '../repository'
-import { issueToken, errorToNext } from '../../server/util'
-import { ControllerBase } from '../../server/base'
+import { UserRepository } from "../repository"
+import { issueToken, errorToNext } from "../../server/util"
+import { ControllerBase } from "../../server/base"
 
 class AuthController extends ControllerBase {
+  constructor() {
+    super(UserRepository)
+  }
 
-    constructor() {
-        super(UserRepository)
-    }
+  async login(req, res, next) {
+    passport.authenticate("local", { session: false }, (err, user) => {
+      if (err) return errorToNext(err, next)
+      const token = issueToken(user)
+      return req.login(user, { session: false }, this.ok(res, { user, token }))
+    })(req, res)
+  }
 
-    async login(req, res, next) {
-        passport.authenticate('local', { session: false }, (err, user) => {
-            if (err) return errorToNext(err, next)
-            const token = issueToken(user)
-            return req.login(user, { session: false }, this.ok(res, { user, token }))
-        })(req, res)
-    }
+  // Todo: 공통 함수로 빼기
+  async test(req, res, next) {
+    passport.authenticate("jwt", { session: false }, (err, user) => {
+      if (!user) return next(createError(403, "Forbidden"))
 
-    // Todo: 공통 함수로 빼기
-    async test(req, res, next) {
-        passport.authenticate('jwt', { session: false }, (err, user, info) => {
+      if (err) errorToNext(err, next)
 
-            if (!user) return next(createError(403, 'Forbidden'))
+      return res.json({ success: true })
+    })(req, res)
+  }
 
-            if (err) errorToNext(err, next)
+  async save(req, res) {
+    const user = req.body
 
-            return res.json({ success: true })
-        })(req, res)
+    await this.repository.save(user)
 
-    }
+    const { email } = user
 
-    async save(req, res, next) {
-        const user = req.body
-        
-        await this.repository.save(user)
-        
-        const { email } = user
-        
-        this.created(res, { email })
-    }
-
+    this.created(res, { email })
+  }
 }
 
 export default AuthController

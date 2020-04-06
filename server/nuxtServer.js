@@ -1,36 +1,35 @@
-const { Nuxt, Builder } = require('nuxt')
-const nuxtConfig = require('../nuxt.config.js')
+const { Nuxt, Builder } = require("nuxt")
+const nuxtConfig = require("../nuxt.config.js")
 
-const ServerBase = require('./base/serverBase')
+const ServerBase = require("./base/serverBase")
 
 class NuxtServer extends ServerBase {
+  async runNuxt() {
+    nuxtConfig.dev = process.env.NODE_ENV !== "production"
 
-    async runNuxt() {
-        nuxtConfig.dev = process.env.NODE_ENV !== 'production'
+    this.nuxt = new Nuxt(nuxtConfig)
 
-        this.nuxt = new Nuxt(nuxtConfig)
+    const { nuxt } = this
 
-        const { nuxt } = this
+    this.port = nuxt.options.server.port
+    this.host = nuxt.options.server.host
 
-        this.port = nuxt.options.server.port
-        this.host = nuxt.options.server.host
+    await nuxt.ready()
 
-        await nuxt.ready()
-
-        if (nuxtConfig.dev) {
-            const builder = new Builder(nuxt)
-            await builder.build()
-        }
+    if (nuxtConfig.dev) {
+      const builder = new Builder(nuxt)
+      await builder.build()
     }
+  }
 
-    registerMiddlewares() {
-        this.app.use(this.nuxt.render)
-    }
+  registerMiddlewares() {
+    this.app.use(this.nuxt.render)
+  }
 
-    async run() {
-        await this.runNuxt()
-        super.run()
-    }
+  async run() {
+    await this.runNuxt()
+    super.run()
+  }
 }
 
 module.exports = NuxtServer

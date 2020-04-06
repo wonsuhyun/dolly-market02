@@ -1,6 +1,6 @@
 const tagQuery = {
-    getByItemId(itemId) {
-        return `SELECT
+  getByItemId(itemId) {
+    return `SELECT
                     A.pid,
                     A.create_date,
                     A.name
@@ -10,7 +10,7 @@ const tagQuery = {
                     A.pid = B.tag_rid
                 WHERE
                     B.item_rid = '${itemId}'`
-    }
+  },
 }
 
-export default tagQuery 
+export default tagQuery

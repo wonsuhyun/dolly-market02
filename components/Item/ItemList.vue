@@ -4,13 +4,13 @@
       v-for="item in items"
       :key="item.pid"
       :pid="item.pid"
-      :isNew="item.isNew"
+      :is-new="item.isNew"
       :title="item.title"
       :description="item.description"
       :images="item.images"
       :price="item.price"
-      :paymentMethod="item.paymentMethod"
-      :createDate="item.createDate"
+      :payment-method="item.paymentMethod"
+      :create-date="item.createDate"
     />
   </section>
 </template>
@@ -20,15 +20,15 @@ import ItemCard from "@/components/Item/ItemCard"
 
 export default {
   components: {
-    ItemCard
+    ItemCard,
   },
   props: {
     items: {
       type: Array,
-      required: true
-    }
-  }
-};
+      required: true,
+    },
+  },
+}
 </script>
 
 <style scoped>

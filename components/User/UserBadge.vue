@@ -1,8 +1,10 @@
 <template>
   <section class="user-badge">
-    <div class="img" :style="{backgroundImage: `url(${image.fileUrl})`}"></div>
+    <div class="img" :style="{ backgroundImage: `url(${image.fileUrl})` }" />
     <div class="detail">
-      <p class="name">{{ nickname }}</p>
+      <p class="name">
+        {{ nickname }}
+      </p>
       <p>{{ email }}</p>
     </div>
   </section>
@@ -13,18 +15,18 @@ export default {
   props: {
     image: {
       type: Object,
-      required: false
+      required: false,
     },
     nickname: {
       type: String,
-      required: true
+      required: true,
     },
     email: {
       type: String,
-      required: true
-    }
-  }
-};
+      required: true,
+    },
+  },
+}
 </script>
 
 <style scoped>

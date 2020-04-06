@@ -1,6 +1,8 @@
 <template>
   <section class="item-detail">
-    <p class="title">{{ title }}</p>
+    <p class="title">
+      {{ title }}
+    </p>
     <table class="item-table">
       <tbody>
         <tr>
@@ -13,12 +15,16 @@
         </tr>
       </tbody>
     </table>
-    <UserBadge :image="user.image" :nickname="user.nickname" :email="user.email" />
+    <UserBadge
+      :image="user.image"
+      :nickname="user.nickname"
+      :email="user.email"
+    />
   </section>
 </template>
 
 <script>
-import UserBadge from "@/components/User/UserBadge";
+import UserBadge from "@/components/User/UserBadge"
 export default {
   components: {
     UserBadge,
@@ -26,22 +32,22 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     price: {
       type: Number,
-      required: true
+      required: true,
     },
     status: {
       type: String,
-      required: true
+      required: true,
     },
     user: {
       type: Object,
-      required: true
-    }
-  }
-};
+      required: true,
+    },
+  },
+}
 </script>
 
 <style scoped>

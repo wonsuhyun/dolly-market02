@@ -4,8 +4,15 @@
       <nuxt-link to="/">{{ headerTitle }}</nuxt-link>
     </span>
     <div class="search">
-      <input type="text" id="searchArea" class="search-area" @keyup="enterKey" />
-      <button type="button" id="serchBtn" @click="btnClickEvent">Search</button>
+      <input
+        id="searchArea"
+        type="text"
+        class="search-area"
+        @keyup="enterKey"
+      />
+      <button id="serchBtn" type="button" @click="btnClickEvent">
+        Search
+      </button>
       <div class="sign">
         <span class="sign-in">
           <nuxt-link to="/api/auth/google">Sign in</nuxt-link>
@@ -18,21 +25,21 @@
 export default {
   data() {
     return {
-      headerTitle: "Dolly Market"
-    };
+      headerTitle: "Dolly Market",
+    }
   },
   methods: {
-    enterKey: function(e) {
+    enterKey: function (e) {
       if (e.keyCode === 13) {
-        console.log("keyup");
-        $("#serchBtn").trigger("click");
+        console.log("keyup")
+        // $("#serchBtn").trigger("click")
       }
     },
-    btnClickEvent: function(e) {
-      console.log("triggered");
-    }
-  }
-};
+    btnClickEvent: function (e) {
+      console.log("triggered")
+    },
+  },
+}
 </script>
 <style scoped>
 .header-wrap {

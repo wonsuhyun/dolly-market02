@@ -1,39 +1,44 @@
 <template>
   <div class="container">
     <section class="main-title">
-      <h1>{{title}}</h1>
+      <h1>{{ title }}</h1>
     </section>
     <ItemList :items="getItems" />
     <div class="links">
       <a
         href="javascript:void(0)"
         class="moreBtn"
+        :class="{ disabledBtn: isActiveBtn }"
         @click="moreItems"
-        v-bind:class="{ 'disabledBtn' : isActiveBtn }"
       >MORE</a>
     </div>
   </div>
 </template>
 
 <script>
-import ItemList from "@/components/Item/ItemList";
+import ItemList from "@/components/Item/ItemList"
 
 export default {
   components: {
-    ItemList
+    ItemList,
   },
   data() {
     return {
       title: "Dolly-Market",
       isActiveBtn: false,
       isHover: false,
-      moreActive: 0
-    };
+      moreActive: 0,
+    }
+  },
+  computed: {
+    getItems() {
+      return this.$store.getters.getItems
+    },
   },
   methods: {
     // Todo: pageNum, disabled 처리와 같은 거 해야 함
     async moreItems() {
-      this.$store.dispatch("setItems", 2);
+      this.$store.dispatch("setItems", 2)
       // if (this.isActiveBtn == false) {
 
       //   // if (res.length > 0) {
@@ -47,15 +52,10 @@ export default {
       // }
     },
     itemHover() {
-      this.isHover === true;
-    }
+      this.isHover === true
+    },
   },
-  computed: {
-    getItems() {
-      return this.$store.getters.getItems;
-    }
-  }
-};
+}
 </script>
 
 <style>
