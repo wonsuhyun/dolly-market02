@@ -31,6 +31,9 @@ export default {
       pageNum: 1
     }
   },
+  async fetch({ app }) {
+    await app.store.dispatch("setItems")
+  },
   computed: {
     getItems() {
       return this.$store.getters.getItems
@@ -39,7 +42,7 @@ export default {
   methods: {
     // Todo: disabled 처리 해야 함
     async moreItems() {
-      this.$store.dispatch("setItems", ++this.pageNum)
+      await this.$store.dispatch("setItems", ++this.pageNum)
     },
     itemHover() {
       this.isHover === true

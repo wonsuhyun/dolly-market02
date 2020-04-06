@@ -31,16 +31,10 @@ export default {
   },
   async asyncData({ params, store }) {
     const itemId = params.id
-    const { getters } = store
 
-    let item = getters.getItem
-    const isItemExisting = item && item.pid === itemId
-
-    if (!isItemExisting) {
-      await store.dispatch("setItem", itemId)
-      item = getters.getItem  
-    }
-    
+    await store.dispatch("setItem", itemId)
+    const item = store.getters.getItem  
+  
     return { item }
   },
 }
