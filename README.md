@@ -6,9 +6,13 @@
 
 DollyMarket is built with a number of open source projects to work properly:
 
-### Web UI
-* [vue.js](https://vuejs.org/) - JavaScript Framework for Web UI
-* [nuxt.js](https://nuxtjs.org/) -  Vue.js Framework with SSR
+### Web
+* [nuxt.js](https://nuxtjs.org/)
+* [vue.js](https://vuejs.org/)
+* [buefy](https://buefy.org/)
 
-### API
-* [express.js](https://expressjs.com/) - Node.js web app framework for API
+### Server(API)
+* [express.js](https://expressjs.com/)
+
+### DBMS
+* [AWS RDS for Mysql](https://aws.amazon.com/ko/rds/) 
