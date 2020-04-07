@@ -4,7 +4,10 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setItems({ items }, moreItems) {
+  setItems(state, newItems) {
+    state.items = newItems
+  },
+  setMoreItems({ items }, moreItems) {
     items.push(...moreItems)
   },
   setItem(state, item) {
@@ -49,9 +52,13 @@ export const getters = {
 }
 
 export const actions = {
-  async setItems({ commit }, pageNum = 1) {
-    const { data } = await this.$axios.get(`/api/items?pageNum=${pageNum}`)
+  async setItems({ commit }) {
+    const { data } = await this.$axios.get(`/api/items`)
     commit("setItems", data)
+  },
+  async setMoreItems({ commit }, pageNum) {
+    const { data } = await this.$axios.get(`/api/items?pageNum=${pageNum}`)
+    commit("setMoreItems", data)
   },
   async setItem({ commit }, id) {
     const { data } = await this.$axios.get(`/api/items/${id}`)

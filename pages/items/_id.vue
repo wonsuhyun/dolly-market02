@@ -1,23 +1,23 @@
 <template>
-  <div class="detail-wrap">
-    <section class="detail">
-      <div class="detail-img">
-        <Swiper :images="item.images" />
-      </div>
-      <div class="detail-desc">
-        <ItemDetail
-          :title="item.title"
-          :price="item.price"
-          :status="item.status"
-          :user="item.user"
-        />
-        <div class="btn-buy">
-          <button type="button">
-            BUY NOW
-          </button>
+  <div class="container">
+    <div class="detail-wrap">
+      <section class="detail">
+        <div class="detail-img">
+          <Swiper :images="item.images" />
         </div>
-      </div>
-    </section>
+        <div class="detail-desc">
+          <ItemDetail
+            :title="item.title"
+            :price="item.price"
+            :status="item.status"
+            :user="item.user"
+          />
+          <div class="btn-buy">
+            <button type="button">BUY NOW</button>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 <script>

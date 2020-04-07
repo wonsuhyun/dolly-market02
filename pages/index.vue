@@ -1,23 +1,24 @@
 <template>
   <div>
+    <Hero />
+    <!-- Todo: container 공통화 -->
+    <div class="container">
     <ItemList :items="getItems" />
-    <div class="links">
-      <a
-        href="javascript:void(0)"
-        class="moreBtn"
-        :class="{ disabledBtn: !isActiveBtn }"
-        @click="moreItems"
-      >MORE</a>
+      <div class="buttons moreBtn">
+          <b-button :class="{ disabledBtn: !isActiveBtn }" @click="moreItems" expanded>Load More</b-button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import ItemList from "@/components/Item/ItemList"
+import Hero from "@/components/Layout/Hero"
 
 export default {
   components: {
     ItemList,
+    Hero,
   },
   async fetch({ app }) {
     await app.store.dispatch("item/setItems")
@@ -39,7 +40,7 @@ export default {
   methods: {
     // Todo: disabled 처리 해야 함
     async moreItems() {
-      await this.$store.dispatch("item/setItems", ++this.pageNum)
+      await this.$store.dispatch("item/setMoreItems", ++this.pageNum)
     },
     itemHover() {
       this.isHover === true
@@ -49,35 +50,4 @@ export default {
 </script>
 
 <style>
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-
-.moreBtn {
-  background-color: #fff;
-  width: 100%;
-  display: inline-block;
-  padding: 10px 0;
-  border-radius: 10px;
-  border: 1px solid #333;
-}
-.moreBtn:hover {
-  background-color: #333;
-  color: #fff;
-}
-.moreBtn.disabledBtn {
-  background-color: #f7f7f7;
-}
-.moreBtn.disabledBtn:hover {
-  background-color: #f7f7f7;
-  color: #333;
-}
 </style>

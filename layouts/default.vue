@@ -1,14 +1,18 @@
 <template>
   <div>
-    <Hero />
-    <nuxt />
+    <Header />
+      <nuxt />
+    <Footer />
   </div>
 </template>
 <script>
-import Hero from "@/components/Hero/Hero"
+import Header from "@/components/Layout/Header"
+import Footer from "@/components/Layout/Footer"
+
 export default {
   components: {
-    Hero,
+    Header,
+    Footer,
   },
 }
 </script>
