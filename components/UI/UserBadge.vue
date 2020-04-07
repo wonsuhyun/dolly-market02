@@ -3,7 +3,7 @@
     <div class="media">
       <div class="media-left">
         <figure class="image is-48x48">
-          <img :src="image.fileUrl" alt="Placeholder image">
+          <img class="is-rounded" :src="image.fileUrl" alt="Placeholder image">
         </figure>
       </div>
       <div class="media-content">

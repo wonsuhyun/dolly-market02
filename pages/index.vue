@@ -4,7 +4,7 @@
     <!-- Todo: container 공통화 -->
     <div class="container">
       <ItemList :items="getItems" />
-      <div class="buttons moreBtn">
+      <div class="buttons">
         <b-button
           :class="{ disabledBtn: !isActiveBtn }"
           expanded
