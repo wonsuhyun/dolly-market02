@@ -7,7 +7,7 @@
       <span class="navbar-item">
         <a class="button is-primary is-inverted">
           <span class="icon">
-            <i class="fab fa-github"></i>
+            <i class="fab fa-github" />
           </span>
           <span>Download</span>
         </a>

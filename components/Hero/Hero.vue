@@ -10,19 +10,19 @@ import HeroHead from "@/components/Hero/HeroHead"
 import HeroBody from "@/components/Hero/HeroBody"
 
 export default {
-    components: {
-        HeroHead,
-        HeroBody
-    },
-    watch: {
-      '$route.path'() {
-        this.isRootURL = this.$route.path === '/'
-      }
-    },
-    data() {
-      return {
-        isRootURL: false
-      }
+  components: {
+    HeroHead,
+    HeroBody,
+  },
+  data() {
+    return {
+      isRootURL: false,
     }
+  },
+  watch: {
+    "$route.path"() {
+      this.isRootURL = this.$route.path === "/"
+    },
+  },
 }
 </script>

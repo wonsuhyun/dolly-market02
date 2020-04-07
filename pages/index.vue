@@ -25,7 +25,7 @@ export default {
       isActiveBtn: true,
       isHover: false,
       moreActive: 0,
-      pageNum: 1
+      pageNum: 1,
     }
   },
   computed: {

@@ -38,9 +38,9 @@ export default {
 
     if (!isItemExisting) {
       await store.dispatch("addItem", itemId)
-      item = getters.getItem  
+      item = getters.getItem
     }
-    
+
     return { item }
   },
 }

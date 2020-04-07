@@ -4,11 +4,13 @@
     <nav class="navbar">
       <div class="container">
         <div class="navbar-brand">
-          <nuxt-link to="/" class="navbar-item">{{ headerTitle }}</nuxt-link>
+          <nuxt-link to="/" class="navbar-item">
+            {{ headerTitle }}
+          </nuxt-link>
           <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span />
+            <span />
+            <span />
           </span>
         </div>
         <HeroMenu />
@@ -21,7 +23,7 @@ import HeroMenu from "@/components/Hero/HeroMenu"
 
 export default {
   components: {
-    HeroMenu
+    HeroMenu,
   },
   data() {
     return {
