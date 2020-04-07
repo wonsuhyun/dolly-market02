@@ -2253,6 +2253,13 @@ bser@2.1.1:
   dependencies:
     node-int64 "^0.4.0"
 
+buefy@^0.8.15:
+  version "0.8.15"
+  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.8.15.tgz#88fae2d3b3b7646abb92f23e89a2e176f2a05f7f"
+  integrity sha512-rDTtLNIip+uFpB1Z9E9YllLPYUkJUIFsf7tBhutNfP9SYGrcDhXnUsIEhPHSxGEeddPlX9YT98Mx1zhOz622vg==
+  dependencies:
+    bulma "0.7.5"
+
 buffer-equal-constant-time@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/buffer-equal-constant-time/-/buffer-equal-constant-time-1.0.1.tgz#f8e71132f7ffe6e01a5c9697a4c6f3e48d5cc819"
@@ -2286,6 +2293,11 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
+
+bulma@0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.7.5.tgz#35066c37f82c088b68f94450be758fc00a967208"
+  integrity sha512-cX98TIn0I6sKba/DhW0FBjtaDpxTelU166pf7ICXpCCuplHWyu6C9LYZmL5PEsnePIeJaiorsTEzzNk3Tsm1hw==
 
 bytes@3.0.0:
   version "3.0.0"
@@ -6696,6 +6708,13 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
+nuxt-buefy@^0.3.26:
+  version "0.3.26"
+  resolved "https://registry.yarnpkg.com/nuxt-buefy/-/nuxt-buefy-0.3.26.tgz#af1e9bde97f82fe8ad0323b614acc68d2ebc7f7e"
+  integrity sha512-16m/ME6nHvQTI9Fk+3N4RcCXojkVNOaD7pwICrdgHXu9ilcMF3qPnSglx0TcPtJuJ31fdp/Rcwinjshnkz0V1w==
+  dependencies:
+    buefy "^0.8.15"
+
 nuxt@^2.0.0:
   version "2.12.2"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.12.2.tgz#959baa919bfef4adcd9e88f84bc948a49a03edd8"
@@ -9896,11 +9915,6 @@ vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
-
-vuetify@^2.2.20:
-  version "2.2.20"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.2.20.tgz#8cb042f7274f39130f8d40d85d23d62d1c33cae4"
-  integrity sha512-tiij3ammBiG7QrdwRBJxW917AyDLcMekRtLosdyVshDKHA5CpKrru8Ljn1gAmeUyhYZyUw4gz3XbrrIJ++TP7w==
 
 vuex@^3.1.3:
   version "3.1.3"

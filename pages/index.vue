@@ -1,8 +1,5 @@
 <template>
-  <div class="container">
-    <section class="main-title">
-      <h1>{{ title }}</h1>
-    </section>
+  <div>
     <ItemList :items="getItems" />
     <div class="links">
       <a
@@ -49,16 +46,6 @@ export default {
 </script>
 
 <style>
-.main-title h1 {
-  font-family: "Pacifico";
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  letter-spacing: 1px;
-  margin: 100px 0;
-  color: #00ffc0;
-}
-
 .subtitle {
   font-weight: 300;
   font-size: 42px;
