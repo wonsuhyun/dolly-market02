@@ -1,11 +1,15 @@
 <template>
   <section class="user-badge">
-    <div class="img" :style="{ backgroundImage: `url(${image.fileUrl})` }" />
-    <div class="detail">
-      <p class="name">
-        {{ nickname }}
-      </p>
-      <p>{{ email }}</p>
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img :src="image.fileUrl" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">{{ nickname }}</p>
+        <p class="subtitle is-6">{{ email }}</p>
+      </div>
     </div>
   </section>
 </template>
@@ -29,25 +33,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.user-badge {
-  position: relative;
-}
-.user-badge .img {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  display: inline-block;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.user-badge .name {
-  margin-bottom: 8px;
-  font-size: 18px;
-}
-.user-badge .detail {
-  padding-left: 80px;
-  margin: 50px 0;
-}
-</style>

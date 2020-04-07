@@ -14,5 +14,5 @@ DollyMarket is built with a number of open source projects to work properly:
 ### Server(API)
 * [express.js](https://expressjs.com/)
 
-### DBMS
+### DB
 * [AWS RDS for Mysql](https://aws.amazon.com/ko/rds/) 

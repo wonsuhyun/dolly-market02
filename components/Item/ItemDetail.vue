@@ -3,14 +3,17 @@
     <p class="title">
       {{ title }}
     </p>
-    <table class="item-table">
+    <p class="sub-title">
+      {{ description }}
+    </p>
+    <table class="table is-striped">
       <tbody>
         <tr>
-          <th>price :</th>
-          <td class="price">${{ price }}</td>
+          <th>price</th>
+          <td>${{ price }}</td>
         </tr>
         <tr>
-          <th>status :</th>
+          <th>status</th>
           <td>{{ status }}</td>
         </tr>
       </tbody>
@@ -34,6 +37,10 @@ export default {
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
     price: {
       type: Number,
       required: true,
@@ -51,7 +58,7 @@ export default {
 </script>
 
 <style scoped>
-.title {
+/* .title {
   font-size: 30px;
   margin-bottom: 20px;
 }
@@ -82,5 +89,5 @@ export default {
   padding: 0 10px;
   margin-left: 30px;
   vertical-align: middle;
-}
+} */
 </style>
