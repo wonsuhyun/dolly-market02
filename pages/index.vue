@@ -19,6 +19,9 @@ export default {
   components: {
     ItemList,
   },
+  async fetch({ app }) {
+    await app.store.dispatch("item/setItems")
+  },
   data() {
     return {
       title: "Dolly-Market",
@@ -30,13 +33,13 @@ export default {
   },
   computed: {
     getItems() {
-      return this.$store.getters.getItems
+      return this.$store.getters["item/getItems"]
     },
   },
   methods: {
     // Todo: disabled 처리 해야 함
     async moreItems() {
-      this.$store.dispatch("addItems", ++this.pageNum)
+      await this.$store.dispatch("item/setItems", ++this.pageNum)
     },
     itemHover() {
       this.isHover === true
