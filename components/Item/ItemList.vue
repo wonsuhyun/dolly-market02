@@ -1,18 +1,21 @@
 <template>
-  <section class="item-list">
-    <ItemCard
-      v-for="item in items"
-      :key="item.pid"
-      :pid="item.pid"
-      :is-new="item.isNew"
-      :title="item.title"
-      :description="item.description"
-      :images="item.images"
-      :price="item.price"
-      :payment-method="item.paymentMethod"
-      :create-date="item.createDate"
-    />
-  </section>
+<!-- Todo: 3의 배수 -->
+  <div class="columns">
+    <div v-for="item in items" :key="item.pid" class="column is-one-third">
+
+        <ItemCard
+          :pid="item.pid"
+          :is-new="item.isNew"
+          :title="item.title"
+          :description="item.description"
+          :images="item.images"
+          :price="item.price"
+          :payment-method="item.paymentMethod"
+          :create-date="item.createDate"
+        />
+
+    </div>
+  </div>
 </template>
 
 <script>
@@ -31,12 +34,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.item-list {
-  list-style: none;
-  text-align: center;
-  overflow: hidden;
-  width: 1000px;
-  margin: 30px auto 50px auto;
-}
-</style>
+<style scoped></style>

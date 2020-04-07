@@ -13,7 +13,9 @@
             :user="item.user"
           />
           <div class="btn-buy">
-            <button type="button">BUY NOW</button>
+            <button type="button">
+              BUY NOW
+            </button>
           </div>
         </div>
       </section>

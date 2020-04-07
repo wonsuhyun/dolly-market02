@@ -1,6 +1,34 @@
 <template>
   <nuxt-link :to="`/items/${pid}`">
-    <article class="item-card">
+        <article class="item-card">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img :style="{ backgroundImage: `url(${images[0].fileUrl})` }">
+        </figure>
+      </div>
+      <div class="card-content">
+        <!-- <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">John Smith</p>
+        <p class="subtitle is-6">@johnsmith</p>
+      </div>
+    </div> -->
+
+        <div class="content">
+          <h3>{{ title }}</h3>
+          $ {{ price }}
+          <br>
+          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        </div>
+      </div>
+    </div>
+    <!-- <article class="item-card">
       <span v-if="isNew" class="new">NEW</span>
       <div>
         <h3>{{ title }}</h3>
@@ -14,7 +42,8 @@
         </p>
         <div>{{ description }}</div>
       </div>
-    </article>
+    </article> -->
+          </article>
   </nuxt-link>
 </template>
 
@@ -59,7 +88,7 @@ export default {
 </script>
 
 <style scoped>
-.item-card {
+/* .item-card {
   float: left;
   width: 30%;
   margin: 0 1% 0 1%;
@@ -96,5 +125,5 @@ export default {
   border: 1px solid #333;
   padding: 0 10px;
   margin-left: 15px;
-}
+} */
 </style>

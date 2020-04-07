@@ -12,9 +12,9 @@
         aria-expanded="false"
         data-target="navbarBasicExample"
       >
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
       </a>
     </div>
 
@@ -31,7 +31,7 @@
             <a class="navbar-item">About</a>
             <a class="navbar-item">Jobs</a>
             <a class="navbar-item">Contact</a>
-            <hr class="navbar-divider" />
+            <hr class="navbar-divider" >
             <a class="navbar-item">Report an issue</a>
           </div>
         </div>

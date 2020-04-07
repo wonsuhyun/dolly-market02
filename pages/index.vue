@@ -3,9 +3,15 @@
     <Hero />
     <!-- Todo: container 공통화 -->
     <div class="container">
-    <ItemList :items="getItems" />
+      <ItemList :items="getItems" />
       <div class="buttons moreBtn">
-          <b-button :class="{ disabledBtn: !isActiveBtn }" @click="moreItems" expanded>Load More</b-button>
+        <b-button
+          :class="{ disabledBtn: !isActiveBtn }"
+          expanded
+          @click="moreItems"
+        >
+          Load More
+        </b-button>
       </div>
     </div>
   </div>
@@ -49,5 +55,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
