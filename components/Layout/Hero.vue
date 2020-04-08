@@ -6,9 +6,18 @@
           Dolly Market
         </h1>
         <h2 class="subtitle">
-          키덜트를 위한 수집품 거래 사이트
+          Secondhand toy store for kidults
         </h2>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.title {
+  font-family: "Pacifico";
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding-bottom: 5px;
+}
+</style>

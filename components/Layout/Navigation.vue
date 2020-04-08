@@ -19,7 +19,7 @@
     </div>
 
     <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
+      <!-- <div class="navbar-start">
         <a class="navbar-item">Home</a>
 
         <a class="navbar-item">Documentation</a>
@@ -35,7 +35,7 @@
             <a class="navbar-item">Report an issue</a>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="navbar-end">
         <div class="navbar-item">
