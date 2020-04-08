@@ -1,17 +1,21 @@
 <template>
   <nuxt-link :to="`/items/${pid}`">
     <article class="item-card">
-      <div class="card">
+      <div class="card is-slightly-rounded">
         <div class="card-image">
-          <figure class="image is-4by3">
-            <img :style="{ backgroundImage: `url(${images[0].fileUrl})` }" />
+          <figure class="image">
+            <img
+              :src="images[0].fileUrl"
+              :alt="title"
+              class="is-slightly-rounded"
+            >
           </figure>
         </div>
         <div class="card-content">
           <div class="content">
-            <h3>{{ title }}</h3>
+            <h6>{{ title }}</h6>
             $ {{ price }}
-            <br />
+            <br >
             <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
           </div>
         </div>

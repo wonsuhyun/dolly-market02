@@ -2,10 +2,9 @@
   <b-carousel :autoplay="false">
     <b-carousel-item v-for="(image, i) in images" :key="i">
       <section class="hero is-medium">
-        <div
-          class="hero-body has-text-centered .carousel-background"
-          :style="{ backgroundImage: `url(${image.fileUrl})` }"
-        />
+        <figure class="image">
+          <img :src="image.fileUrl" :alt="image.fileName" />
+        </figure>
       </section>
     </b-carousel-item>
   </b-carousel>
