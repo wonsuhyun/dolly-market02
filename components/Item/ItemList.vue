@@ -9,6 +9,7 @@
           :description="item.description"
           :images="item.images"
           :price="item.price"
+          :user="item.user"
           :payment-method="item.paymentMethod"
           :create-date="item.createDate"
         />

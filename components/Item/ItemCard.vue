@@ -12,36 +12,28 @@
           </figure>
         </div>
         <div class="card-content">
+          <UserBadge
+            :image="user.image"
+            :nickname="user.nickname"
+            :email="user.email"
+          />
           <div class="content">
             <h6>{{ title }}</h6>
             $ {{ price }}
-            <br >
-            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
           </div>
         </div>
       </div>
-      <!-- <article class="item-card">
-      <span v-if="isNew" class="new">NEW</span>
-      <div>
-        <h3>{{ title }}</h3>
-        <div
-          class="img"
-          :style="{ backgroundImage: `url(${images[0].fileUrl})` }"
-        />
-        <p class="cash">
-          <span>$ {{ price }}</span>
-          <span class="type">{{ paymentMethod }}</span>
-        </p>
-        <div>{{ description }}</div>
-      </div>
-    </article> -->
     </article>
   </nuxt-link>
 </template>
 
 <script>
+import UserBadge from "@/components/UI/UserBadge"
 export default {
   name: "ItemCard",
+  components: {
+    UserBadge,
+  },
   props: {
     pid: {
       type: String,
@@ -62,6 +54,10 @@ export default {
     images: {
       type: Array,
       required: false,
+    },
+    user: {
+      type: Object,
+      required: true,
     },
     price: {
       type: Number,

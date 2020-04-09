@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="columns">
-      <div class="column is-half">
+      <div class="column is-two-fifths">
         <Carousel :images="item.images" />
       </div>
-      <div class="column is-half">
+      <div class="column">
         <ItemDetail
           :title="item.title"
           :description="item.description"

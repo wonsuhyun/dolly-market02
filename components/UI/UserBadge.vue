@@ -11,7 +11,7 @@
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4">
+        <p class="title is-5">
           {{ nickname }}
         </p>
         <p class="subtitle is-6">

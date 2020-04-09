@@ -6,7 +6,7 @@
     <p class="sub-title">
       {{ description }}
     </p>
-    <table class="table is-striped">
+    <table class="table">
       <tbody>
         <tr>
           <th>price</th>
@@ -18,11 +18,13 @@
         </tr>
       </tbody>
     </table>
-    <UserBadge
-      :image="user.image"
-      :nickname="user.nickname"
-      :email="user.email"
-    />
+    <div class="box">
+      <UserBadge
+        :image="user.image"
+        :nickname="user.nickname"
+        :email="user.email"
+      />
+    </div>
   </section>
 </template>
 
