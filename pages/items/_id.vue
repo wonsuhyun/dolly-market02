@@ -1,4 +1,5 @@
 <template>
+<section class="section">
   <div class="container">
     <div class="columns">
       <div class="column is-two-fifths">
@@ -12,12 +13,13 @@
           :status="item.status"
           :user="item.user"
         />
-        <div class="buttons">
+        <section class="section">
           <b-button type="is-success" expanded>Buy Now</b-button>
-        </div>
+        </section>
       </div>
     </div>
   </div>
+</section>
 </template>
 <script>
 import ItemDetail from "@/components/Item/ItemDetail"
