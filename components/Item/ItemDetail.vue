@@ -1,5 +1,5 @@
 <template>
-  <section class="item-detail">
+  <section class="item-detail section">
     <p class="title">
       {{ title }}
     </p>
@@ -59,38 +59,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-/* .title {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
-.item-table {
-  margin-bottom: 30px;
-  width: 100%;
-}
-.item-table th,
-.item-table td {
-  padding: 10px 0;
-}
-.item-table th {
-  font-weight: 400;
-}
-.item-table td {
-  text-align: right;
-}
-.item-table td.price {
-  font-size: 40px;
-}
-.price {
-  font-size: 50px;
-  margin-left: 30px;
-  vertical-align: middle;
-}
-.status {
-  border: 1px solid #000;
-  padding: 0 10px;
-  margin-left: 30px;
-  vertical-align: middle;
-} */
-</style>

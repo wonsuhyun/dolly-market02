@@ -1,7 +1,5 @@
 <template>
-  <header>
-    <Navigation />
-  </header>
+  <Navigation />
 </template>
 
 <script>

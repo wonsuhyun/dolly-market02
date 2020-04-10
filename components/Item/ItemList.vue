@@ -1,5 +1,5 @@
 <template>
-  <section class="item-list">
+  <section class="item-list section">
     <div class="columns is-multiline">
       <div v-for="item in items" :key="item.pid" class="column is-one-quarter">
         <ItemCard

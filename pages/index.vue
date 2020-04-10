@@ -36,6 +36,7 @@ export default {
   },
   methods: {
     // Todo: disabled 처리 해야 함
+    // Todo: List Component 안으로 넣어야 함
     async moreItems() {
       await this.$store.dispatch("item/setMoreItems", ++this.pageNum)
     },

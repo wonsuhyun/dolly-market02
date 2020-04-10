@@ -1,12 +1,11 @@
 <template>
-  <section class="user-badge">
     <div class="media">
       <div class="media-left">
         <figure class="image is-48x48 is-1by1">
           <img
             class="is-rounded"
             :src="image.fileUrl"
-            alt="Placeholder image"
+            :alt="image.fileName"
           >
         </figure>
       </div>
@@ -19,7 +18,6 @@
         </p>
       </div>
     </div>
-  </section>
 </template>
 
 <script>
