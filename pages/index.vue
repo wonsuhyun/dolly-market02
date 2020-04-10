@@ -1,25 +1,16 @@
 <template>
   <div>
     <Hero />
-    <!-- Todo: container 공통화 -->
     <div class="container">
-      <ItemList :items="getItems" />
-      <div class="buttons">
-        <b-button
-          :class="{ disabledBtn: !isActiveBtn }"
-          expanded
-          @click="moreItems"
-        >
-          Load More
-        </b-button>
-      </div>
+    <ItemList :items="getItems" />
+      <b-button :class="{ disabledBtn: !isActiveBtn }" expanded @click="moreItems">Load More</b-button>
     </div>
   </div>
 </template>
 
 <script>
 import ItemList from "@/components/Item/ItemList"
-import Hero from "@/components/Layout/Hero"
+import Hero from "@/components/UI/Hero"
 
 export default {
   components: {

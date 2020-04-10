@@ -1,25 +1,24 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <nuxt-link to="/" class="navbar-item logo">
-        Dolly Market
-      </nuxt-link>
+    <div class="container">
+      <div class="navbar-brand">
+        <nuxt-link to="/" class="navbar-item logo">Dolly Market</nuxt-link>
 
-      <a
-        role="button"
-        class="navbar-burger burger"
-        aria-label="menu"
-        aria-expanded="false"
-        data-target="navbarBasicExample"
-      >
-        <span aria-hidden="true" />
-        <span aria-hidden="true" />
-        <span aria-hidden="true" />
-      </a>
-    </div>
+        <a
+          role="button"
+          class="navbar-burger burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </a>
+      </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
-      <!-- <div class="navbar-start">
+      <div class="navbar-menu">
+        <!-- <div class="navbar-start">
         <a class="navbar-item">Home</a>
 
         <a class="navbar-item">Documentation</a>
@@ -35,15 +34,16 @@
             <a class="navbar-item">Report an issue</a>
           </div>
         </div>
-      </div> -->
+        </div>-->
 
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">Log in</a>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light">Log in</a>
+            </div>
           </div>
         </div>
       </div>

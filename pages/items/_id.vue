@@ -13,9 +13,7 @@
           :user="item.user"
         />
         <div class="buttons">
-          <b-button type="is-success" expanded>
-            Buy Now
-          </b-button>
+          <b-button type="is-success" expanded>Buy Now</b-button>
         </div>
       </div>
     </div>

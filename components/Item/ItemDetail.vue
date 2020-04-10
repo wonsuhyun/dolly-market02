@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import UserBadge from "@/components/UI/UserBadge"
+import UserBadge from "@/components/User/UserBadge"
+
 export default {
   components: {
     UserBadge,
