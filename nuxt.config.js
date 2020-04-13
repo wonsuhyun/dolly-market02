@@ -37,7 +37,7 @@ module.exports = {
    ** Global CSS
    */
   // Todo: loader로 부르기
-  css: ['~/node_modules/bulma-ribbon/dist/css/bulma-ribbon.min.css'],
+  css: ["~/node_modules/bulma-ribbon/dist/css/bulma-ribbon.min.css"],
   /*
    ** Plugins to load before mounting the App
    */
@@ -49,11 +49,7 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    "@nuxtjs/axios",
-    "@nuxtjs/auth",
-    "nuxt-buefy",
-  ],
+  modules: ["@nuxtjs/axios", "@nuxtjs/auth", "nuxt-buefy"],
   /*
    ** Build configuration
    */
