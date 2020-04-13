@@ -2,7 +2,13 @@
   <section class="item-detail section">
     <div class="content is-medium">
       <p class="title">{{ title }}</p>
-      <p class="sub-title">$ {{ price }}</p>
+      <div class="tags are-medium">
+        <span class="tag" v-for="tag in tags" :key="tag.pid">{{ tag.name }}</span>
+      </div>
+            <p class="sub-title">$ {{ price }}</p>
+        <b-field>
+          <b-numberinput controls-rounded type="is-light" class="is-fullwidth"></b-numberinput>
+        </b-field>
     </div>
     <div class="box">
       <UserBadge :image="user.image" :nickname="user.nickname" :email="user.email" />
@@ -33,6 +39,10 @@ export default {
     user: {
       type: Object,
       required: true,
+    },
+    tags: {
+      type: Array,
+      required: false,
     },
   },
 }

@@ -1,0 +1,9 @@
+// @import 'vendors/bulma';
+@import '../node_modules/bulma-ribbon/src/sass/index.sass';
+
+[type=number]{
+    width: 100%;
+}
+p {
+    color: red;
+}

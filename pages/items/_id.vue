@@ -3,15 +3,18 @@
   <div class="container">
     <div class="columns">
       <div class="column is-two-fifths">
-        <Carousel :images="item.images" />
+        <div class="has-ribbon">
+          <div class="ribbon is-large is-primary">{{item.status}}</div>
+          <Carousel :images="item.images" />
+        </div>
       </div>
       <div class="column">
-        <ItemControl
+        <ItemSummary
           :title="item.title"
           :description="item.description"
           :price="item.price"
-          :status="item.status"
           :user="item.user"
+          :tags="item.tags"
         />
         <section class="item-buttons">
           <b-button type="is-success" expanded>Buy Now</b-button>
@@ -22,12 +25,12 @@
 </section>
 </template>
 <script>
-import ItemControl from "@/components/Item/ItemControl"
+import ItemSummary from "@/components/Item/ItemSummary"
 import Carousel from "@/components/UI/Carousel"
 
 export default {
   components: {
-    ItemControl,
+    ItemSummary,
     Carousel,
   },
   async asyncData({ params, store }) {
