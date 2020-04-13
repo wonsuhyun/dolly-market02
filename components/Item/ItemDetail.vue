@@ -7,18 +7,18 @@
       {{ description }}
     </p>
     <div class="table-container">
-    <table class="table">
-      <tbody>
-        <tr>
-          <th>price</th>
-          <td>${{ price }}</td>
-        </tr>
-        <tr>
-          <th>status</th>
-          <td>{{ status }}</td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>price</th>
+            <td>${{ price }}</td>
+          </tr>
+          <tr>
+            <th>status</th>
+            <td>{{ status }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="box">
       <UserBadge
@@ -66,5 +66,4 @@ export default {
 .table-container {
   margin-top: 1.5rem;
 }
-
 </style>

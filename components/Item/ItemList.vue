@@ -15,7 +15,9 @@
         />
       </div>
     </div>
-    <b-button @click="moreItems" :disabled="false" expanded>Show More</b-button>
+    <b-button :disabled="false" expanded @click="moreItems">
+      Show More
+    </b-button>
   </section>
 </template>
 

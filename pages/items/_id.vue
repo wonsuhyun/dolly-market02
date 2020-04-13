@@ -1,28 +1,32 @@
 <template>
-<section class="section">
-  <div class="container">
-    <div class="columns">
-      <div class="column is-two-fifths">
-        <div class="has-ribbon">
-          <div class="ribbon is-large is-primary">{{item.status}}</div>
-          <Carousel :images="item.images" />
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-two-fifths">
+          <div class="has-ribbon">
+            <div class="ribbon is-large is-primary">
+              {{ item.status }}
+            </div>
+            <Carousel :images="item.images" />
+          </div>
+        </div>
+        <div class="column">
+          <ItemSummary
+            :title="item.title"
+            :description="item.description"
+            :price="item.price"
+            :user="item.user"
+            :tags="item.tags"
+          />
+          <section class="item-buttons">
+            <b-button type="is-success" expanded>
+              Buy Now
+            </b-button>
+          </section>
         </div>
       </div>
-      <div class="column">
-        <ItemSummary
-          :title="item.title"
-          :description="item.description"
-          :price="item.price"
-          :user="item.user"
-          :tags="item.tags"
-        />
-        <section class="item-buttons">
-          <b-button type="is-success" expanded>Buy Now</b-button>
-        </section>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 </template>
 <script>
 import ItemSummary from "@/components/Item/ItemSummary"
@@ -48,5 +52,4 @@ export default {
 .item-buttons {
   padding: 0 1.5rem;
 }
-
 </style>

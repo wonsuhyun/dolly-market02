@@ -2,7 +2,9 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <nuxt-link to="/" class="navbar-item logo">Dolly Market</nuxt-link>
+        <nuxt-link to="/" class="navbar-item logo">
+          Dolly Market
+        </nuxt-link>
 
         <a
           role="button"

@@ -2,7 +2,7 @@
   <div>
     <Hero />
     <div class="container">
-    <ItemList :items="getItems" />
+      <ItemList :items="getItems" />
     </div>
   </div>
 </template>

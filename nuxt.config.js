@@ -48,7 +48,12 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: ["@nuxtjs/axios", "@nuxtjs/auth", "nuxt-buefy", '@nuxtjs/style-resources'],
+  modules: [
+    "@nuxtjs/axios",
+    "@nuxtjs/auth",
+    "nuxt-buefy",
+    "@nuxtjs/style-resources",
+  ],
   /*
    ** Build configuration
    */
@@ -62,7 +67,7 @@ module.exports = {
       }
     },
   },
-  styleResources: { sass: [ '@/assets/scss/main.scss' ] },
+  styleResources: { sass: ["@/assets/scss/main.scss"] },
   /*
    ** Server configuration
    */

@@ -1,17 +1,25 @@
 <template>
   <section class="item-detail section">
     <div class="content is-medium">
-      <p class="title">{{ title }}</p>
+      <p class="title">
+        {{ title }}
+      </p>
       <div class="tags are-medium">
-        <span class="tag" v-for="tag in tags" :key="tag.pid">{{ tag.name }}</span>
+        <span v-for="tag in tags" :key="tag.pid" class="tag">{{
+          tag.name
+        }}</span>
       </div>
-            <p class="sub-title">$ {{ price }}</p>
-        <b-field>
-          <b-numberinput controls-rounded type="is-light" class="is-fullwidth"></b-numberinput>
-        </b-field>
+      <p class="sub-title">$ {{ price }}</p>
+      <b-field>
+        <b-numberinput controls-rounded type="is-light" class="is-fullwidth" />
+      </b-field>
     </div>
     <div class="box">
-      <UserBadge :image="user.image" :nickname="user.nickname" :email="user.email" />
+      <UserBadge
+        :image="user.image"
+        :nickname="user.nickname"
+        :email="user.email"
+      />
     </div>
   </section>
 </template>
@@ -48,5 +56,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
