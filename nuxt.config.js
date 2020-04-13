@@ -36,7 +36,8 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [],
+  // Todo: loader로 부르기
+  css: ['~/node_modules/bulma-ribbon/dist/css/bulma-ribbon.min.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -44,7 +45,7 @@ module.exports = {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/vuetify"],
+  buildModules: [],
   /*
    ** Nuxt.js modules
    */
@@ -52,7 +53,6 @@ module.exports = {
     "@nuxtjs/axios",
     "@nuxtjs/auth",
     "nuxt-buefy",
-    "@nuxtjs/style-resources",
   ],
   /*
    ** Build configuration
@@ -67,7 +67,6 @@ module.exports = {
       }
     },
   },
-  styleResources: { sass: ["@/assets/scss/main.scss"] },
   /*
    ** Server configuration
    */

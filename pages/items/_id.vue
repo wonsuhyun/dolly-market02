@@ -4,7 +4,7 @@
       <div class="columns">
         <div class="column is-two-fifths">
           <div class="has-ribbon">
-            <div class="ribbon is-large is-primary">
+            <div class="ribbon is-large" :class="(item.status === 'On sale') ? 'is-primary' : 'is-danger'">
               {{ item.status }}
             </div>
             <Carousel :images="item.images" />

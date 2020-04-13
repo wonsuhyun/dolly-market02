@@ -17,7 +17,6 @@
   "dependencies": {
     "@nuxtjs/auth": "^4.8.5",
     "@nuxtjs/axios": "^5.9.5",
-    "bulma-ribbon": "^0.1.1",
     "cross-env": "^5.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -26,6 +25,7 @@
     "mysql2": "^2.1.0",
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.3.26",
+    "bulma-ribbon": "^0.1.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
@@ -33,7 +33,6 @@
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.0.0",
-    "@nuxtjs/vuetify": "^1.11.0",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^24.1.0",

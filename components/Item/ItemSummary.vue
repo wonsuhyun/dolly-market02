@@ -4,12 +4,14 @@
       <p class="title">
         {{ title }}
       </p>
+      <p class="subtitle">{{ description }}</p>
+      <p class="subtitle is-3">$ {{ price }}</p>
       <div class="tags are-medium">
-        <span v-for="tag in tags" :key="tag.pid" class="tag">{{
+        <b-tag type="is-primary" v-for="tag in tags" :key="tag.pid">{{
           tag.name
-        }}</span>
+        }}</b-tag>
       </div>
-      <p class="sub-title">$ {{ price }}</p>
+      
       <b-field>
         <b-numberinput controls-rounded type="is-light" class="is-fullwidth" />
       </b-field>
@@ -55,5 +57,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>
