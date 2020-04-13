@@ -3,7 +3,6 @@
     <Hero />
     <div class="container">
     <ItemList :items="getItems" />
-      <b-button :class="{ disabledBtn: !isActiveBtn }" expanded @click="moreItems">Load More</b-button>
     </div>
   </div>
 </template>
@@ -23,25 +22,11 @@ export default {
   data() {
     return {
       title: "Dolly-Market",
-      isActiveBtn: true,
-      isHover: false,
-      moreActive: 0,
-      pageNum: 1,
     }
   },
   computed: {
     getItems() {
       return this.$store.getters["item/getItems"]
-    },
-  },
-  methods: {
-    // Todo: disabled 처리 해야 함
-    // Todo: List Component 안으로 넣어야 함
-    async moreItems() {
-      await this.$store.dispatch("item/setMoreItems", ++this.pageNum)
-    },
-    itemHover() {
-      this.isHover === true
     },
   },
 }

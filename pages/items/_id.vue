@@ -6,14 +6,14 @@
         <Carousel :images="item.images" />
       </div>
       <div class="column">
-        <ItemDetail
+        <ItemControl
           :title="item.title"
           :description="item.description"
           :price="item.price"
           :status="item.status"
           :user="item.user"
         />
-        <section class="section">
+        <section class="item-buttons">
           <b-button type="is-success" expanded>Buy Now</b-button>
         </section>
       </div>
@@ -22,12 +22,12 @@
 </section>
 </template>
 <script>
-import ItemDetail from "@/components/Item/ItemDetail"
+import ItemControl from "@/components/Item/ItemControl"
 import Carousel from "@/components/UI/Carousel"
 
 export default {
   components: {
-    ItemDetail,
+    ItemControl,
     Carousel,
   },
   async asyncData({ params, store }) {
@@ -40,3 +40,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.item-buttons {
+  padding: 0 1.5rem;
+}
+
+</style>

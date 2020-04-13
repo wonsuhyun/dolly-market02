@@ -15,6 +15,7 @@
         />
       </div>
     </div>
+    <b-button @click="moreItems" :disabled="false" expanded>Show More</b-button>
   </section>
 </template>
 
@@ -29,6 +30,17 @@ export default {
     items: {
       type: Array,
       required: true,
+    },
+  },
+  data() {
+    return {
+      pageNum: 1,
+    }
+  },
+  methods: {
+    // Todo: disabled 처리 해야 함 => 리스트 메타 데이터 생성
+    async moreItems() {
+      await this.$store.dispatch("item/setMoreItems", ++this.pageNum)
     },
   },
 }

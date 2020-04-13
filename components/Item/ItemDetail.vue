@@ -6,6 +6,7 @@
     <p class="sub-title">
       {{ description }}
     </p>
+    <div class="table-container">
     <table class="table">
       <tbody>
         <tr>
@@ -18,6 +19,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
     <div class="box">
       <UserBadge
         :image="user.image"
@@ -59,3 +61,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.table-container {
+  margin-top: 1.5rem;
+}
+
+</style>
