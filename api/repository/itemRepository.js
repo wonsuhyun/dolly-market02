@@ -23,11 +23,10 @@ class ItemRepository extends MySQLRepositoryBase {
     )
 
     // Todo: 리팩토링
-    let itemList = []
-    _itemList.map((item) => {
+    let itemList = _itemList.map((item) => {
       item = this.getMasterImage(item)
       item = this.getUser(item)
-      itemList.push(new Item(item))
+      return new Item(item)
     })
 
     return itemList
