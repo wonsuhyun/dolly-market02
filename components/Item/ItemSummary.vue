@@ -13,10 +13,6 @@
           {{ tag.name }}
         </b-tag>
       </div>
-
-      <b-field>
-        <b-numberinput controls-rounded type="is-light" class="is-fullwidth" />
-      </b-field>
     </div>
     <div class="box">
       <UserBadge

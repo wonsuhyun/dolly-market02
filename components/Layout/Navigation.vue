@@ -41,10 +41,14 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
+              <nuxt-link to="/" class="navbar-item logo">
+              <b-button class="button is-primary">
                 <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">Log in</a>
+              </b-button>
+              </nuxt-link>
+                            <nuxt-link to="/login" class="navbar-item logo">
+              <b-button class="button is-light">Log in</b-button>
+              </nuxt-link>
             </div>
           </div>
         </div>
